@@ -28,7 +28,7 @@ This repository documents my daily progress, projects, and what I learn along th
 
 ## 🔥 Progress
 
-I am currently on **Day X / 100**
+I am currently on **Day 1 / 100**
 
 * [X] Day 1
 
@@ -46,7 +46,7 @@ I am currently on **Day X / 100**
 
 ## 🚀 Tech Stack (so far)
 
-*Python
+* Python
 
 
 ---
