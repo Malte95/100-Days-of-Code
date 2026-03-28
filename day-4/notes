@@ -1,1 +1,6 @@
-
+Today I continued with the freeCodeCamp Python certificate. I also continued withe the workshop "Build an Email Simulator".
+I added a for-loop to the list_emails method in the Inbox class. It iterates over the emails list and prints out the Index an the email itself.
+Furthermore I added a new method called "read_email", it first checks if the emails list is empty. If not it preceeds to check if the index is less then o
+or if it's equal or more then the length of the emails list. If it is greater than 0 and not egual or more then the length of emails, it calls the display_full_email method
+n emails at the index.
+I endet the session by adding yet another method called "delete_email". It also checks first if the list is empty.
