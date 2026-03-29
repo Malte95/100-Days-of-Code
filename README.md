@@ -31,6 +31,10 @@ This repository documents my daily progress, projects, and what I learn along th
 I am currently on **Day 1 / 100**
 
 * [X] Day 1
+* [X] Day 2
+* [X] Day 3
+* [X] Day 4
+* [X] Day 5  
 
 *(I will update this as I progress)*
 
