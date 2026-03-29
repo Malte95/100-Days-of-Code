@@ -2,3 +2,6 @@ I continued with the "delete_email" method in the Inbox class for the "Build an 
 First I converted the 1-based index back to 0 via the "actual_index" attribute. Then I handled the case where a User tries to delete an email at
 an invalid index with an if-statement thats checks wheter the actual_index is less then 0 or equal or greater then the actual length of the emails list.
 I added the del() function to delete an email, if emails is not empty and is a valid index.
+I imported the "datetime" method so that the "display_full_email" and "__str__" methods in the Email class could show the date and time of the emails received. 
+For that I added an attributed called "timestamp" to the "__init__" method in which the current date time is saved. Then I used the "strf()" function so I could
+print out the year, month, day, hour and minute separated either by an "-" or ":".
