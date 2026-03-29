@@ -5,3 +5,5 @@ I added the del() function to delete an email, if emails is not empty and is a v
 I imported the "datetime" method so that the "display_full_email" and "__str__" methods in the Email class could show the date and time of the emails received. 
 For that I added an attributed called "timestamp" to the "__init__" method in which the current date time is saved. Then I used the "strf()" function so I could
 print out the year, month, day, hour and minute separated either by an "-" or ":".
+I also added a feedback for the user, so it's clear that the email was succesfully send using a print statement in the send_email method.
+Then I added the methods check_inbox,read_email, delete_email to the User class, with a call back to the acutall methods created earlier.
