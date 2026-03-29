@@ -7,3 +7,4 @@ For that I added an attributed called "timestamp" to the "__init__" method in wh
 print out the year, month, day, hour and minute separated either by an "-" or ":".
 I also added a feedback for the user, so it's clear that the email was succesfully send using a print statement in the send_email method.
 Then I added the methods check_inbox,read_email, delete_email to the User class, with a call back to the acutall methods created earlier.
+To test and to close this project, I added the main() function and created to users.
