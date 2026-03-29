@@ -1,1 +1,3 @@
-
+I continued with the "delete_email" method in the Inbox class for the "Build an Email Simulation" workshop in freeCodeCamps Python certificate.
+First I converted the 1-based index back to 0 via the "actual_index" attribute. Then I handled the case where a User tries to delete an email at
+an invalid index with an if-statement thats checks wheter the actual_index is less then 0 or equal or greater then the actual length of the emails list.
