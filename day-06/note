@@ -1,1 +1,10 @@
+Today I reviewd the classes and objects and did the Classes and Objects Quiz to end the chapter in the freeCodeCamp Python Certificate.
+Now I'm working on my second certification project, a budget app. 
+I added three methods to the Category class:
+* deposite
+* withdraw
+* get_balance
+The deposite methods appends the amount and description to the ledger list.
+get_balance adds all the elements in the ledger list together using a for loop and stores it in the balance attribute.
+The wihdraw method first checks if the balance is equal or greater than the amount. If so the amount will be substracted from the balance and if not it will return a "False".
 
