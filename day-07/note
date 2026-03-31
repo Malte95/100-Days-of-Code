@@ -1,1 +1,5 @@
-
+I began todays session with reading a chapter about Python dictionaries in the book "Schrödinger programmiert Python".
+Then I went back to my Budget App that I startet to build the day before.
+I added the methods "check_funds" and "transfer".
+check_funds checks if the amount is less or equal to get_balance.
+tranfer uses withdraw to transfer a certain amount to a different Category if check_funds returns "True".
