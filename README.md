@@ -20,7 +20,6 @@ This repository documents my daily progress, projects, and what I learn along th
 
 ## 📁 Repository Structure
 
-* `log.md` → Daily progress overview
 * `day-xx/notes.md` → Detailed notes and learnings
 * `day-xx/code/` → Code and small projects
 
@@ -34,7 +33,10 @@ I am currently on **Day 1 / 100**
 * [X] Day 2
 * [X] Day 3
 * [X] Day 4
-* [X] Day 5  
+* [X] Day 5
+* [X] Day 6
+* [X] Day 7
+* [X] Day 8    
 
 *(I will update this as I progress)*
 
