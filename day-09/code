@@ -1,1 +1,7 @@
+def is_flat(arr):
+    for i in arr:
+        if type(i) is list:
+            return False
+    return True
 
+    return arr
