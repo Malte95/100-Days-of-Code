@@ -1,1 +1,14 @@
+I started today with a little coding challange. This is the task:
+Given an array, determine if it is flat.
 
+An array is flat if none of its elements are arrays.
+
+I used a for-loop to iterate over each item in the list. In that loop i used an if-statement to check if an item in the list is a list itself:
+if type(i) is list:
+  ...
+If so, the code shoudl return False and if not, it should return True. My code checked out all the tests:
+1. is_flat([1, 2, 3, 4]) should return True.✅
+2. is_flat([1, [2, 3], 4]) should return False.✅
+3. is_flat([1, 0, False, True, "a", "b"]) should return True.✅
+4. is_flat(["a", [0], "b", True]) should return False.✅
+5. is_flat([1, [2, [3, [4, [5]]]], 6]) should return False.✅
