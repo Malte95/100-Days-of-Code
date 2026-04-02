@@ -12,3 +12,10 @@ If so, the code shoudl return False and if not, it should return True. My code c
 3. is_flat([1, 0, False, True, "a", "b"]) should return True.✅
 4. is_flat(["a", [0], "b", True]) should return False.✅
 5. is_flat([1, [2, [3, [4, [5]]]], 6]) should return False.✅
+
+___________________________
+Later that day I continued with the Budget App project.
+I added the logic, what percantages where withdrawn from the ledger. I created a for-loop to go over each item in the spent_amounts list.
+In that loop I initialzed a few attributes, which store the different mathematical applications, such as dividing each item through the total number of items
+and multiplying it with 100. 
+Then rounding that number to the nearest 10th with math.floor and then multiplying it with 10. The result is stored in the percentanges list.
