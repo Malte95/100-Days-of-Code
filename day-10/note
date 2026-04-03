@@ -1,1 +1,5 @@
-
+In my Budget App, want to add a chart. For that I added the attribute "output = ''" to my creat_spend_cart method.
+I used the range function in my for-loop to count down from 100 to 0 in increments of ten. After each loop the number 
+will stringified and adjusted to the left with 3 characters using str(n).rjust(3) and concatinated with "| ". Then it will be added to output.
+A second loop checks wether the percentage number is greater or equal to the number, if so a "o" will be added to the string in output, if not an empty 
+string will be added. 
