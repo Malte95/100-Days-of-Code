@@ -1,1 +1,13 @@
+Today I finished my Budget App Project!
+I impoted the math module from Python so that math.floor() works.
+Then I finished my create_spend_chart method. I first checked for the longest category.
+I did that by creating a list called length_of_category. A for-loops appends each category.name length to the list.
+Then I checked in my longest_category attribute for the longest category name by using max().
+To print out each category name verticly I used a for-loop with the range function which has longest_category as a parameter.
+First I shifted the beginnen of the bar 5 steps to the right. Then I compared the length of each category with the longest_category.
+If it was less, I printed the current character of the category name, if it was not less, I printed an empty string.
+To know when my loop has arrived at the last character of the longest_category, I compared the current character withe longest_category -1,
+which gives me the last character. If it was equal, it did nothing using pass, if it wasn't equal I concatenated "\n" to do a line break.
+At the end I returned the output to show the whole chart.
+
 
