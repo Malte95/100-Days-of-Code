@@ -1,1 +1,10 @@
+def is_valid_equation(equation):
+    left, right = equation.split("=")
+    if eval(left) == eval(right):
+        return True
+    else:
+        return False
+   
+
+    return equation
 
