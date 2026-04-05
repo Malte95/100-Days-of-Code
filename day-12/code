@@ -7,5 +7,16 @@ def is_valid_equation(equation):
    
 
     return equation
-___
+
+//Test
+ 1. is_valid_equation("2 + 2 = 4") should return True.
+ 2. is_valid_equation("2 + 3 - 1 = 4") should return True.
+ 3. is_valid_equation("8 / 2 = 4") should return True.
+ 4. is_valid_equation("10 * 5 = 50") should return True.
+ 5. is_valid_equation("2 - 2 = 0") should return True.
+ 6. is_valid_equation("2 + 9 / 3 = 5") should return True.
+ 7. is_valid_equation("20 - 2 * 3 = 14") should return True.
+ 8. is_valid_equation("2 + 5 = 6") should return False.
+ 9. is_valid_equation("10 - 2 * 3 = 24") should return False.
+ 10. is_valid_equation("3 + 9 / 3 = 4") should return False
 
