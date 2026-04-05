@@ -7,5 +7,5 @@ def is_valid_equation(equation):
    
 
     return equation
----
+___
 
