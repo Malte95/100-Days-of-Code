@@ -20,3 +20,15 @@ Valid return days are:
 Be sure to ignore time zones.
 
 I used a simple if-else statement.
+---------------------------------------------------------------------------------------------------------------------------------------
+I cound't help myself and did another coding challange. Here's the task:
+"Given a string, determine whether the number of vowels in the first half of the string is equal to the number of vowels in the second half.
+
+The string can contain any characters.
+The letters a, e, i, o, and u, in either uppercase or lowercase, are considered vowels.
+If there's an odd number of characters in the string, ignore the center character."
+
+First I converted every character in s to lowercase. Then I get the middle of s using "len(s) // 2" and stored it in the variable "mid".
+I checked if the string in s was an even or an odd number and depending on that sliced it accordingly. I created two variables for the first and the second
+half of the string. Using a for-loop I checked for the vowels in each half and stored the numbers in variabls I created earlier. Then I compared the number
+in each variable and if it was eqal, it returned True.
