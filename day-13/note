@@ -1,4 +1,6 @@
 Today I started withe the Object-Oriented-Programming chapter in freeCodeCamps Python certificate.
 I read about what OOP is and what getters and setters are. Also I started to get familiar with OOP by building a Salary Tracker. 
 I created a class called Employee, a few methods and so far 2 properties, so I can use dotnotation to get access to the functions. 
-Two of the methods include non-public names, created with a underscore befor the name.
+Two of the methods include non-public names, created with a underscore befor the name. 
+Then I created a __repr__ method to instantiate a string representation of the Employee object. I ended the session by checking 
+if eighter 'name' or 'level' is a string, if not an TypeError will be raised.
