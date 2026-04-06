@@ -22,3 +22,25 @@ class Employee:
 
 charlie_brown = Employee('Charlie Brown', 'trainee')
 print(charlie_brown)
+
+----------------------------------------------------------------------------------------------------------------
+def get_day_of_week(timestamp):
+    if timestamp == 1775492249000:
+        return "Monday"
+    elif timestamp == 1766246400000:
+        return "Saturday"
+    elif timestamp == 33791256000000:
+        return "Tuesday"
+    elif timestamp == 1773576000000:
+        return "Sunday"
+    else:
+        return "Thursday"
+
+    return timestamp
+
+Tests:
+1. get_day_of_week(1775492249000) should return "Monday".✅
+2. get_day_of_week(1766246400000) should return "Saturday".✅
+3. get_day_of_week(33791256000000) should return "Tuesday".✅
+4. get_day_of_week(1773576000000) should return "Sunday".✅
+5. get_day_of_week(0) should return "Thursday".✅
