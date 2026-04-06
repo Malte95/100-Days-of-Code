@@ -4,3 +4,19 @@ I created a class called Employee, a few methods and so far 2 properties, so I c
 Two of the methods include non-public names, created with a underscore befor the name. 
 Then I created a __repr__ method to instantiate a string representation of the Employee object. I ended the session by checking 
 if eighter 'name' or 'level' is a string, if not an TypeError will be raised.
+---------------------------------------------------------------------------------------------------------------------------------------
+I also did today freeCodeCamps Coding Challange:
+Given a Unix timestamp in milliseconds, return the day of the week.
+
+Valid return days are:
+
+"Sunday"
+"Monday"
+"Tuesday"
+"Wednesday"
+"Thursday"
+"Friday"
+"Saturday"
+Be sure to ignore time zones.
+
+I used a simple if-else statement.
