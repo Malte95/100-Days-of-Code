@@ -1,2 +1,7 @@
 I didn't accomplished much today. There were a lot of issues in my code which I had and will have to fix later. 
 I'm positiv to return to this task later in the evening and trying to fix the bugs.
+
+So, as mentioned earlier, I resumed to my Salary Tracker Projekt in freeCodeCamp. This is what I did:
+Added setters for `name` and `level` properties to allow updating employee attributes after initialization, 
+including input validation. Improved output by printing employee details and base salary.
+
