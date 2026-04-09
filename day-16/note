@@ -11,3 +11,6 @@ print(hero)  # Displays the updated stats
 
 hero.level_up()  # Levels up the character
 print(hero)  # Displays the stats after leveling up
+
+I created a GameCharacter class. Then declared the __init__ method inside of it.
+I created a property for name, health, and mana. I also added a setter for health and mana,which prevents them to get below 0 and caps them at 50/100 max.
