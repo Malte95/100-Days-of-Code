@@ -1,1 +1,13 @@
+Today I'm tackling the “Game Character Stats Tracker“ Lab. 
+In this lab, I'll build a game character stats tracker. The program will allow me to create a character with specific attributes, 
+update those attributes, and retrieve the current stats of the character.
+Usage example:
+hero = GameCharacter('Kratos') # Creates a new character named Kratos
+print(hero)  # Displays the character's stats
 
+hero.health -= 30  # Decreases health by 30
+hero.mana -= 10    # Decreases mana by 10
+print(hero)  # Displays the updated stats
+
+hero.level_up()  # Levels up the character
+print(hero)  # Displays the stats after leveling up
