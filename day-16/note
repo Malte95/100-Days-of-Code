@@ -13,4 +13,15 @@ hero.level_up()  # Levels up the character
 print(hero)  # Displays the stats after leveling up
 
 I created a GameCharacter class. Then declared the __init__ method inside of it.
-I created a property for name, health, and mana. I also added a setter for health and mana,which prevents them to get below 0 and caps them at 50/100 max.
+I created a property for name, health, mana and level. I also added a setter for health, mana and level,
+which prevents health/mana them to get below 0 and caps them at 50/100 max.
+Then I declared a level_up method which increases level by 1 sets health and mana back to their initial values
+and prints a messages that the certain name is leveled up to the certain level.
+At the end I created a __str__ method which returns a formatted string like this:
+Name: Kratos
+Level: 1
+Health: 100
+Mana: 50
+
+And that was the project!
+
