@@ -27,7 +27,7 @@ This repository documents my daily progress, projects, and what I learn along th
 
 ## 🔥 Progress
 
-I am currently on **Day 27 / 100**
+I am currently on **Day 28 / 100**
 
 ![](https://img.shields.io/badge/01-done-blue) ![](https://img.shields.io/badge/02-done-blue) ![](https://img.shields.io/badge/03-done-blue) ![](https://img.shields.io/badge/04-done-blue) ![](https://img.shields.io/badge/05-done-blue) ![](https://img.shields.io/badge/06-done-blue) ![](https://img.shields.io/badge/07-done-blue) ![](https://img.shields.io/badge/08-done-blue) ![](https://img.shields.io/badge/09-done-blue) ![](https://img.shields.io/badge/10-done-blue)
 
