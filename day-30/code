@@ -1,1 +1,8 @@
-
+def hanoi_solver(total_number):
+    start_rod = list(range(total_number, 0, -1))
+    help_rod = []
+    end_rod = []
+    moves = []
+    
+    def store_position(start_rod, help_rod, end_rod):
+        moves.append(f"{start_rod} {help_rod} {end_rod}")
