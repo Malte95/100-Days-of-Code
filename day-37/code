@@ -1,1 +1,20 @@
+def hanoi_solver(total_number):
+    start_rod = list(range(total_number, 0, -1))
+    help_rod = []
+    end_rod = []
+    moves = []
+    
+    def store_position(start_rod, help_rod, end_rod):
+        moves.append(f"{start_rod} {help_rod} {end_rod}")
 
+    def solve(n, source, helper, target):
+        if n == 0:
+            return
+        solve(n-1, source, target, helper)
+        disk = source.pop()
+        target.append(disk)
+        store_position(start_rod, help_rod, end_rod)
+        solve(n-1, helper, source, target)
+    store_position(start_rod, help_rod, end_rod)
+    solve(total_number, start_rod, help_rod, end_rod)
+    return "\n".join(moves)
