@@ -1,31 +1,19 @@
-class Email:
-    def __init__(self, sender, receiver, subject, body):
-        self.sender = sender
-        self.receiver = receiver
-        self.subject = subject
-        self.body = body
-        self.read = False
+def adjacency_list_to_matrix(adjacency_list):
+    n = len(adjacency_list)
 
-    def mark_as_read(self):
-        self.read = True
+    matrix = []
 
-class User:
-    def __init__(self, name):
-        self.name = name
-        self.inbox = Inbox()
+    for i in range(n):
+        row = []
+        for j in range(n):
+            row.append(0)
+        matrix.append(row)
 
-    def send_email(self, receiver, subject, body):
-        email = Email(sender=self, receiver=receiver, subject=subject, body=body)
-        receiver.inbox.receive_email(email)
+    for node in adjacency_list:
+        for neighbor in adjacency_list[node]:
+            matrix[node][neighbor] = 1
 
-class Inbox:
-    def __init__(self):
-        self.emails = []
+    for row in matrix:
+        print(row)
 
-    def receive_email(self, email):
-        self.emails.append(email)
-
-alice = User("Alice")
-bob = User("Bob")
-
-alice.send_email(bob, "Hello", "Hi Bob, how are you?")
+    return matrix
