@@ -1,5 +1,8 @@
-Today I added the method "__str__" to my Email class which checks if an email was read or not, the outcome is saved in the attribute "status". 
+Today I finished the Breadth-First Search Algorithm from yesterday.
+I added an else-block after my if-statement in the while loop.
+Inside the else-block there are two if-statements, one to check if open parantheses are less then pairs,
+if true I append a new tuple to the queue list, and another one to check if closing parantheses are less then opening parantheses,
+if true I alos append a new tuple to the queue list. 
+At the end I testet my program by calling the gen_parantheses function with two cases, one with 3 pairs and one with 5 pairs.
+_______________________________________________________________________________________________________________________________________________________________________________
 
-After that the __str__ method returns a string withe status, the sender of the email and the subject of the email.
-
-I also began withe the "list_emails" method, which first checks if the emails list is empty and returns a string, if so.
