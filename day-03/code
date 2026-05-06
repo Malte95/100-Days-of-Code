@@ -19,3 +19,16 @@ def gen_parentheses(pairs):
     return result
 print(gen_parentheses(3))
 print(gen_parentheses(5))
+________________________________________________________________________________________________________________________________________________________________________________
+
+def dfs(matrix, node):
+    visited = []
+    stack = [node]
+
+    while len(stack) != 0:
+        current = stack.pop()
+        visited.append(current)
+        for i in range(len(matrix[current])):
+            if matrix[current][i] == 1 and i not in visited:
+                stack.append(i)
+    return visited
