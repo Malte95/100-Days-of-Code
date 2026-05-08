@@ -7,3 +7,4 @@ First I checked if the input is a valid number. Then I checked if the input is
 less or equal to 1, if true the functions directly returns n.
 In the other cases I implementet a for-loop to append the sum of the last two elements in the list to the sequence list.
 At the end of the loop, the functions returns the list.
+After that I reviewed dynamic programming and passed the test.
