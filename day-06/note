@@ -1,10 +1,11 @@
-Today I reviewd the classes and objects and did the Classes and Objects Quiz to end the chapter in the freeCodeCamp Python Certificate.
-Now I'm working on my second certification project, a budget app. 
-I added three methods to the Category class:
-* deposite
-* withdraw
-* get_balance
-The deposite methods appends the amount and description to the ledger list.
-get_balance adds all the elements in the ledger list together using a for loop and stores it in the balance attribute.
-The wihdraw method first checks if the balance is equal or greater than the amount. If so the amount will be substracted from the balance and if not it will return a "False".
+Today I solved a coding challenge on codewars.com.
+The goal was to create a function that takes an integer greater than 1 and returns an array 
+containing all of its divisors, except for 1 and the number itself, sorted from smallest to largest. 
+If the number is prime, it should return the string "(integer) is prime".
+To solve this efficiently:
+1. I initialized an empty set to store the divisors, which automatically avoids duplicate entries (especially important for square numbers).
+2. I used a for loop running from 2 up to the square root of the number. This optimization significantly reduces the number of iterations.
+3. Inside the loop, I checked if the number is divisible without a remainder. If so, the function adds both the divisor and the corresponding result of the division to the set.
+4. After the loop, I checked if the set was empty. If it was, the number is prime, and I returned the required string.
+5. Otherwise, I returned the divisors as a sorted list.
 
