@@ -1,28 +1,9 @@
-class Category:
-    def __init__(self, name):
-        self.name = name
-        self.ledger = []
-
-    def deposit(self, amount, description=""):
-        self.ledger.append({"amount": amount, "description": description})
-
-    def withdraw(self, amount, description=""):
-        if self.get_balance() >= amount:
-            self.ledger.append({"amount": -amount, "description": description})
-            return True
-        else:
-            return False
-
-    def get_balance(self):
-        balance = 0
-        for i in self.ledger:
-            balance += i["amount"]
-        return balance
-            
-        
-            
-        
-        
-
-def create_spend_chart(categories):
-    pass
+def divisors(integer):
+    divs = set()
+    for i in range(2, int(integer **0.5) +1):
+        if integer % i == 0:
+            divs.add(i)
+            divs.add(integer // i)
+    if not divs:
+        return f"{integer} is prime"
+    return sorted(divs)
