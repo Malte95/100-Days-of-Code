@@ -11,3 +11,21 @@ def get_sum(a,b):
     
     # Arithmetic series formula (Gauss summation)
     return n * (start + end) // 2
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+import string
+allowed_chars = string.digits + string.ascii_lowercase
+
+def is_valid_number(n, base):
+    n = n.lower()
+    for char in n:
+        if char not in allowed_chars:
+            return False
+        position = allowed_chars.find(char)
+        if position >= base:
+            return False
+    return True
+        
+
+    return n
