@@ -1,42 +1,13 @@
-class Category:
-    def __init__(self, name):
-        self.name = name
-        self.ledger = []
-
-    def deposit(self, amount, description=""):
-        self.ledger.append({"amount": amount, "description": description})
-
-    def withdraw(self, amount, description=""):
-        if self.get_balance() >= amount:
-            self.ledger.append({"amount": -amount, "description": description})
-            return True
-        else:
-            return False
-
-    def get_balance(self):
-        balance = 0
-        for i in self.ledger:
-            balance += i["amount"]
-        return balance
+def get_sum(a,b):
+    # Handle edge case: identical inputs
+    if a == b:
+        return a
     
-    def check_funds(self, amount):
-        return amount <= self.get_balance()
+    # Ensure start is the smaller and end is the larger number
+    start, end = min(a, b), max(a, b)
     
-    def transfer(self,amount, dest):
-        if self.check_funds(amount):
-            self.withdraw(amount, f'Transfer to {dest.name}')
-            dest.deposit(amount, f'Transfer from {self.name}')
-            return True
-        else:
-            return False
+    # Number of terms in the sequence
+    n = end - start + 1
     
-    
-        
-            
-        
-            
-        
-        
-
-def create_spend_chart(categories):
-    pass
+    # Arithmetic series formula (Gauss summation)
+    return n * (start + end) // 2
