@@ -12,3 +12,27 @@ of the numbers using the Gauss summation formula.
 Even though my formula already handles the edge case where a and b are equal, I still 
 implemented an if statement to make the code more readable and understandable for others. 
 This also improves performance slightly by avoiding unnecessary calculations.
+
+Then I did a coding challenge on freeCodeCamp.
+These were the instructions:
+Given a string representing a number, and an integer base from 2 to 36, determine whether the number is valid in that base.
+
+The string may contain integers, and uppercase or lowercase characters.
+The check should be case-insensitive.
+The base can be any number 2-36.
+A number is valid if every character is a valid digit in the given base.
+Example of valid digits for bases:
+Base 2: 0-1
+Base 8: 0-7
+Base 10: 0-9
+Base 16: 0-9 and A-F
+Base 36: 0-9 and A-Z
+
+I imported the string module to define all characters allowed across the different bases. 
+To ensure the check is case-insensitive, I converted the input string n to lowercase using .lower().
+
+I then used a for-loop to iterate through each character:
+ -First, I verified if the character exists in the set of allowed characters.
+ -Then, I determined the index (numeric value) of the character and checked if it is greater than or equal to the base. 
+  If so, the function immediately returns False.
+If the loop completes without finding an invalid digit, the function returns True.
