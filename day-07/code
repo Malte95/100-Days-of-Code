@@ -15,17 +15,27 @@ def get_sum(a,b):
 ________________________________________________________________________________________________________________________________________________________________________________
 
 import string
-allowed_chars = string.digits + string.ascii_lowercase
 
 def is_valid_number(n, base):
+    """
+    Determines if a string represents a valid number in a given base (2-36).
+    """
+    # Define the order of characters where index equals the character's value
+    # 0-9 have indices 0-9, a-z have indices 10-35
+    allowed_chars = string.digits + string.ascii_lowercase
+    
+    # Standardize input for case-insensitive comparison
     n = n.lower()
+    
     for char in n:
+        # Check if the character exists in our reference string
         if char not in allowed_chars:
             return False
-        position = allowed_chars.find(char)
-        if position >= base:
+            
+        # A character is valid only if its value (index) is less than the base
+        # Example: In base 16, 'f' (index 15) is valid, but 'g' (index 16) is not
+        if allowed_chars.find(char) >= base:
             return False
+            
+    # If no character violated the base rules, the number is valid
     return True
-        
-
-    return n
