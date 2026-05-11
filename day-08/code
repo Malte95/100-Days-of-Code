@@ -7,3 +7,29 @@ def get_oldest(people):
     return [person["name"] for person in people if person["age"] == max_age]
 
     return people
+
+________________________________________________________________________________________________________________________________________________________________________________
+
+def is_valid_isbn_13(s):
+    clean_s = s.replace("-", "")
+    if len(clean_s) != 13 or not clean_s.isdigit():
+        return False
+
+    odds = clean_s[::2]
+    evens = clean_s[1::2]
+
+    multiplied_odds = []
+    multiplied_evens = []
+
+    for digit in odds:
+        num = int(digit)
+        multiplied_odds.append(num * 1)
+    for digit in evens:
+        num = int(digit)
+        multiplied_evens.append(num * 3)
+
+    total = sum(multiplied_odds + multiplied_evens)
+    return total % 10 == 0
+
+    
+    return s
