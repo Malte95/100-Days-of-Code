@@ -11,25 +11,34 @@ def get_oldest(people):
 ________________________________________________________________________________________________________________________________________________________________________________
 
 def is_valid_isbn_13(s):
+    # Remove hyphens to get only the digits
     clean_s = s.replace("-", "")
+    
+    # Validate length and ensure the string contains only numbers
     if len(clean_s) != 13 or not clean_s.isdigit():
         return False
 
+    # Separate digits into two groups using slicing
+    # odds: digits at positions 1, 3, 5... (indices 0, 2, 4...)
+    # evens: digits at positions 2, 4, 6... (indices 1, 3, 5...)
     odds = clean_s[::2]
     evens = clean_s[1::2]
 
     multiplied_odds = []
     multiplied_evens = []
 
+    # Convert characters to integers and multiply by 1
     for digit in odds:
         num = int(digit)
         multiplied_odds.append(num * 1)
+        
+    # Convert characters to integers and multiply by 3
     for digit in evens:
         num = int(digit)
         multiplied_evens.append(num * 3)
 
+    # Calculate the total sum of all processed digits
     total = sum(multiplied_odds + multiplied_evens)
-    return total % 10 == 0
-
     
-    return s
+    # Check if the total sum is divisible by 10
+    return total % 10 == 0
