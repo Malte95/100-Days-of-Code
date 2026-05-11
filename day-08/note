@@ -1,9 +1,16 @@
-Today I did the following Coding-Challenge:
-Given an array of objects, each with a "name" and "age" property, return an array containing the name of the oldest person.
-If multiple people share the oldest age, return all of their names in the order they appear in the input.
+Today I completed the following coding challenge:
 
-I decleared a variable called max_age which stores the largest number.
-Then I returned the name of the person whose age equals max_age.
+The Goal:
+Given an array of objects, each with a "name" and "age" property, return an array 
+containing the names of the oldest people. If multiple people share the maximum age, 
+return all of their names in the order they appear in the input.
+
+My Approach:
+ 1.First, I checked if the list was empty to handle edge cases safely.
+ 2.I declared a variable called max_age to store the highest age found in the list using a 
+   generator expression.
+ 3.Finally, I used a list comprehension to filter and return the names of all individuals whose age matches the max_age. 
+   This ensures the original order is preserved.
 
 ________________________________________________________________________________________________________________________________________________________________________________
 I also completed a second challenge:
