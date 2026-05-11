@@ -1,12 +1,8 @@
-I returned to my "Budget App" project.
-I added the "__str__" method in the Category class.
-It should retrn the title centered with "*" on each side, max. space 30 characters. I did that with the center() function and added it to the output attribute.
-Then I iterated over each description and amount in the ledger and added the outcome to the output attribute. 
-The "description" should have a max length of 23 characters and just be left-align. I did that with the slicing [:23] and the ljust() function.
-The "amount" should be right aligned, have 2 decimal places and max 7 characters. I did that using the rjust(7) function and formated the string using :.2f.
+Today I did the following Coding-Challenge:
+Given an array of objects, each with a "name" and "age" property, return an array containing the name of the oldest person.
+If multiple people share the oldest age, return all of their names in the order they appear in the input.
 
-I also began with the "create_spend_chart(categories)" function. 
-I initialized a "total_all_categories" variable which stores the sum of all categories, and a list called "spent_amounts" which holds sum of each category.
-I used two loop, one to iterate over all categories and one to iterate over all negativ amounts, to just catch the withdraws.
+I decleared a variable called max_age which stores the largest number.
+Then I returned the name of the person whose age equals max_age.
 
 
