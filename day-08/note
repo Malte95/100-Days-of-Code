@@ -5,4 +5,21 @@ If multiple people share the oldest age, return all of their names in the order 
 I decleared a variable called max_age which stores the largest number.
 Then I returned the name of the person whose age equals max_age.
 
+________________________________________________________________________________________________________________________________________________________________________________
+I also completed a second challenge:
+Given a string, determine if it is a valid ISBN-13 number.
+
+A valid ISBN-13:
+
+ -Contains only digits and hyphens.
+ -Has exactly 13 digits after removing hyphens.
+ -Passes the following check: Multiply each digit by 1 or 3, alternating (multiply the first digit by 1, the second by 3, etc.). 
+  The sum of the results must be divisible by 10.
+
+First, I removed all hyphens using .replace(). 
+Then, I checked if the length of the string was exactly 13. After that, I separated the characters into two variables: 
+one that stores every other character and one that stores the remainder.
+I implemented two for-loops to iterate over these variables, converting each character into an integer using int(). 
+Then, I multiplied the numbers by either 1 or 3 and appended the results to two separate lists. Finally, I calculated the total sum and checked if it was divisible by 10.
+
 
