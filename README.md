@@ -29,7 +29,7 @@ This repository documents my daily progress, projects, and what I learn along th
 
 I am currently on **Day 8 / 100**
 
-![](https://img.shields.io/badge/01-done-blue) ![](https://img.shields.io/badge/02-done-blue) ![](https://img.shields.io/badge/03-done-blue) ![](https://img.shields.io/badge/04-done-blue) ![](https://img.shields.io/badge/05-done-blue) ![](https://img.shields.io/badge/06-done-blue) ![](https://img.shields.io/badge/07-pending-lightgrey) ![](https://img.shields.io/badge/08-done-blue) ![](https://img.shields.io/badge/09-pending-lightgrey) ![](https://img.shields.io/badge/10-pending-lightgrey)
+![](https://img.shields.io/badge/01-done-blue) ![](https://img.shields.io/badge/02-done-blue) ![](https://img.shields.io/badge/03-done-blue) ![](https://img.shields.io/badge/04-done-blue) ![](https://img.shields.io/badge/05-done-blue) ![](https://img.shields.io/badge/06-done-blue) ![](https://img.shields.io/badge/07-done-blue) ![](https://img.shields.io/badge/08-done-blue) ![](https://img.shields.io/badge/09-pending-lightgrey) ![](https://img.shields.io/badge/10-pending-lightgrey)
 
 ![](https://img.shields.io/badge/11-pending-lightgrey) ![](https://img.shields.io/badge/12-pending-lightgrey) ![](https://img.shields.io/badge/13-pending-lightgrey) ![](https://img.shields.io/badge/14-pending-lightgrey) ![](https://img.shields.io/badge/15-pending-lightgrey) ![](https://img.shields.io/badge/16-pending-lightgrey) ![](https://img.shields.io/badge/17-pending-lightgrey) ![](https://img.shields.io/badge/18-pending-lightgrey) ![](https://img.shields.io/badge/19-pending-lightgrey) ![](https://img.shields.io/badge/20-pending-lightgrey)
 
