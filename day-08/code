@@ -1,12 +1,14 @@
 def get_oldest(people):
+    # Check if the input list is empty to avoid errors
     if not people:
         return []
     
+    # Find the maximum age among all people in the list
     max_age = max(person["age"] for person in people)
 
+    # Return a list of names for all people who match the maximum age
+    # This preserves the original order as required
     return [person["name"] for person in people if person["age"] == max_age]
-
-    return people
 
 ________________________________________________________________________________________________________________________________________________________________________________
 
