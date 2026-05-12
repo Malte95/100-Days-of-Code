@@ -21,3 +21,26 @@ as any divisor larger than the square root would have a corresponding partner sm
 
 3.Finally, I used a loop and the modulo operator to check if the number is divisible by any integer from 2 up to this limit. 
 If a divisor is found, the function returns False; otherwise, it returns True.
+
+
+I did another coding challenge:
+
+**The Goal:**
+
+Define a function that takes a string argument and returns an object (JavaScript) or dictionary (Python) mapping each character to the number of times it 
+
+appears.Example:get_frequency("test") should return {"t": 2, "e": 1, "s": 1}.
+
+**My Approach:**
+
+1.Initialization: I started by creating an empty dictionary called result to store the character counts as key-value pairs.
+
+2.Iteration: I used a for loop to iterate through each character in the input string s.
+
+3.Logic: For each character, I implemented a conditional check:
+
+  1.If the character was already present in the dictionary, I incremented its value by 1.
+  
+  2.If it was not present, I initialized it with a value of 1.
+  
+4.Return: Finally, the function returns the completed dictionary.
