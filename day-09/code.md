@@ -8,21 +8,18 @@ def is_prime(num: int) -> bool:
         return True
     # Eliminate all other even numbers immediately
     if num % 2 == 0:
-        return False
-        
+        return False    
     # Only check odd divisors up to the square root of num
     # We start at 3 and skip every even number (step=2)
     limit = int(num**0.5) + 1
     for i in range(3, limit, 2):
         if num % i == 0:
-            return False
-            
+            return False        
     return True
 ---
 def get_frequency(s):
     # Initialize an empty dictionary to store character counts
     result = {}
-    
     # Iterate through each character in the string
     for char in s:
         # If character exists, increment its count
@@ -31,5 +28,4 @@ def get_frequency(s):
         # Otherwise, add the character with an initial count of 1
         else:
             result[char] = 1
-
     return result
