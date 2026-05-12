@@ -1,6 +1,6 @@
 Today I completed the following coding challenge:
 
-##The Goal:##
+**The Goal:**
 Define a function that takes an integer argument and returns a logical value True or False depending on if the integer is a prime.
 
 A valid prime number:
