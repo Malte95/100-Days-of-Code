@@ -28,4 +28,18 @@ def is_narcissistic(n):
         return True
     else:
         return False
+_______________________________________________________________________________________________________________________________________________________________________________
+def find_missing_letter(chars):
+    # Store the ASCII value of the first character as the starting reference
+    prev_num = ord(chars[0])
+    
+    for i in chars:
+        # Check if there is a gap greater than 1 between current and previous character
+        if (ord(i) - prev_num) > 1:
+            # Return the missing character by converting the missing ASCII value back to a string
+            return chr(ord(i) - 1)
+        
+        # Update the reference value for the next iteration
+        prev_num = ord(i)
+
 
