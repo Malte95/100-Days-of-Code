@@ -1,4 +1,4 @@
-Today I completed the following coding challenge:
+Today I completed the following coding challenges:
 
 **The Goal:**
 
@@ -24,3 +24,20 @@ Once the helper function finished and the list was populated, I determined the e
 4.Summation & Verification: 
 
 I used a for loop to iterate through the extracted digits, raising each to the calculated power and adding it to the total. Finally, I checked if the total matches the original number, returning True or False accordingly.
+
+
+**The Goal:**
+
+Write a method that takes an array of consecutive (increasing) letters as input and returns the missing letter in the array. The input array will always be valid, containing letters of only one case, with exactly one letter missing, and a minimum length of 2.
+
+Example: ['a','b','c','d','f'] -> 'e' or ['O','Q','R','S'] -> 'P'
+
+**My Approach:**
+
+**1.Initialization:**I initialized a tracker variable called prev_num and assigned it the ASCII value of the first character in the array using Python's built-in ord() function.
+
+**2.Sequential Iteration:**I used a for loop to iterate through each character in the input array to check the mathematical progression of the letters.
+
+**3.Gap Detection:**Inside the loop, I calculated the difference between the ASCII value of the current character and prev_num. If the difference is greater than 1, it indicates that the consecutive order is broken and the missing letter has been found.
+
+**4.Character Conversion & Update:**Once the gap is detected, I subtract 1 from the current ASCII value and convert it back to a character using chr() to return the missing letter. If no gap is found, I update prev_num with the current character's ASCII value for the next iteration.
