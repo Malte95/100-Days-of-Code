@@ -34,10 +34,18 @@ Example: ['a','b','c','d','f'] -> 'e' or ['O','Q','R','S'] -> 'P'
 
 **My Approach:**
 
-**1.Initialization:**I initialized a tracker variable called prev_num and assigned it the ASCII value of the first character in the array using Python's built-in ord() function.
+1.Initialization:
 
-**2.Sequential Iteration:**I used a for loop to iterate through each character in the input array to check the mathematical progression of the letters.
+I initialized a tracker variable called prev_num and assigned it the ASCII value of the first character in the array using Python's built-in ord() function.
 
-**3.Gap Detection:**Inside the loop, I calculated the difference between the ASCII value of the current character and prev_num. If the difference is greater than 1, it indicates that the consecutive order is broken and the missing letter has been found.
+2.Sequential Iteration:
 
-**4.Character Conversion & Update:**Once the gap is detected, I subtract 1 from the current ASCII value and convert it back to a character using chr() to return the missing letter. If no gap is found, I update prev_num with the current character's ASCII value for the next iteration.
+I used a for loop to iterate through each character in the input array to check the mathematical progression of the letters.
+
+3.Gap Detection:
+
+Inside the loop, I calculated the difference between the ASCII value of the current character and prev_num. If the difference is greater than 1, it indicates that the consecutive order is broken and the missing letter has been found.
+
+4.Character Conversion & Update:
+
+Once the gap is detected, I subtract 1 from the current ASCII value and convert it back to a character using chr() to return the missing letter. If no gap is found, I update prev_num with the current character's ASCII value for the next iteration.
