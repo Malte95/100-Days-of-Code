@@ -1,72 +1,31 @@
-class Category:
-    def __init__(self, name):
-        self.name = name
-        self.ledger = []
+def is_narcissistic(n):
+    # Initialize an empty list to store individual digits
+    digits = []
+    # Initialize the sum of the powered digits
+    total = 0
+    
+    # Helper function to extract digits mathematically
+    def digits_from_number(n):
+        value = n
+        # Extract digits from right to left using modulo and integer division
+        while value > 0:
+            digit = value % 10
+            value = value // 10
+            digits.append(digit)
+            
+    # Call the helper function to populate the digits list
+    digits_from_number(n)
+    
+    # Determine the total number of digits (exponent)
+    power = len(digits)
+    
+    # Calculate the sum of each digit raised to the power of the total digits
+    for i in digits:
+        total += i**power
+        
+    # Check if the calculated sum matches the original number
+    if total == n:
+        return True
+    else:
+        return False
 
-    def deposit(self, amount, description=""):
-        self.ledger.append({"amount": amount, "description": description})
-
-    def withdraw(self, amount, description=""):
-        if self.get_balance() >= amount:
-            self.ledger.append({"amount": -amount, "description": description})
-            return True
-        else:
-            return False
-
-    def get_balance(self):
-        balance = 0
-        for i in self.ledger:
-            balance += i["amount"]
-        return balance
-    
-    def check_funds(self, amount):
-        return amount <= self.get_balance()
-    
-    def transfer(self,amount, dest):
-        if self.check_funds(amount):
-            self.withdraw(amount, f'Transfer to {dest.name}')
-            dest.deposit(amount, f'Transfer from {self.name}')
-            return True
-        else:
-            return False
-    
-    def __str__(self):
-        output = self.name.center(30, "*") + "\n"
-        for item in self.ledger:
-            desc = item["description"][:23].ljust(23)
-            amt = f"{item['amount']:.2f}".rjust(7)
-            output += desc + amt + "\n"
-        output += f"Total: {self.get_balance():.2f}"
-        return output
-    
-
-def create_spend_chart(categories):
-    total_all_categories = 0
-    spent_amounts = []
-    percentages = []
-    output = ""
-
-    for category in categories:
-        category_sum = 0
-        for item in category.ledger:
-            if item["amount"] < 0:
-                category_sum += abs(item["amount"])
-                total_all_categories += abs(item["amount"])
-        spent_amounts.append(category_sum)
-    
-    for spending in spent_amounts:
-        divided = (spending / total_all_categories) * 100
-        rounded_nearest_10 = math.floor(divided/ 10)
-        multiplied_by_10 = rounded_nearest_10 * 10
-        result = multiplied_by_10 
-        percentages.append(result)
-    
-    output += "Percentage spent by category\n"
-    for n in range(100, -1, -10):
-        output += str(n).rjust(3) + "| "
-        for percent in percentages:
-            if percent >= n:
-                output += " o"
-            else:
-                output += "  "
-        output += "\n"
