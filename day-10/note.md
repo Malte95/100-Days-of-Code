@@ -1,17 +1,26 @@
-In my Budget App, want to add a chart. For that I added the attribute "output = ''" to my creat_spend_cart method.
-I used the range function in my for-loop to count down from 100 to 0 in increments of ten. After each loop the number 
-will stringified and adjusted to the left with 3 characters using str(n).rjust(3) and concatinated with "| ". Then it will be added to output.
-A second loop checks wether the percentage number is greater or equal to the number, if so a "o" will be added to the string in output, if not an empty 
-string will be added. 
-I then began thinking about how to creat this look:
-    ----------
-     F  C  A  
-     o  l  u  
-     o  o  t  
-     d  t  o  
-        h     
-        i     
-        n     
-        g 
-I will first check for the longest category. Then I will check if the current character of each name is still less then the longest category, 
-if so I will add it to output. If not I will add an empty string. But I will code that tomorrow, for now I have the logic almost down.
+Today I completed the following coding challenge:
+
+**The Goal:**
+
+Define a function that takes a positive integer argument and determines whether it is a narcissistic number. 
+A number is narcissistic if the sum of each of its digits raised to the power of the total number of digits equals the number itself.
+
+Example: 153 has 3 digits, and \(1^3 + 5^3 + 3^3 = 153\), so it is narcissistic.
+
+**My Approach:**
+
+1.Initialization: 
+
+I created an empty list called digits to store individual digits and a total variable set to 0 to keep track of the final sum.
+
+2.Mathematical Extraction: 
+
+I defined an inner helper function called digits_from_number that uses a while loop with the modulo operator (% 10) and integer division (// 10) to extract the digits from right to left mathematically.
+
+3.Exponent Calculation: 
+
+Once the helper function finished and the list was populated, I determined the exponent (power) by measuring the length of the digits list.
+
+4.Summation & Verification: 
+
+I used a for loop to iterate through the extracted digits, raising each to the calculated power and adding it to the total. Finally, I checked if the total matches the original number, returning True or False accordingly.
