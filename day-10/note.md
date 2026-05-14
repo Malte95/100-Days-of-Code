@@ -1,51 +1,28 @@
-Today I completed the following coding challenges:
+Today I started my first App for the aviation-software-projects repository on my github.
 
 **The Goal:**
 
-Define a function that takes a positive integer argument and determines whether it is a narcissistic number. 
-A number is narcissistic if the sum of each of its digits raised to the power of the total number of digits equals the number itself.
-
-Example: 153 has 3 digits, and \(1^3 + 5^3 + 3^3 = 153\), so it is narcissistic.
+Transition my Python unit converter from a text-based command-line interface into a modern desktop application with a graphical user interface (GUI). 
+The app must allow users to input values and select aviation-specific conversions (Knots, Feet, Gallons) using modern visual elements.
 
 **My Approach:**
 
-1.Initialization: 
+1.Environment Setup & Installation:
 
-I created an empty list called digits to store individual digits and a total variable set to 0 to keep track of the final sum.
+I chose CustomTkinter over the standard Tkinter library to achieve a sleek, modern UI design that natively supports system dark mode. 
+I configured my local environment and installed the library via the package manager.
 
-2.Mathematical Extraction: 
+2.GUI Initialization:
 
-I defined an inner helper function called digits_from_number that uses a while loop with the modulo operator (% 10) and integer division (// 10) to extract the digits from right to left mathematically.
+I structured the base application by setting the appearance mode to system-default and choosing a unified color theme. 
+I initialized the main application window, defined a clean geometry (400x300 pixels), and set up the global event loop to keep the application active.
 
-3.Exponent Calculation: 
+3.Widget Layout & Ordering:
 
-Once the helper function finished and the list was populated, I determined the exponent (power) by measuring the length of the digits list.
+I implemented and arranged essential visual widgets (CTkLabel and CTkEntry) to capture user inputs. 
+I fixed a critical logical order bug by ensuring that all interface components are loaded before running the infinite main event loop.
 
-4.Summation & Verification: 
+4.Scalable Selection UI:
 
-I used a for loop to iterate through the extracted digits, raising each to the calculated power and adding it to the total. Finally, I checked if the total matches the original number, returning True or False accordingly.
-
-
-**The Goal:**
-
-Write a method that takes an array of consecutive (increasing) letters as input and returns the missing letter in the array. The input array will always be valid, containing letters of only one case, with exactly one letter missing, and a minimum length of 2.
-
-Example: ['a','b','c','d','f'] -> 'e' or ['O','Q','R','S'] -> 'P'
-
-**My Approach:**
-
-1.Initialization:
-
-I initialized a tracker variable called prev_num and assigned it the ASCII value of the first character in the array using Python's built-in ord() function.
-
-2.Sequential Iteration:
-
-I used a for loop to iterate through each character in the input array to check the mathematical progression of the letters.
-
-3.Gap Detection:
-
-Inside the loop, I calculated the difference between the ASCII value of the current character and prev_num. If the difference is greater than 1, it indicates that the consecutive order is broken and the missing letter has been found.
-
-4.Character Conversion & Update:
-
-Once the gap is detected, I subtract 1 from the current ASCII value and convert it back to a character using chr() to return the missing letter. If no gap is found, I update prev_num with the current character's ASCII value for the next iteration.
+Instead of creating individual buttons for each conversion, I integrated a CTkOptionMenu (dropdown dropdown) alongside a single action button. 
+This approach ensures the software architecture remains clean, scalable, and easy to expand with more aviation units in the future.
