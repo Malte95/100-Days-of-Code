@@ -14,8 +14,11 @@ A valid chain must meet these requirements:
 **My Approach:**
 
 **1.Outer Loop Strategy:** Since any domino could potentially be the perfect starting piece, I used a loop to test every single domino from the input array as the initial element of the chain—testing both its standard and flipped orientation.
+
 **2.Recursive Backtracking:** I designed an inner helper function using recursion (Depth-First Search) to dynamically grow the chain from the current end piece (used[-1]).
+
 **3.Immutability & Pure Functions:** To safely explore multiple branching paths without corrupting the state of parallel searches, I avoided mutating lists via .append(). Instead, I passed fresh, independent copies of the updated chain and the remaining available dominoes to each recursive branch.
+
 **4.Global Record Tracking:** I utilized Python's nonlocal keyword to maintain a global maximum benchmark, updating the master record whenever a longer valid chain was successfully constructed.
 
 
