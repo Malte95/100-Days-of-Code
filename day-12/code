@@ -1,22 +1,44 @@
-def is_valid_equation(equation):
-    left, right = equation.split("=")
-    if eval(left) == eval(right):
-        return True
-    else:
-        return False
-   
+def get_longest_chain(dominoes):
+    """
+    Finds the longest valid chain from a given list of dominoes.
+    Each domino can be flipped, and the order matters.
+    """
+    longest_chain = []  # Keeps track of the globally longest valid chain found so far
 
-    return equation
+    def find_path(used, un_used):
+        nonlocal longest_chain  # Allows modification of the variable in the outer scope
 
-//Test
- 1. is_valid_equation("2 + 2 = 4") should return True.
- 2. is_valid_equation("2 + 3 - 1 = 4") should return True.
- 3. is_valid_equation("8 / 2 = 4") should return True.
- 4. is_valid_equation("10 * 5 = 50") should return True.
- 5. is_valid_equation("2 - 2 = 0") should return True.
- 6. is_valid_equation("2 + 9 / 3 = 5") should return True.
- 7. is_valid_equation("20 - 2 * 3 = 14") should return True.
- 8. is_valid_equation("2 + 5 = 6") should return False.
- 9. is_valid_equation("10 - 2 * 3 = 24") should return False.
- 10. is_valid_equation("3 + 9 / 3 = 4") should return False
+        # Base case / Update strategy: If the current chain is longer than our record, update it
+        if len(used) > len(longest_chain):
+            longest_chain = used
+        
+        # Always try to match from the open end of the last placed domino
+        last_domino = used[-1]
+    
+        # Backtracking step: Iterate through all remaining unplaced dominoes
+        for domino in range(len(un_used)):
+            # Case 1: The next domino matches in its standard orientation
+            if un_used[domino][0] == last_domino[1]:
+                next_used = used + [un_used[domino]]
+                next_un_used = un_used[:domino] + un_used[domino+1:]
+                find_path(next_used, next_un_used)  # Recursive call to explore this branch
+                
+            # Case 2: The next domino matches when flipped
+            elif un_used[domino][1] == last_domino[1]:
+                flipped_domino = un_used[domino][::-1]
+                next_used = used + [flipped_domino] 
+                next_un_used = un_used[:domino] + un_used[domino+1:]
+                find_path(next_used, next_un_used)  # Recursive call to explore this branch
+
+    # Main loop: Test every single domino as a potential starting piece of the chain
+    for i in range(len(dominoes)):
+        start_domino = dominoes[i]
+        # Create a new list containing all dominoes except the currently chosen starting one
+        remaining_dominoes = dominoes[:i] + dominoes[i+1:]
+
+        # Launch the backtracking search for both standard and flipped initial orientations
+        find_path([start_domino], remaining_dominoes)
+        find_path([start_domino[::-1]], remaining_dominoes)
+
+    return longest_chain
 
