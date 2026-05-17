@@ -14,3 +14,49 @@ def mongo_id_to_date(s):
     s = s.isoformat(timespec='milliseconds').replace('+00:00', 'Z')
 
     return s
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Simulated blackbox data from an aircraft data logger
+flight_logs = ["18.5;9500", "", "22.0;11000", "FAULTY_DATA", "15.5;10000"]
+
+def parse_flight_data(flight_logs):
+    valid_element = []
+    
+    # First pass: Filter out empty strings and strings without the ';' delimiter
+    for element in flight_logs:
+        if not element or element.find(";") == -1:
+            continue
+        else:
+            valid_element.append(element)
+            
+    # Initialize tracking variables for statistics
+    max_height = 0
+    total_temp = 0
+    
+    # Second pass: Process sanitized data and calculate metrics
+    for element in valid_element:
+        # Split the string into components: [temperature, altitude]
+        divided_element = element.split(";")
+        
+        # Cast string values to correct numeric data types
+        convert_float = float(divided_element[0])
+        convert_int = int(divided_element[1])
+        
+        # Track the peak altitude recorded
+        if convert_int > max_height:
+            max_height = convert_int
+            
+        # Accumulate temperature values for the average calculation
+        total_temp += convert_float
+        
+    # Calculate the average temperature, rounded to one decimal place
+    average = round(total_temp / len(valid_element), 1)
+        
+    # Return metrics structured as a key-value dictionary
+    return {
+        "max_height": max_height,
+        "average_temp": average
+    }
+
+# Execute and print the results to the console
+print(parse_flight_data(flight_logs))
