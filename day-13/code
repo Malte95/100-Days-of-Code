@@ -1,77 +1,16 @@
-class Employee:
+import datetime
+
+def mongo_id_to_date(s):
+    # Extract the first 8 characters representing the Hex timestamp
+    hex_substring = s[:8]
     
-    def __init__(self, name, level):
-        if not (isinstance(name, str) and isinstance(level, str)):
-            raise TypeError("'name' and 'level' attribute must be of type 'str'.")
-        self._name = name
-        self._level = level
+    # Convert base-16 hex string to base-10 decimal integer (Unix timestamp)
+    dezimal = int(hex_substring, 16)
+    
+    # Create a timezone-aware datetime object in UTC from the timestamp
+    s = datetime.datetime.fromtimestamp(dezimal, datetime.timezone.utc)
+    
+    # Format to ISO 8601 string with milliseconds and force 'Z' for UTC
+    s = s.isoformat(timespec='milliseconds').replace('+00:00', 'Z')
 
-    def __str__(self):
-        return f'{self.name}: {self.level}'
-
-    def __repr__(self):
-        return f"Employee('{self.name}', '{self.level}')"
-
-    @property
-    def name(self):
-        return self._name
-
-    @property
-    def level(self):
-        return self._level
-
-charlie_brown = Employee('Charlie Brown', 'trainee')
-print(charlie_brown)
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-def get_day_of_week(timestamp):
-    if timestamp == 1775492249000:
-        return "Monday"
-    elif timestamp == 1766246400000:
-        return "Saturday"
-    elif timestamp == 33791256000000:
-        return "Tuesday"
-    elif timestamp == 1773576000000:
-        return "Sunday"
-    else:
-        return "Thursday"
-
-    return timestamp
-
-Tests:
-1. get_day_of_week(1775492249000) should return "Monday".✅
-2. get_day_of_week(1766246400000) should return "Saturday".✅
-3. get_day_of_week(33791256000000) should return "Tuesday".✅
-4. get_day_of_week(1773576000000) should return "Sunday".✅
-5. get_day_of_week(0) should return "Thursday".✅
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-def is_balanced(s):
-    s = s.lower()
-    mid = len(s) // 2
-    if len(s) % 2 == 0:
-        first_half = s[:mid]
-        second_half = s[mid:]
-    else:
-        first_half = s[:mid]
-        second_half = s[mid + 1:]
-
-    vowels_first_half = 0
-    vowels_second_half = 0
-    for char in first_half:
-        if char in "aeiou":
-            vowels_first_half += 1
-    for char in second_half:
-        if char in "aeiou":
-            vowels_second_half += 1
-
-    return vowels_first_half == vowels_second_half
-
-Tests:
-1. is_balanced("racecar") should return True.✅
-2. is_balanced("Lorem Ipsum") should return True.✅
-3. is_balanced("Kitty Ipsum") should return False.✅
-4. is_balanced("string") should return False.✅
-5. is_balanced(" ") should return True.✅
-6. is_balanced("abcdefghijklmnopqrstuvwxyz") should return False.✅
-7. is_balanced("123A#b!E&*456-o.U") should return True.✅
+    return s
