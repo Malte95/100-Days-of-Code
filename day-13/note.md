@@ -7,8 +7,11 @@ Given a MongoDB ID string, return its creation time as an ISO 8601 formatted str
 A valid solution must meet these requirements:
 
 -Parse a 24-character hexadecimal string where the first 8 characters represent a Unix timestamp in seconds.
+
 -Convert the extracted base-16 integer into a standard decimal Unix timestamp.
+
 -Transform the timestamp into a precise ISO 8601 date-time string.
+
 -Ensure strict formatting compliance, including timezone awareness (UTC) and explicit millisecond resolution (e.g., "YYYY-MM-DDTHH:MM:SS.mmmZ").
 
 **My Approach:**
