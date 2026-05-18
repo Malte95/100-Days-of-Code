@@ -64,6 +64,7 @@ I am currently on **Day 14 / 100**
 ## 🚀 Tech Stack (so far)
 
 * Python
+* Arduino
 
 
 ---
