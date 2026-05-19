@@ -24,7 +24,7 @@ A valid solution must meet these requirements:
 
 **4.Type Conversion:** I wrapped the generated range objects inside the list() constructor to explicitly transform the sequence into a standard, fully mutable Python array structure ready for the caller.
 
---
+---
 
 **The Goal:**
 
