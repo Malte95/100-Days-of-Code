@@ -1,29 +1,12 @@
-Today I'm tackling the “Game Character Stats Tracker“ Lab. 
-In this lab, I'll build a game character stats tracker. The program will allow me to create a character with specific attributes, 
-update those attributes, and retrieve the current stats of the character.
-Usage example:
-hero = GameCharacter('Kratos') # Creates a new character named Kratos
-print(hero)  # Displays the character's stats
+**Project Update: Transitioning to GUI**
 
-hero.health -= 30  # Decreases health by 30
-hero.mana -= 10    # Decreases mana by 10
-print(hero)  # Displays the updated stats
+Today, I successfully moved the project from the command line to a functional graphical user interface.
 
-hero.level_up()  # Levels up the character
-print(hero)  # Displays the stats after leveling up
+**What I Accomplished:**
 
-I created a GameCharacter class. Then declared the __init__ method inside of it.
-I created a property for name, health, mana and level. I also added a setter for health, mana and level,
-which prevents health/mana them to get below 0 and caps them at 50/100 max.
-Then I declared a level_up method which increases level by 1 sets health and mana back to their initial values
-and prints a messages that the certain name is leveled up to the certain level.
-At the end I created a __str__ method which returns a formatted string like this:
-Name: Kratos
-Level: 1
-Health: 100
-Mana: 50
+**-Widget Integration:** Populated the main window with modern customtkinter elements, including a dropdown menu (CTkOptionMenu) for aviation units and a clean entry field (CTkEntry).
 
-And that was the project!
+**-Event Handling:** Connected a CTkButton to a backend function that retrieves user input and updates the interface dynamically.
 
-To end today session I read about what Inheritance Polymorphism is.
+**-Basic Validation:** Added an initial safety check that alerts the user via a text label if they try to convert an empty field, ensuring the app handles missing data gracefully.
 
