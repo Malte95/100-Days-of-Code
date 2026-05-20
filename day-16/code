@@ -1,47 +1,46 @@
-class GameCharacter:
-    def __init__(self, name):
-        self._name = name
-        self._health = 100
-        self._mana = 50
-        self._level = 1
+import customtkinter as ctk
 
-    @property 
-    def name(self):
-        return self._name
 
-    @property
-    def health(self):
-        return self._health
+# 1. Set up the appearance and theme
+ctk.set_appearance_mode("System")  # Adapts to macOS Light or Dark Mode automatically
+ctk.set_default_color_theme("blue") # Color theme for UI elements (blue, green, dark-blue)
 
-    @health.setter
-    def health(self, new_health):
-        if new_health < 0:
-            new_health = 0
-        if new_health > 100:
-            new_health = 100
-        self._health = new_health
+# 2. Initialize the main application window
+app = ctk.CTk()
+app.title("Aviation Unit Converter") # Title of the window
+app.geometry("400x300")              # Window size: Width x Height in pixels
 
-    @property
-    def mana(self):
-        return self._mana
-    
-    @mana.setter
-    def mana(self, new_mana):
-        if new_mana < 0:
-            new_mana = 0
-        if new_mana > 50:
-            new_mana = 50
-        self._mana = new_mana
+# Add a dropdown menu for unit selection
+unit_dropdown = ctk.CTkOptionMenu(app, values=["Knots to km/h", "Feet to meters", "Gallons to liters"])
+unit_dropdown.pack(pady=10)
 
-    @property
-    def level(self):
-        return self._level
+# Add the entry widget with a placeholder
+entry = ctk.CTkEntry(app, placeholder_text= "Enter knots")
+entry.pack(pady=20)
 
-    def level_up(self):
-        self._level += 1
-        self.health = 100
-        self.mana = 50
-        print(f"{self.name} leveled up to {self.level}!")
+# Function to retriev the input
+def get_input():
+    if not entry.get():
+        my_label.configure(text="Please enter a valid number")
+        return
+    user_input = float(entry.get())
+    selected = unit_dropdown.get()
+    my_label.configure(text = user_input)
+    print("Entered:", user_input)
+    print("Selected", selected)
 
-    def __str__(self):
-        return (f"Name: {self.name}\nLevel: {self.level}\nHealth: {self.health}\nMana: {self.mana}")
+# Add a single action button
+convert_button = ctk.CTkButton(app, text="Convert", command=get_input)
+convert_button.pack(pady=15)
+
+# Add label
+my_label = ctk.CTkLabel(
+    master= app,
+    text= "Result",
+    font=("Arial", 20),
+    text_color= "white"
+)
+my_label.pack(pady=40, padx=20)
+
+# 3. Start the application event loop
+app.mainloop()
