@@ -1,49 +1,59 @@
-class Movie:
-    def __init__(self, title, year, director, duration):
-        if not title.strip():
-            raise ValueError('Title cannot be empty')
-        if year < 1895:
-            raise ValueError('Year must be 1895 or later')
-        if not director.strip():
-            raise ValueError('Director cannot be empty')
-        if duration <= 0:
-            raise ValueError('Duration must be positive')
-        self.title = title
-        self.year = year
-        self.director = director
-        self.duration = duration
+import customtkinter as ctk
 
-    def __str__(self):
-        return f'{self.title} ({self.year}) - {self.duration} min, {self.director}'
-class TVSeries(Movie):
-    def __init__(self, title, year, director, duration, seasons, total_episodes):
-        
-        self.seasons = seasons
-        self.total_episodes = total_episodes
-class MediaCatalogue:
-    def __init__(self):
-        self.items = []
 
-    def add(self, media_item):
-        self.items.append(media_item)
+# 1. Set up the appearance and theme
+ctk.set_appearance_mode("System")  # Adapts to macOS Light or Dark Mode automatically
+ctk.set_default_color_theme("blue") # Color theme for UI elements (blue, green, dark-blue)
 
-    def __str__(self):
-        if not self.items:
-            return 'Media Catalogue (empty)'
+# 2. Initialize the main application window
+app = ctk.CTk()
+app.title("Aviation Unit Converter") # Title of the window
+app.geometry("400x300")              # Window size: Width x Height in pixels
 
-        result = f'Media Catalogue ({len(self.items)} items):\n\n'
-        
-        for i, movie in enumerate(self.items, 1):
-            result += f'{i}. {movie}\n'
+# Add a dropdown menu for unit selection
+unit_dropdown = ctk.CTkOptionMenu(app, values=["Knots to km/h", "Feet to meters", "Gallons to liters"])
+unit_dropdown.pack(pady=10)
+
+# Add the entry widget with a placeholder
+entry = ctk.CTkEntry(app, placeholder_text= "Enter knots")
+entry.pack(pady=20)
+
+# Function to retriev the input
+def get_input():
+    if not entry.get():
+        my_label.configure(text="Please enter a valid number")
+        return
+    user_input = float(entry.get())
+    selected = unit_dropdown.get()
+    result = convert_input(user_input, selected)
+    my_label.configure(text = result)
+    print("Entered:", user_input)
+    print("Selected", selected)
+
+# Function to convert the input
+def convert_input(user_input, selected):
+    if selected == "Knots to km/h":
+        result = f"{user_input * 1.852:.2f} km/h"
+        return result
+    elif selected == "Feet to meters":
+        result = f"{user_input * 0.3048:.2f} m"
+        return result
+    elif selected == "Gallons to liters":
+        result = f"{user_input * 3.78541:.2f} L"
         return result
 
-catalogue = MediaCatalogue()
+# Add a single action button
+convert_button = ctk.CTkButton(app, text="Convert", command=get_input)
+convert_button.pack(pady=15)
 
-try:
-    movie1 = Movie('The Matrix', 1999, 'The Wachowskis', 136)
-    catalogue.add(movie1)
-    movie2 = Movie('Inception', 2010, 'Christopher Nolan', 148)
-    catalogue.add(movie2)
-    print(catalogue)
-except ValueError as e:
-    print(f'Validation Error: {e}')
+# Add label
+my_label = ctk.CTkLabel(
+    master= app,
+    text= "Result",
+    font=("Arial", 20),
+    text_color= "white"
+)
+my_label.pack(pady=40, padx=20)
+
+# 3. Start the application event loop
+app.mainloop()
