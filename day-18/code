@@ -1,100 +1,101 @@
-class MediaError(Exception):
-    """Custom exception for media-related errors."""
+import customtkinter as ctk
 
-    def __init__(self, message, obj):
-        super().__init__(message)
-        self.obj = obj
 
-class Movie:
-    """Parent class representing a movie."""
-    
-    def __init__(self, title, year, director, duration):
-        if not title.strip():
-            raise ValueError('Title cannot be empty')
-        if year < 1895:
-            raise ValueError('Year must be 1895 or later')
-        if not director.strip():
-            raise ValueError('Director cannot be empty')
-        if duration <= 0:
-            raise ValueError('Duration must be positive')
-        self.title = title
-        self.year = year
-        self.director = director
-        self.duration = duration
+# Set up the appearance and theme
+ctk.set_appearance_mode("System")  # Adapts to macOS Light or Dark Mode automatically
+ctk.set_default_color_theme("blue") # Color theme for UI elements (blue, green, dark-blue)
 
-    def __str__(self):
-        return f'{self.title} ({self.year}) - {self.duration} min, {self.director}'
+# Initialize the main application window
+app = ctk.CTk()
+app.title("Aviation Unit Converter") # Title of the window
+app.geometry("600x400")              # Window size: Width x Height in pixels
 
-class TVSeries(Movie):
-    """Child class representing an entire TV series."""
+# Callback function triggered by the dropdown
+def update_placeholder(selected_option):
+    entry.delete(0, "end")
 
-    def __init__(self, title, year, director, duration, seasons, total_episodes):
-        super().__init__(title, year, director, duration)
+    if selected_option == "Knots to km/h":
+        entry.configure(placeholder_text = "Enter knots")
+    elif selected_option == "Feet to meters":
+        entry.configure(placeholder_text = "Enter feet")
+    elif selected_option == "Gallons to liters":
+        entry.configure(placeholder_text = "Enter gallons")
+    app.focus_set()
 
-        if seasons < 1:
-            raise ValueError('Seasons must be 1 or greater')
-        if total_episodes < 1:
-            raise ValueError('Total episodes must be 1 or greater')
-        
-        self.seasons = seasons
-        self.total_episodes = total_episodes
+# Add headline
+title_label = ctk.CTkLabel(
+    master= app,
+    text= "Aviation Unit Converter",
+    font=("Arial", 32, "bold"),
+    text_color= "white"
+)
+title_label.pack(pady=(30, 5), padx=5)
 
-    def __str__(self):
-        return f'{self.title} ({self.year}) - {self.seasons} seasons, {self.total_episodes} episodes, {self.duration} min avg, {self.director}'
+# Add description
+subtitle_label = ctk.CTkLabel(
+    master= app,
+    text= "Convert common aviation-related units quickly and accurately",
+    font=("Arial", 15),
+    text_color= "white"
+)
+subtitle_label.pack(pady=(0, 25), padx=25)
 
-class MediaCatalogue:
-    """A catalogue that can store different types of media items."""
+# Add a dropdown menu for unit selection
+unit_dropdown = ctk.CTkOptionMenu(app, values=["Knots to km/h", "Feet to meters", "Gallons to liters"], command= update_placeholder)
+unit_dropdown.pack(pady=10)
 
-    def __init__(self):
-        self.items = []
+# Add the entry widget with a placeholder
+entry = ctk.CTkEntry(app, placeholder_text= "Enter knots")
+entry.pack(pady=20)
 
-    def add(self, media_item):
-        if not isinstance(media_item, Movie):
-            raise MediaError('Only Movie or TVSeries instances can be added', media_item)
-        self.items.append(media_item)
+# Function to retriev the input
+def get_input():
+    raw_input = entry.get()
 
-    def get_movies(self):
-        return [item for item in self.items if type(item) is Movie]
+    if not raw_input:
+        result_label.configure(text="Please enter a value")
+        return
+    if "," in raw_input:
+        result_label.configure(text ="Please use a dot instead of a comma, e.g. 12.5")
+        return
+    try:
+        user_input = float(raw_input)
+    except ValueError:
+        result_label.configure(text = "Please enter a numeric value")
+        return 
+    if user_input < 0:
+        result_label.configure(text = "Please enter a positive value")
+        return
+    selected = unit_dropdown.get()
+    result = convert_input(user_input, selected)
+    result_label.configure(text = result)
+    print("Entered:", user_input)
+    print("Selected", selected)
 
-    def get_tv_series(self):
-        return [item for item in self.items if isinstance(item, TVSeries)]
-    
-    def __str__(self):
-        if not self.items:
-            return 'Media Catalogue (empty)'
-        
-        movies = self.get_movies()
-        series = self.get_tv_series()
-
-        result = f'Media Catalogue ({len(self.items)} items):\n\n'
-        if movies:
-            result += '=== MOVIES ===\n'
-            for i, movie in enumerate(movies, 1):
-                result += f'{i}. {movie}\n'
-        if series:
-            result += '=== TV SERIES ===\n'
-            for i, serie in enumerate(series, 1):
-                result += f'{i}. {serie}\n'
-        
-        
+# Function to convert the input
+def convert_input(user_input, selected):
+    if selected == "Knots to km/h":
+        result = f"{user_input * 1.852:.2f} km/h"
+        return result
+    elif selected == "Feet to meters":
+        result = f"{user_input * 0.3048:.2f} m"
+        return result
+    elif selected == "Gallons to liters":
+        result = f"{user_input * 3.78541:.2f} L"
         return result
 
-catalogue = MediaCatalogue()
+# Add a single action button
+convert_button = ctk.CTkButton(app, text="Convert", command=get_input)
+convert_button.pack(pady=15)
 
-try:
-    movie1 = Movie('The Matrix', 1999, 'The Wachowskis', 136)
-    catalogue.add(movie1)
-    movie2 = Movie('Inception', 2010, 'Christopher Nolan', 148)
-    catalogue.add(movie2)
+# Add label
+result_label = ctk.CTkLabel(
+    master= app,
+    text= "Result",
+    font=("Arial", 24, "bold"),
+    text_color= "white"
+)
+result_label.pack(pady=(25, 10), padx=20)
 
-    series1 = TVSeries('Scrubs', 2001, 'Bill Lawrence', 24, 9, 182)
-    catalogue.add(series1)
-    series2 = TVSeries('Breaking Bad', 2008, 'Vince Gilligan', 47, 5, 62)
-    catalogue.add(series2)
-
-    print(catalogue)
-except ValueError as e:
-    print(f'Validation Error: {e}')
-except MediaError as e:
-    print(f'Media Error: {e}')
-    print(f'Unable to add {e.obj}: {type(e.obj)}')
+# Start the application event loop
+app.mainloop()
