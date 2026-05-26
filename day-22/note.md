@@ -1,13 +1,13 @@
-Today I continued working on my third certification project, **"Build a Polygon Area Calculator"**.
+Today I started my new aviation software portfolio project: Fuel-Calculator.
 
-I completed the `get_picture` method for the `Rectangle` class. This method returns a visual representation of the rectangle using `*`, 
-where the number of rows corresponds to the height and the number of `*` per row corresponds to the width. 
-I also added a condition to prevent generating excessively large outputs.
+I:
 
-Additionally, I implemented the `get_amount_inside` method to calculate how many times one shape can fit inside another.
+* created the project structure in Python
+* initialized and configured Git/GitHub repositories
+* learned how to push projects correctly to GitHub
+* fixed an embedded repository issue in Git
+* started planning the fuel consumption logic based on weight, distance, and wind conditions
 
-I also created a `Square` class that inherits from `Rectangle`. The square ensures that width and height are always equal by overriding the `set_width` and `set_height` methods, 
-and by adding a `set_side` method.
+Next step: implementing the first fuel calculation features.
 
-Overall, I deepened my understanding of object-oriented programming, especially inheritance and method overriding.
 
