@@ -1,71 +1,28 @@
-class LinkedList:
-    class Node:
-        def __init__(self, element):
-            self.element = element
-            self.next = None
-            
-    def __init__(self):
-        self.length = 0
-        self.head = None
+def calculate_fuel(weight, distance, wind_strength, wind_direction):
+            base_consumption_per_km = 5
+            weight_factor = 0.0001
+            scaled_weight = weight / 100
+            wind_factor = 0.001
+            wind_effect = wind_strength * wind_factor
+            consumption = base_consumption_per_km * distance * ( 1 + scaled_weight * weight_factor)
+            if wind_direction.lower() == "headwind":
+                consumption *= 1 + wind_effect
+            elif wind_direction.lower() == "tailwind":
+                consumption *= 1 - wind_effect
+            return consumption
+try:
+    weight = float(input("Enter weight:"))
+    distance = float(input("Enter distance:"))
+    wind_strength = float(input("Enter wind strength:"))
+    wind_direction = input("Headwind or tailwind: ")
 
-    def is_empty(self):
-        return self.length == 0
-    
-    def add(self, element):
-        node = self.Node(element)
-        if self.is_empty():
-            self.head = node
+    if weight < 0 or distance < 0 or wind_strength < 0:
+        print("Please enter a positive number")
+    else:
+        if wind_direction.lower() not in ["headwind", "tailwind"]:
+            print("Invalid input")
         else:
-            current_node = self.head
-            while current_node.next is not None:
-                current_node = current_node.next
-            current_node.next = node
-        self.length += 1
-
-    def remove(self, element):
-        previous_node = None
-        current_node = self.head
-        while current_node is not None and current_node.element != element:
-            previous_node = current_node
-            current_node = current_node.next
-        if current_node is None:
-            return        
-        elif previous_node is not None:
-            previous_node.next = current_node.next
-        else:
-            self.head = current_node.next
-        self.length -= 1
-
-my_list = LinkedList()
-print(my_list.is_empty())
-
-my_list.add(1)
-my_list.add(2)
-print(my_list.is_empty())
-print(my_list.length)
-
-my_list.remove(1)
-print(my_list.length)
-
-_________________________________________________________________________________________________
-class HashTable:
-    def __init__(self):
-        self.collection = {}
-
-    def hash(self, string):
-        hash_sum = 0
-        for char in string:
-            hash_sum += ord(char)
-        return hash_sum
-
-    def add(self, key, value):
-        key_hash = self.hash(key)
-        if key_hash not in self.collection:
-            self.collection[key_hash] = {}
-        self.collection[key_hash][key] = value
-
-    
-    def remove():
-        pass
-    def lookup():
-        pass
+            fuel_consumption = calculate_fuel(weight, distance, wind_strength, wind_direction)
+            print(f"Weight: {weight} | Distance: {distance} | Wind strength: {wind_strength} | Wind direction: {wind_direction} | Fuel consumption: {fuel_consumption:.2f} L")
+except ValueError:
+    print("Please enter numeric values only")
