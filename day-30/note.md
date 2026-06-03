@@ -2,31 +2,34 @@ Today I completed the following coding challenges:
 
 **The Goal:**
 
-Transform the aircraft fuel calculator from a console-based program into a functional CustomTkinter desktop GUI with aircraft selection, route selection, wind input, fuel price input, and live result output.
+Transform the Aircraft Fuel Calculator from a basic GUI prototype into a more advanced flight-planning desktop application capable of generating operational flight reports, performance metrics, and safety warnings.
 
 A valid solution must meet these requirements:
 
--Replace terminal-based user input with graphical input fields and dropdown menus.
+-Extend the graphical interface to support complete flight-planning workflows.
 
--Connect aircraft and route data directly to GUI selection components.
+-Integrate aircraft performance data and route information directly into the calculation engine.
 
--Preserve the existing fuel calculation logic inside the new interface.
+-Generate detailed flight reports including fuel consumption, fuel cost, flight time, and range utilization.
 
--Display fuel consumption and fuel cost directly inside the application window.
+-Provide operational warnings when aircraft limitations are exceeded.
 
 **My Approach:**
 
-**1.Full GUI Migration:**
-I moved the project from a command-line workflow into a CustomTkinter desktop interface. Instead of using input() and print(), the user now interacts with labels, entry fields, dropdown menus, and a calculate button.
+**1.GUI Expansion and User Experience Improvements:**
+I significantly expanded the CustomTkinter interface by adding dedicated input sections for aircraft selection, route selection, wind conditions, fuel pricing, and operational parameters. I also standardized component widths and increased the application window size to create a cleaner and more professional user experience.
 
-**2.String-Based Data Mapping:**
-I refactored the aircraft and route dictionaries from numeric keys to readable string keys such as "A320" and "Hamburg-Finkenwerder → Toulouse". This allows the dropdown values to connect directly to the stored aircraft and route data.
+**2.Real-Time Flight Report Generation:**
+Instead of displaying only fuel consumption values, I redesigned the output system to generate a structured flight report. The application now presents route information, flight duration, range utilization, operational status, fuel consumption, and total fuel cost in a readable multi-section format.
 
-**3.Graphical Input System:**
-I added GUI input fields for aircraft weight, wind strength, fuel price, route selection, and wind direction. This creates a more intuitive and user-friendly workflow compared to manual terminal input.
+**3.Operational Warning System:**
+I implemented a dedicated warning engine that automatically detects critical operational conditions. The system now checks whether the entered aircraft weight exceeds the maximum takeoff weight and whether the selected route exceeds the aircraft’s certified range. All warnings are collected and displayed directly inside the flight report.
 
-**4.Event-Driven Calculation Handler:**
-I implemented a handle_calculation() function connected to the Calculate button. This function reads values from the GUI, validates numeric input, selects the correct aircraft and route data, calculates fuel consumption, and updates the result label.
+**4.Advanced Performance Metrics:**
+I added calculations for estimated flight time and range utilization based on aircraft cruise speed and maximum range. These metrics are used to classify flights into operational categories such as “Normal,” “High Utilization,” and “Near Maximum Range.”
 
-**5.In-App Result Display:**
-Instead of printing the result to the terminal, the application now displays fuel consumption and total fuel cost directly in the GUI. This completes the first fully functional desktop version of the Aircraft Fuel Calculator.
+**5.Professional Result Presentation:**
+To improve readability, I introduced a dedicated Flight Report panel using a CustomTkinter frame. The results are now displayed inside a structured reporting area with clear typography, section spacing, and left-aligned formatting, creating a dashboard-like presentation instead of simple text output.
+
+**6.Foundation for a Full Aviation Operations Tool:**
+With the integration of aircraft performance profiles, route databases, fuel-cost analysis, operational warnings, and structured reporting, the project has evolved beyond a simple calculator and is now moving toward a lightweight aviation operations and flight-planning application architecture.
