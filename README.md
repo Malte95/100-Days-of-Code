@@ -27,7 +27,7 @@ This repository documents my daily progress, projects, and what I learn along th
 
 ## 🔥 Progress
 
-I am currently on **Day 32 / 100**
+I am currently on **Day 34 / 100**
 
 ![](https://img.shields.io/badge/01-done-blue) ![](https://img.shields.io/badge/02-done-blue) ![](https://img.shields.io/badge/03-done-blue) ![](https://img.shields.io/badge/04-done-blue) ![](https://img.shields.io/badge/05-done-blue) ![](https://img.shields.io/badge/06-done-blue) ![](https://img.shields.io/badge/07-done-blue) ![](https://img.shields.io/badge/08-done-blue) ![](https://img.shields.io/badge/09-done-blue) ![](https://img.shields.io/badge/10-done-blue)
 
@@ -35,7 +35,7 @@ I am currently on **Day 32 / 100**
 
 ![](https://img.shields.io/badge/21-done-blue) ![](https://img.shields.io/badge/22-done-blue) ![](https://img.shields.io/badge/23-done-blue) ![](https://img.shields.io/badge/24-done-blue) ![](https://img.shields.io/badge/25-done-blue) ![](https://img.shields.io/badge/26-done-blue) ![](https://img.shields.io/badge/27-done-blue) ![](https://img.shields.io/badge/28-done-blue) ![](https://img.shields.io/badge/29-done-blue) ![](https://img.shields.io/badge/30-done-blue)
 
-![](https://img.shields.io/badge/31-done-blue) ![](https://img.shields.io/badge/32-done-blue) ![](https://img.shields.io/badge/33-pending-lightgrey) ![](https://img.shields.io/badge/34-pending-lightgrey) ![](https://img.shields.io/badge/35-pending-lightgrey) ![](https://img.shields.io/badge/36-pending-lightgrey) ![](https://img.shields.io/badge/37-pending-lightgrey) ![](https://img.shields.io/badge/38-pending-lightgrey) ![](https://img.shields.io/badge/39-pending-lightgrey) ![](https://img.shields.io/badge/40-pending-lightgrey)
+![](https://img.shields.io/badge/31-done-blue) ![](https://img.shields.io/badge/32-done-blue) ![](https://img.shields.io/badge/33-done-blue) ![](https://img.shields.io/badge/34-done-blue) ![](https://img.shields.io/badge/35-pending-lightgrey) ![](https://img.shields.io/badge/36-pending-lightgrey) ![](https://img.shields.io/badge/37-pending-lightgrey) ![](https://img.shields.io/badge/38-pending-lightgrey) ![](https://img.shields.io/badge/39-pending-lightgrey) ![](https://img.shields.io/badge/40-pending-lightgrey)
 
 ![](https://img.shields.io/badge/41-pending-lightgrey) ![](https://img.shields.io/badge/42-pending-lightgrey) ![](https://img.shields.io/badge/43-pending-lightgrey) ![](https://img.shields.io/badge/44-pending-lightgrey) ![](https://img.shields.io/badge/45-pending-lightgrey) ![](https://img.shields.io/badge/46-pending-lightgrey) ![](https://img.shields.io/badge/47-pending-lightgrey) ![](https://img.shields.io/badge/48-pending-lightgrey) ![](https://img.shields.io/badge/49-pending-lightgrey) ![](https://img.shields.io/badge/50-pending-lightgrey)
 
