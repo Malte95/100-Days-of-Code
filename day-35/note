@@ -1,1 +1,50 @@
+Today I completed the following coding challenges:
+
+**The Goal:**
+
+Refine the Arduino landing gear simulator into a more maintainable embedded application by improving code architecture, implementing visual status indicators, and enhancing debugging capabilities.
+
+A valid solution must meet these requirements:
+
+-Refactor the landing gear control logic into clearly separated functional modules.
+
+-Maintain non-blocking servo movement using `millis()`.
+
+-Provide real-time visual feedback through status LEDs.
+
+-Add debugging output to monitor state transitions and gear movement.
+
+-Improve overall code readability and maintainability.
+
+**My Approach:**
+
+**1.Modular Embedded Architecture:**
+I reorganized the project into dedicated functions with clearly defined responsibilities. Input processing, button handling, gear movement, and LED updates are now separated into `readInputs()`, `handleGearButtonPress()`, `updateGearMovement()`, and `updateLeds()`. This significantly improves maintainability and mirrors the structure commonly used in larger embedded systems.
+
+**2.Enhanced State Machine Implementation:**
+I further refined the landing gear state machine by separating command execution from movement logic. User input now triggers state transitions, while the movement engine independently handles the physical servo motion and completion detection.
+
+**3.Non-Blocking Servo Control:**
+I continued using `millis()`-based timing to control gear movement without blocking the main loop. The servo moves incrementally in 3-degree steps every 100 milliseconds, allowing the controller to remain responsive to inputs and future system events.
+
+**4.Real-Time LED Status System:**
+I completed the first version of the visual status indication system. The LEDs now reflect the current gear state:
+
+* Red LED → `GEAR_RETRACTED`
+* Yellow LED → `GEAR_EXTENDING` or `GEAR_RETRACTING`
+* Green LED → `GEAR_EXTENDED`
+
+This provides immediate visual feedback without requiring the Serial Monitor.
+
+**5.Serial Debugging and Monitoring:**
+I expanded the debugging functionality by printing the current gear angle during movement and displaying state transition messages such as `GEAR EXTENDED`, `GEAR RETRACTED`, and `GEAR RETRACT BLOCKED`. These messages make it easier to verify system behavior and troubleshoot issues during development.
+
+**6.Startup State Initialization:**
+I added an initial LED update during `setup()` so the system immediately displays the correct gear status when the controller starts. This ensures that the visual indicators always match the current system state.
+
+**7.Code Quality Improvements:**
+I improved formatting, indentation, variable organization, and overall code readability. The project now follows a cleaner embedded-software structure and is becoming much easier to scale with future features such as LCD integration, fault handling, warning messages, and additional safety checks.
+
+**8.Progress Toward a Real Embedded Control System:**
+With state management, non-blocking timing, servo actuation, button edge detection, speed-based safety logic, LED status indication, and structured control flow now in place, the project has evolved from a simple Arduino exercise into the foundation of a realistic embedded landing gear control simulator.
 
