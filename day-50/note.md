@@ -1,19 +1,26 @@
-Today I implemented the first graph traversal algorithm for the Aircraft Route Planner project.
+Today I continued the development of the Aircraft Route Planner project and implemented the first graph traversal algorithm.
 
-## Goal
+### The Goal:
 
-The objective was to determine whether a route exists between two Airbus locations, even when they are not directly connected.
+Provide the ability to determine whether a route exists between two Airbus locations, even when they are not directly connected.
 
-A valid solution needed to:
+A valid solution must meet these requirements:
 
-* Verify that both locations exist.
-* Explore the network automatically.
-* Avoid infinite loops caused by bidirectional connections.
-* Return whether a route exists between two sites.
+* Validate that both locations exist.
+* Search through the network automatically.
+* Prevent infinite loops caused by bidirectional connections.
+* Return a clear result when a route exists.
+* Return a clear result when no route exists.
 
-## Approach
+### My Approach:
 
-### 1. Designed the Route Search Interface
+**1. Reviewed the Graph Structure**
+
+I revisited the graph architecture and analyzed how locations and route connections are stored inside the adjacency list.
+
+This helped me understand how a graph traversal algorithm can move from one location to another by following neighboring connections.
+
+**2. Designed the Route Search Interface**
 
 I introduced a new method:
 
@@ -21,58 +28,63 @@ I introduced a new method:
 route_exists(start, destination)
 ```
 
-The method accepts a start location and a destination location and determines whether a path exists between them.
+The method accepts a start location and a destination location and checks whether a path exists between them.
 
-### 2. Added Location Validation
+**3. Implemented Location Validation**
 
-Before performing any search, the graph verifies that both locations are registered in the network.
+Before starting the search, the graph verifies that both locations exist.
 
-If one or both locations are missing, the method immediately returns an error message.
+If one or both locations are missing, the method immediately returns an error message instead of attempting an invalid search.
 
-### 3. Implemented a Queue-Based Search
+**4. Implemented a Queue-Based Search Strategy**
 
-To traverse the graph, I implemented a Breadth-First Search (BFS) approach.
+I implemented a Breadth-First Search (BFS) approach.
 
-The algorithm begins with the start location inside a queue and explores neighboring locations level by level until either:
+The search starts at the origin location and explores neighboring locations one level at a time.
 
-* The destination is found.
-* No more locations remain to be explored.
+A queue is used to keep track of locations that still need to be explored.
 
-### 4. Prevented Infinite Loops
+This allows the algorithm to systematically search the entire network.
 
-Because the graph stores bidirectional connections, a route such as:
+**5. Implemented Visited Location Tracking**
 
-Hamburg ↔ Toulouse
+Because the graph stores bidirectional connections, locations can reference each other.
 
-could cause the search to repeatedly move back and forth between the same locations.
+Without additional protection, the algorithm could repeatedly move back and forth between the same locations.
 
-To prevent this, I introduced a `visited` list that keeps track of all previously explored locations.
+To prevent this, I introduced a `visited` list that stores all previously explored locations.
 
 Only unvisited neighbors are added to the search queue.
 
-### 5. Implemented Route Detection
+**6. Implemented Route Detection**
 
 Whenever a location is removed from the queue, the algorithm checks whether it matches the destination.
 
-If the destination is found, the search terminates immediately and returns:
+If the destination is found, the search immediately returns:
 
 ```text
 Route exists.
 ```
 
-### 6. Implemented Failure Handling
+This allows the algorithm to stop as soon as a valid path has been discovered.
 
-If the queue becomes empty before reaching the destination, the search concludes that no valid route exists and returns:
+**7. Implemented Failure Handling**
+
+If the queue becomes empty before the destination is found, the algorithm concludes that no valid route exists.
+
+In that case, the method returns:
 
 ```text
 Route does not exist.
 ```
 
-## Testing
+This ensures that every search request produces a meaningful result.
 
-I tested two scenarios:
+**8. Tested the BFS Implementation**
 
-### Existing Route
+I tested the algorithm using connected and disconnected Airbus locations.
+
+Example:
 
 ```text
 Hamburg-Finkenwerder → Toulouse
@@ -84,7 +96,7 @@ Result:
 Route exists.
 ```
 
-### Non-Existing Route
+Example:
 
 ```text
 Hamburg-Finkenwerder → Mobile
@@ -96,20 +108,26 @@ Result:
 Route does not exist.
 ```
 
-Both tests produced the expected results.
+The tests confirmed that the BFS implementation correctly explores the graph and identifies valid routes.
 
-## Current Project Status
+### Current Project Status:
 
 The Aircraft Route Planner can now:
 
 * Create Airbus locations
-* Store locations in a graph structure
+* Store locations inside a graph
 * Create bidirectional route connections
-* Display all locations
-* Display neighboring locations
+* Prevent duplicate locations
+* Prevent duplicate connections
+* Display all available locations
+* Display neighboring locations with route distances
 * Search the network using Breadth-First Search (BFS)
 * Determine whether a route exists between two locations
 
-## Next Steps
+The project is now ready for the next major milestone:
 
-The next milestone is implementing Dijkstra's Algorithm to calculate the shortest route between two Airbus sites based on distance.
+* Shortest-path calculations using Dijkstra's Algorithm
+* Route reconstruction
+* Interactive console menu
+* Graphical user interface (GUI)
+
