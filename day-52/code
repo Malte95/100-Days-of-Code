@@ -1,0 +1,9 @@
+def move_zeros(lst):
+    zeroes = []
+    non_zeroes = []
+    for element in lst:
+        if element == 0:
+            zeroes.append(element)
+        else:
+            non_zeroes.append(element)
+    return non_zeroes + zeroes
