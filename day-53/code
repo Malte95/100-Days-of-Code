@@ -1,0 +1,13 @@
+new_s = s.lower()
+
+for char in s:
+    same_characters = []
+
+    for different_char in new_s:
+        if different_char == char.lower():
+            same_characters.append(different_char)
+
+    if len(same_characters) == 1:
+        return char
+
+return ""
