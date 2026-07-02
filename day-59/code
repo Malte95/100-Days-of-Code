@@ -1,0 +1,15 @@
+def get_max_profit(prices, budget):
+    best_profit = 0
+
+    for buy_index in range(len(prices)):
+        buy_price = prices[buy_index]
+
+        for sell_price in prices[buy_index + 1:]:
+            if sell_price > buy_price:
+                shares = budget // buy_price
+                profit = shares * (sell_price - buy_price)
+
+                if profit > best_profit:
+                    best_profit = profit
+
+    return f"{best_profit:.2f}"
