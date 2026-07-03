@@ -1,0 +1,4 @@
+def migrate_record(schema, record):
+    schema.update(record)
+
+    return schema
