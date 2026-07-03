@@ -2,3 +2,18 @@ def migrate_record(schema, record):
     schema.update(record)
 
     return schema
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def duplicate_character_count(str1, str2):
+    count = 0
+    seen = []
+    for char in str1:
+        if char in seen:
+            continue
+        else:
+            if char in str2:
+                count += str2.count(char)
+                seen.append(char)
+
+    return count
