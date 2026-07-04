@@ -1,0 +1,14 @@
+def kaprekar(n):
+    count = 0
+    
+    while n != 6174:
+        new_n = str(n).zfill(4)
+        descending = sorted(new_n, reverse = True)
+        ascending = sorted(new_n)
+        descending = "".join(descending)
+        ascending = "".join(ascending)
+        result = int(descending) - int(ascending)
+        n = result
+        count += 1
+
+    return count
