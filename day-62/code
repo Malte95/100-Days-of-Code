@@ -1,0 +1,33 @@
+def bucket_fill(grid, pos, new_value):
+    row = pos[0]
+    col = pos[1]
+    
+    old_value = grid[row][col]
+
+    if old_value == new_value:
+        return grid
+        
+    to_check = [pos]
+
+    while to_check:
+        current_pos = to_check.pop()
+        row = current_pos[0]
+        col = current_pos[1]
+        if grid[row][col] != old_value:
+            continue
+        grid[row][col] = new_value
+        above = [row - 1, col]
+        below = [row + 1, col]
+        left = [row, col -1]
+        right = [row, col +1]
+
+        if row > 0:
+            to_check.append(above)
+        if row < len(grid) - 1:
+            to_check.append(below)
+        if col > 0:
+            to_check.append(left)
+        if col < len(grid[row]) - 1:
+            to_check.append(right)
+
+    return grid
