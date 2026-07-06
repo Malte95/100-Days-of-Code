@@ -1,0 +1,12 @@
+def get_lowercase_words(s):
+    words = s.split()
+    lowercase = []
+
+    for word in words:
+        if word.islower():
+            lowercase.append(word)
+
+    result = " ".join(lowercase)
+
+
+    return result
