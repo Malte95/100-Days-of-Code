@@ -1,0 +1,4 @@
+def round_to_nearest_multiple(num, multiple):
+    n = round(num/multiple) * multiple
+
+    return n
