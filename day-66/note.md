@@ -4,209 +4,179 @@
 
 ## The Goal
 
-The goal of this task was to develop a Python function called `triage_issue(title, labels)`.
+Develop a Python function called `triage_issue(title, labels)` that updates the labels of an issue.
 
 The function receives:
 
 * an issue title
 * an array of current labels
 
-The function should return an updated array of labels based on different rules.
+The function should then return an updated array of labels.
 
-## The Rules
+The rules are:
 
-If the issue does not have any labels, the function should add:
+* If the issue doesn't have any labels and the title contains `"error"` or `"bug"`, add `"bug"` and `"needs triage"`.
+* If the issue doesn't have any labels and the title contains `"feature"` or `"add"`, add `"enhancement"` and `"discussing"`.
+* If the given labels contain `"needs triage"` and the title contains `"simple"` or `"easy"`, remove `"needs triage"` and add `"good first issue"`.
+* If the given labels contain `"discussing"` and the title contains `"planned"` or `"next"`, remove `"discussing"` and add `"on the roadmap"`.
+* Otherwise, if `"needs triage"` or `"discussing"` is present, remove it and add `"help wanted"`.
+* If the title contains `"security"`, add `"critical"`.
 
-* `"bug"` and `"needs triage"` if the title contains `"error"` or `"bug"`
-* `"enhancement"` and `"discussing"` if the title contains `"feature"` or `"add"`
+## The Tests
 
-Otherwise, if the given labels contain:
+The function needs to handle cases like:
 
-* `"needs triage"` and the title contains `"simple"` or `"easy"`, remove `"needs triage"` and add `"good first issue"`
-* `"discussing"` and the title contains `"planned"` or `"next"`, remove `"discussing"` and add `"on the roadmap"`
+* an empty label array with a bug-related title
+* an empty label array with a feature-related title
+* an issue with `"needs triage"` and an easy title
+* an issue with `"discussing"` and a planned title
+* an issue that still needs attention
+* a security-related issue
 
-Otherwise, if `"needs triage"` or `"discussing"` is present, remove it and add `"help wanted"`.
-
-If the title contains `"security"`, add a `"critical"` label.
+These tests make sure the function works for new issues, existing labels, replacements, and security cases.
 
 ## My Approach
 
-### 1. Created Boolean Variables for the Title
+### 1. Understood the Label Rules
 
-First, I created Boolean variables to make the title checks easier to understand.
+First, I read through the rules and separated them into different cases.
 
-For example, I checked whether the title contains words like:
+The task has two main situations:
+
+* the issue has no labels yet
+* the issue already has labels
+
+This was important because the function should behave differently depending on whether the label array is empty or not.
+
+### 2. Checked the Title for Important Words
+
+Next, I checked whether the issue title contains certain words.
+
+For bug-related issues, I checked for words like:
 
 * `"bug"`
 * `"error"`
+
+For feature-related issues, I checked for words like:
+
 * `"feature"`
 * `"add"`
+
+I also checked for special words like:
+
 * `"security"`
 * `"simple"`
 * `"easy"`
 * `"planned"`
 * `"next"`
 
-This made the conditions easier to read later in the function.
+These words decide which labels should be added, removed, or replaced.
 
-### 2. Created Boolean Variables for the Labels
+### 3. Checked the Current Labels
 
-Next, I checked the current labels.
+After checking the title, I checked the current labels.
 
-I created Boolean variables to check whether:
+The important labels were:
 
-* `"needs triage"` is already in the labels
-* `"discussing"` is already in the labels
-* the labels array is empty
+* `"needs triage"`
+* `"discussing"`
 
-This helped separate the title logic from the label logic.
+I also checked whether the labels array was empty.
 
-### 3. Made a Copy of the Labels
+This helped me decide which part of the logic should run.
 
-I created a copy of the labels array before changing it.
+### 4. Created an Updated Labels List
 
-This is useful because I wanted to work with an updated version of the labels instead of directly changing the original list.
+Before changing the labels, I created a copy of the current labels.
 
-### 4. Checked If the Issue Has No Labels
+This allowed me to build an updated label list without directly changing the original input.
 
-The first main condition checks whether the issue has no labels.
+The function then adds or removes labels from this copied list.
 
-If the labels array is empty and the title contains `"bug"` or `"error"`, I add:
+### 5. Handled Issues Without Labels
+
+If the issue had no labels, I checked the title first.
+
+If the title contained `"bug"` or `"error"`, I added:
 
 * `"bug"`
 * `"needs triage"`
 
-If the labels array is empty and the title contains `"feature"` or `"add"`, I add:
+If the title contained `"feature"` or `"add"`, I added:
 
 * `"enhancement"`
 * `"discussing"`
 
-This handles new issues that do not have any labels yet.
+This handles new issues that need their first labels.
 
-### 5. Checked Existing Labels
+### 6. Handled Issues With Existing Labels
 
-If the issue already has labels, I checked whether it has `"needs triage"`.
+If the issue already had labels, I checked whether those labels should be replaced.
 
-If it also has a title containing `"simple"` or `"easy"`, I remove:
-
-* `"needs triage"`
-
-Then I add:
+If the issue had `"needs triage"` and the title contained `"simple"` or `"easy"`, I removed `"needs triage"` and added:
 
 * `"good first issue"`
 
-This means the issue is probably beginner-friendly.
+This marks the issue as beginner-friendly.
 
-### 6. Checked the Discussing Label
+### 7. Handled Planned Issues
 
-Next, I checked whether the issue has the `"discussing"` label.
+Next, I checked whether the issue had the `"discussing"` label.
 
-If the title contains `"planned"` or `"next"`, I remove:
-
-* `"discussing"`
-
-Then I add:
+If the title contained `"planned"` or `"next"`, I removed `"discussing"` and added:
 
 * `"on the roadmap"`
 
-This means the issue is no longer just being discussed. It is now planned.
+This means the issue is no longer only being discussed. It is now planned.
 
-### 7. Added Help Wanted for General Cases
+### 8. Added Help Wanted for General Cases
 
-If the issue still has `"needs triage"` or `"discussing"`, but none of the more specific rules apply, I remove those labels.
+If the issue still had `"needs triage"` or `"discussing"`, but none of the more specific rules applied, I removed those labels.
 
-Then I add:
+Then I added:
 
 * `"help wanted"`
 
-This handles issues that still need attention.
+This means the issue still needs attention from contributors.
 
-### 8. Added the Security Rule Separately
+### 9. Added the Security Label Separately
 
-The security rule is special because it can apply in addition to the other rules.
+The security rule was handled separately because it can apply in addition to the other rules.
 
-So I checked it separately at the end.
-
-If the title contains `"security"`, I add:
+If the title contained `"security"`, I added:
 
 * `"critical"`
 
-This means a security-related issue can still receive normal labels, but it also gets marked as critical.
-
-## The Final Function
-
-```python
-def triage_issue(title, labels):
-    title = title.lower()
-
-    titleHasBugWord = "bug" in title or "error" in title
-    titleHasFeatureWord = "feature" in title or "add" in title
-    titleHasSecurity = "security" in title
-    titleHasEasyWord = "simple" in title or "easy" in title
-    titleHasRoadmapWord = "planned" in title or "next" in title
-
-    hasNeedsTriage = "needs triage" in labels
-    hasDiscussing = "discussing" in labels
-    hasNoLabel = labels == []
-
-    updatedLabels = labels[:]
-
-    if hasNoLabel:
-        if titleHasBugWord:
-            updatedLabels.extend(["bug", "needs triage"])
-        elif titleHasFeatureWord:
-            updatedLabels.extend(["enhancement", "discussing"])
-    else:
-        if hasNeedsTriage and titleHasEasyWord:
-            updatedLabels.remove("needs triage")
-            updatedLabels.append("good first issue")
-        elif hasDiscussing and titleHasRoadmapWord:
-            updatedLabels.remove("discussing")
-            updatedLabels.append("on the roadmap")
-        elif hasNeedsTriage or hasDiscussing:
-            if hasNeedsTriage:
-                updatedLabels.remove("needs triage")
-            if hasDiscussing:
-                updatedLabels.remove("discussing")
-            updatedLabels.append("help wanted")
-
-    if titleHasSecurity:
-        updatedLabels.append("critical")
-
-    return updatedLabels
-```
+This means a security-related issue can still receive normal labels, but it also gets marked as important.
 
 ## Why This Solution Works
 
-This solution works because it follows the rules in the correct order.
+The solution works because it follows the rules in the correct order.
 
-First, the function checks whether the issue has no labels.
+First, it checks whether the issue has no labels.
 
-If there are no labels, it decides whether the issue should start as a bug or as an enhancement.
+If the issue has no labels, it adds the correct starting labels based on the title.
 
-If the issue already has labels, the function checks whether the existing labels should be replaced with more specific labels.
+Then, if the issue already has labels, it checks whether `"needs triage"` or `"discussing"` should be replaced with a more specific label.
 
-For example, `"needs triage"` can become `"good first issue"` if the title contains `"simple"` or `"easy"`.
+If no specific replacement applies, the function removes those temporary labels and adds `"help wanted"`.
 
-Also, `"discussing"` can become `"on the roadmap"` if the title contains `"planned"` or `"next"`.
+Finally, it checks whether the issue is security-related.
 
-If none of the specific rules apply, the function removes `"needs triage"` or `"discussing"` and adds `"help wanted"`.
-
-Finally, the function checks whether the title contains `"security"`.
-
-If it does, the function adds `"critical"` as an extra label.
-
-## Summary
+If it is, the function adds `"critical"` as an extra label.
 
 The general process is:
 
-1. Check the title for important words.
-2. Check the current labels.
-3. Create a copy of the labels.
-4. Apply the correct label rule.
-5. Add `"critical"` if the issue is security-related.
-6. Return the updated labels.
+1. Check whether the issue has no labels.
+2. Check the title for important words.
+3. Check the current labels.
+4. Add labels for new issues.
+5. Replace labels for existing issues.
+6. Add `"help wanted"` when no specific rule applies.
+7. Add `"critical"` for security issues.
+8. Return the updated labels.
 
-This makes the function work for new issues, existing issues, triage labels, discussion labels, beginner-friendly issues, roadmap issues, help wanted issues, and critical security issues.
+This makes the function work for bug reports, feature requests, triage labels, discussion labels, beginner-friendly issues, roadmap issues, help wanted issues, and security-related issues.
+
 
 
