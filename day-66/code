@@ -31,7 +31,7 @@ def triage_issue(title, labels):
         elif hasNeedsTriage or hasDiscussing:
             if hasNeedsTriage:
                 updatedLabels.remove("needs triage")
-            elif hasDiscussing:
+            if hasDiscussing:
                 updatedLabels.remove("discussing")
             updatedLabels.append("help wanted")
     if titleHasSecurity:
