@@ -1,0 +1,41 @@
+def triage_issue(title, labels):
+
+    titleHasBugWord = "bug" in title or "error" in title
+
+    titleHasFeatureWord = "feature" in title or "add" in title
+
+    titleHasSecurity = "security" in title
+
+    titleHasEasyWord = "simple" in title or "easy" in title
+
+    titleHasRoadmapWord = "planned" in title or "next" in title
+
+    hasNeedsTriage = "needs triage" in labels
+    hasDiscussing = "discussing" in labels
+    hasNoLabel = labels == []
+
+    updatedLabels = labels[:]
+
+    if hasNoLabel:
+        if titleHasBugWord:
+            updatedLabels.extend(["bug", "needs triage"])
+        elif titleHasFeatureWord:
+            updatedLabels.extend(["enhancement", "discussing"])
+    else:
+        if hasNeedsTriage and titleHasEasyWord:
+            updatedLabels.remove("needs triage")
+            updatedLabels.append("good first issue")
+        elif hasDiscussing and titleHasRoadmapWord:
+            updatedLabels.remove("discussing")
+            updatedLabels.append("on the roadmap")
+        elif hasNeedsTriage or hasDiscussing:
+            if hasNeedsTriage:
+                updatedLabels.remove("needs triage")
+            elif hasDiscussing:
+                updatedLabels.remove("discussing")
+            updatedLabels.append("help wanted")
+    if titleHasSecurity:
+        updatedLabels.append("critical")
+        
+
+    return updatedLabels
