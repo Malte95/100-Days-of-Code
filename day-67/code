@@ -1,0 +1,18 @@
+def exact_change(amount):
+    p = 1
+    n = 5
+    d = 10
+    q = 25
+
+    possibilities = 0
+
+    for amount_quarters in range(amount // 25 + 1):
+        rest_after_quarters = amount - amount_quarters * 25
+
+        for amount_dimes in range(rest_after_quarters // 10 + 1):
+            rest_after_dimes = rest_after_quarters - amount_dimes * 10
+
+            for amount_nickels in range(rest_after_dimes // 5 + 1):
+                possibilities += 1
+
+    return possibilities
