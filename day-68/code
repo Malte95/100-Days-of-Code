@@ -1,0 +1,32 @@
+def five_dice(dice):
+    count_values = [0,0,0,0,0,0]
+    for char in dice:
+        index = char - 1
+        count_values[index] += 1
+    
+    if 5 in count_values:
+        return "five of a kind"
+
+    elif 4 in count_values:
+        return "four of a kind"
+
+    elif 3 in count_values and 2 in count_values:
+        return "full house"
+
+    elif (count_values[0] > 0 and count_values[1] > 0 and count_values[2] > 0 and count_values[3] > 0 and count_values[4] > 0) or (count_values[1] > 0 and count_values[2] > 0 and count_values[3] > 0 and count_values[4] > 0 and count_values[5] > 0):
+        return "large straight"
+
+    elif (count_values[0] > 0 and count_values[1] > 0 and count_values[2] > 0 and count_values[3] > 0) or (count_values[1] > 0 and count_values[2] > 0 and count_values[3] > 0 and count_values[4] > 0) or (count_values[2] > 0 and count_values[3] > 0 and count_values[4] > 0 and count_values[5] > 0):
+        return "small straight"
+
+    elif 3 in count_values:
+        return "three of a kind"
+    
+    elif count_values.count(2) == 2:
+        return "two pair"
+
+    elif 2 in count_values:
+        return "pair"
+    
+    else:
+        return "no pair"
