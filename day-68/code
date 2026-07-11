@@ -1,6 +1,6 @@
 def five_dice(dice):
     count_values = [0,0,0,0,0,0]
-    for char in dice:
+    for die in dice:
         index = char - 1
         count_values[index] += 1
     
