@@ -1,7 +1,7 @@
 def five_dice(dice):
     count_values = [0,0,0,0,0,0]
     for die in dice:
-        index = char - 1
+        index = die - 1
         count_values[index] += 1
     
     if 5 in count_values:
