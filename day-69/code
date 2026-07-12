@@ -1,0 +1,7 @@
+def get_word_score(word):
+    score = 0
+
+    for char in word.lower():
+        score += ord(char) - ord("a") + 1
+
+    return score
