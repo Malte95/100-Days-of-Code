@@ -1,1 +1,24 @@
+def horoscope_match(sign1, sign2):
+    zodiac_signs = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
 
+    distance = abs(zodiac_signs.index(sign1) - zodiac_signs.index(sign2))
+
+    if distance < 12 - distance:
+        shortest_path =  distance
+    else:
+        shortest_path =  12 - distance
+
+    if shortest_path == 0:
+        return "100%"
+    elif shortest_path == 1:
+        return "40%"
+    elif shortest_path == 2:
+        return "80%"
+    elif shortest_path == 3:
+        return "30%"
+    elif shortest_path == 4:
+        return "90%"
+    elif shortest_path == 5:
+        return "20%"
+    elif shortest_path == 6:
+        return "50%"
