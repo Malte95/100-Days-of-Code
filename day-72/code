@@ -1,0 +1,4 @@
+def chunk_array(arr, size):
+    result = [arr[i:i + size] for i in range(0, len(arr), size)]
+
+    return result
