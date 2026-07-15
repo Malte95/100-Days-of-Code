@@ -1,1 +1,607 @@
+# Today I Completed the Following Python Programming Task
+
+## Array Chunks
+
+## The Goal
+
+Develop a Python function called `chunk_array(arr, size)` that receives an array and a chunk size.
+
+The function must split the original array into smaller sub-arrays containing the specified number of elements.
+
+If the number of elements in the original array cannot be divided evenly by the chunk size, the final chunk may contain fewer elements.
+
+For example:
+
+```python
+chunk_array([1, 2, 3, 4, 5, 6], 2)
+```
+
+should return:
+
+```python
+[[1, 2], [3, 4], [5, 6]]
+```
+
+Each sub-array contains exactly two elements.
+
+Another example:
+
+```python
+chunk_array([1, 2, 3, 4, 5], 2)
+```
+
+should return:
+
+```python
+[[1, 2], [3, 4], [5]]
+```
+
+The original array contains five elements, so it cannot be divided evenly into chunks of two.
+
+The final chunk therefore contains only one element.
+
+## The Tests
+
+The function should correctly handle examples such as:
+
+```python
+chunk_array([1, 2, 3, 4], 2)
+# [[1, 2], [3, 4]]
+```
+
+The array contains four elements and the chunk size is `2`, so the result contains two equally sized chunks.
+
+```python
+chunk_array([1, 2, 3, 4, 5], 2)
+# [[1, 2], [3, 4], [5]]
+```
+
+The array contains five elements. The first two chunks contain two elements each, while the final chunk contains the remaining element.
+
+```python
+chunk_array([1, 2, 3, 4, 5, 6], 3)
+# [[1, 2, 3], [4, 5, 6]]
+```
+
+The array is divided into two chunks containing three elements each.
+
+```python
+chunk_array(["a", "b", "c", "d"], 3)
+# [["a", "b", "c"], ["d"]]
+```
+
+The function also works with values other than numbers.
+
+The first chunk contains three strings, while the final chunk contains the remaining string.
+
+```python
+chunk_array([], 3)
+# []
+```
+
+When the original array is empty, the function returns an empty list because there are no elements to divide into chunks.
+
+## My Approach
+
+### 1. Created a Result List Using a List Comprehension
+
+I created the result using a list comprehension:
+
+```python
+result = [arr[i:i + size] for i in range(0, len(arr), size)]
+```
+
+A list comprehension is a compact way to create a new list.
+
+The general structure of this list comprehension is:
+
+```python
+[expression for item in sequence]
+```
+
+In my solution:
+
+```python
+arr[i:i + size]
+```
+
+is the expression that creates each chunk.
+
+The following part generates the starting position of every chunk:
+
+```python
+for i in range(0, len(arr), size)
+```
+
+The completed list comprehension collects all the chunks inside a new list.
+
+### 2. Used `range()` to Generate the Starting Indexes
+
+I used the built-in `range()` function:
+
+```python
+range(0, len(arr), size)
+```
+
+The `range()` function receives three values:
+
+```python
+range(start, stop, step)
+```
+
+In this solution:
+
+```text
+start = 0
+stop  = len(arr)
+step  = size
+```
+
+The range begins at index `0`, which is the position of the first element in the array.
+
+It continues until it reaches the length of the array.
+
+The step is equal to the requested chunk size.
+
+For example, consider:
+
+```python
+arr = [1, 2, 3, 4, 5, 6]
+size = 2
+```
+
+The length of the array is:
+
+```python
+len(arr)
+# 6
+```
+
+Therefore, the range becomes:
+
+```python
+range(0, 6, 2)
+```
+
+This generates the following starting indexes:
+
+```text
+0, 2, 4
+```
+
+Each value represents the starting position of a new chunk.
+
+### 3. Used Array Slicing to Create Each Chunk
+
+I used array slicing to extract a section of the array:
+
+```python
+arr[i:i + size]
+```
+
+The general syntax for slicing is:
+
+```python
+array[start:end]
+```
+
+The element at the `start` index is included.
+
+The element at the `end` index is not included.
+
+For example:
+
+```python
+arr = [1, 2, 3, 4, 5, 6]
+```
+
+The slice:
+
+```python
+arr[0:2]
+```
+
+returns:
+
+```python
+[1, 2]
+```
+
+Index `0` is included, but index `2` is not included.
+
+The next slice is:
+
+```python
+arr[2:4]
+```
+
+which returns:
+
+```python
+[3, 4]
+```
+
+The final slice is:
+
+```python
+arr[4:6]
+```
+
+which returns:
+
+```python
+[5, 6]
+```
+
+These slices are collected inside the result list:
+
+```python
+[[1, 2], [3, 4], [5, 6]]
+```
+
+### 4. Moved Through the Array by the Chunk Size
+
+The third argument passed to `range()` determines how much the index increases during each iteration.
+
+```python
+range(0, len(arr), size)
+```
+
+Because the step is `size`, the starting index moves forward by one complete chunk each time.
+
+For example, when:
+
+```python
+size = 3
+```
+
+the indexes increase like this:
+
+```text
+0, 3, 6, 9, ...
+```
+
+For the array:
+
+```python
+[1, 2, 3, 4, 5, 6, 7]
+```
+
+the generated starting indexes are:
+
+```text
+0, 3, 6
+```
+
+The slices are therefore:
+
+```python
+arr[0:3]
+# [1, 2, 3]
+```
+
+```python
+arr[3:6]
+# [4, 5, 6]
+```
+
+```python
+arr[6:9]
+# [7]
+```
+
+The result is:
+
+```python
+[[1, 2, 3], [4, 5, 6], [7]]
+```
+
+### 5. Handled a Smaller Final Chunk
+
+Python slicing automatically handles situations where the ending index is larger than the length of the array.
+
+For example:
+
+```python
+arr = [1, 2, 3, 4, 5]
+size = 2
+```
+
+The final starting index generated by `range()` is:
+
+```text
+4
+```
+
+The final slice is:
+
+```python
+arr[4:6]
+```
+
+The array does not have an element at index `5`, but Python does not produce an error.
+
+It simply returns all available elements between index `4` and the end of the array:
+
+```python
+[5]
+```
+
+This means that I did not need to write a separate condition for the final chunk.
+
+Python slicing automatically creates a smaller chunk when there are not enough elements remaining.
+
+### 6. Returned the Completed Result
+
+After the list comprehension creates all the chunks, they are stored in the variable:
+
+```python
+result
+```
+
+I then return the completed list:
+
+```python
+return result
+```
+
+This gives the caller a new list containing all the sub-arrays.
+
+## The Final Function
+
+```python
+def chunk_array(arr, size):
+    result = [arr[i:i + size] for i in range(0, len(arr), size)]
+
+    return result
+```
+
+## How the Function Processes `[1, 2, 3, 4, 5]` with a Chunk Size of `2`
+
+The function is called like this:
+
+```python
+chunk_array([1, 2, 3, 4, 5], 2)
+```
+
+The length of the array is:
+
+```python
+len(arr)
+# 5
+```
+
+The `range()` expression becomes:
+
+```python
+range(0, 5, 2)
+```
+
+It generates the following values:
+
+```text
+0, 2, 4
+```
+
+### First Iteration
+
+The first value of `i` is:
+
+```text
+0
+```
+
+The slice is:
+
+```python
+arr[0:0 + 2]
+```
+
+This is equivalent to:
+
+```python
+arr[0:2]
+```
+
+The result is:
+
+```python
+[1, 2]
+```
+
+### Second Iteration
+
+The next value of `i` is:
+
+```text
+2
+```
+
+The slice is:
+
+```python
+arr[2:2 + 2]
+```
+
+This is equivalent to:
+
+```python
+arr[2:4]
+```
+
+The result is:
+
+```python
+[3, 4]
+```
+
+### Third Iteration
+
+The final value of `i` is:
+
+```text
+4
+```
+
+The slice is:
+
+```python
+arr[4:4 + 2]
+```
+
+This is equivalent to:
+
+```python
+arr[4:6]
+```
+
+Only one element remains in the array, so the result is:
+
+```python
+[5]
+```
+
+The list comprehension combines all three chunks:
+
+```python
+[[1, 2], [3, 4], [5]]
+```
+
+Therefore:
+
+```python
+chunk_array([1, 2, 3, 4, 5], 2)
+# [[1, 2], [3, 4], [5]]
+```
+
+## How the Function Processes `[1, 2, 3, 4, 5, 6]` with a Chunk Size of `3`
+
+The function is called like this:
+
+```python
+chunk_array([1, 2, 3, 4, 5, 6], 3)
+```
+
+The length of the array is:
+
+```python
+len(arr)
+# 6
+```
+
+The `range()` expression becomes:
+
+```python
+range(0, 6, 3)
+```
+
+It generates:
+
+```text
+0, 3
+```
+
+The first slice is:
+
+```python
+arr[0:3]
+```
+
+which returns:
+
+```python
+[1, 2, 3]
+```
+
+The second slice is:
+
+```python
+arr[3:6]
+```
+
+which returns:
+
+```python
+[4, 5, 6]
+```
+
+The completed result is:
+
+```python
+[[1, 2, 3], [4, 5, 6]]
+```
+
+Therefore:
+
+```python
+chunk_array([1, 2, 3, 4, 5, 6], 3)
+# [[1, 2, 3], [4, 5, 6]]
+```
+
+## How the Function Handles an Empty Array
+
+Consider the following function call:
+
+```python
+chunk_array([], 3)
+```
+
+The length of the array is:
+
+```python
+len(arr)
+# 0
+```
+
+The `range()` expression becomes:
+
+```python
+range(0, 0, 3)
+```
+
+This range contains no values because the starting value and stopping value are both `0`.
+
+Therefore, the list comprehension performs no iterations and creates an empty list:
+
+```python
+[]
+```
+
+The function returns:
+
+```python
+[]
+```
+
+## Why This Solution Works
+
+The function uses `range()` to generate the starting index of each chunk.
+
+The range starts at `0` and moves through the array in steps equal to the requested chunk size.
+
+For each starting index, array slicing extracts the elements from that index up to the end of the current chunk.
+
+The expression:
+
+```python
+arr[i:i + size]
+```
+
+creates one sub-array.
+
+The list comprehension repeats this operation for every starting index and collects all the sub-arrays inside a new list.
+
+Python slicing also handles the final incomplete chunk automatically. When fewer elements remain than the requested chunk size, slicing simply returns the remaining elements without raising an error.
+
+The general process is:
+
+1. Start at index `0`.
+2. Generate indexes separated by the chunk size.
+3. Use each index as the beginning of a new chunk.
+4. Calculate the end of the chunk with `i + size`.
+5. Slice the original array between these two positions.
+6. Add each slice to the result list.
+7. Return the completed list of chunks.
+
+This challenge helped me understand how to use list comprehensions, generate number sequences with `range()`, work with array indexes, and extract sections of an array using slicing.
 
