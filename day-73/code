@@ -1,0 +1,34 @@
+def pig_latin(s):
+    vowls = ["a", "e", "i", "o","u"]
+
+    if not s:
+        return s
+    
+    words = s.split()
+    translated_words = []
+
+    for word in words:
+        is_capitalized = word[0].isupper()
+
+        if word[0].lower() in vowls:
+            translated_word = word + "way"
+        else:
+            vowel_index = 0
+            for i, char in enumerate(word):
+                if char.lower() in vowls:
+                    vowel_index = i
+                    break
+            else:
+                vowel_index = len(word)
+            
+            consonants = word[:vowel_index]
+            rest_of_word = word[vowel_index:]
+
+            translated_word = rest_of_word.lower() + consonants.lower() + "ay"
+
+        if is_capitalized:
+            translated_word = translated_word.capitalize()
+
+        translated_words.append(translated_word)
+
+    return " ".join(translated_words)
