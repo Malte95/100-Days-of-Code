@@ -1,0 +1,26 @@
+from datetime import date
+
+def days_until_birthday(today, birthday):
+    today_date = date.fromisoformat(today)
+    month, day = birthday.split("/")
+    month = int(month)
+    day = int(day)
+    year = today_date.year
+
+    while True:
+        try:
+            birthday_date = date(year, month, day)
+            
+            if birthday_date > today_date:
+                break
+            else:
+                year += 1
+                
+        except ValueError:
+            year += 1
+            continue
+        
+
+        
+
+    return (birthday_date - today_date).days
