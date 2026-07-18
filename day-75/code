@@ -1,0 +1,19 @@
+import math
+from fractions import Fraction
+
+def get_odds(dice, target):
+    n = dice
+    s = target
+    f = 6
+    i = math.floor((s - n) / f)
+    p = 0
+
+    while i >= 0:
+        p += (-1)**i * math.comb(n, i) * math.comb(s - i * f - 1, n - 1)
+        i -= 1
+    
+    if p == 0:
+        return "0 in 1"
+    elif p > 0:
+        rounded_integer = round((f**n)/p)
+        return f"1 in {rounded_integer}"
