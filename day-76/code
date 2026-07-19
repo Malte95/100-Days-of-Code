@@ -1,0 +1,25 @@
+def elevator_stops(current_floor, stops):
+    if not stops:
+        return []
+
+    downs = sorted([f for f in stops if f <= current_floor], reverse=True)
+    ups = sorted([f for f in stops if f > current_floor])
+
+    path_down_first = downs + ups
+    path_up_first = ups + downs
+
+    def calculate_distance(path):
+        distance = 0
+        current = current_floor
+        for stop in path:
+            distance += abs(stop - current)
+            current = stop
+        return distance
+
+    dist_down = calculate_distance(path_down_first)
+    dist_up = calculate_distance(path_up_first)
+
+    if dist_up <= dist_down:
+        return path_up_first
+    else:
+        return path_down_first
