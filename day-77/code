@@ -1,3 +1,4 @@
+```python
 def is_golden_ratio(a, b):
     if a <= 0 or b <= 0:
         return False
@@ -13,11 +14,14 @@ def is_golden_ratio(a, b):
         return True
     else:
         return False
+```
 
 ---
 
+```python
 def get_tally_count(s):
     num_pipes = s.count("|")
     num_slashes = s.count("/")
 
-    return num_pipes + num_slashes 
+    return num_pipes + num_slashes
+```
