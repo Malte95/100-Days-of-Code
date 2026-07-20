@@ -1,33 +1,44 @@
-# Today I Completed the Following Python Programming Task
+# Today I Completed Two Python Programming Challenges
 
-## Golden Ratio
+Today, I completed two Python programming challenges:
 
-### The Goal
+1. **Golden Ratio**
+2. **Tally Counter**
 
-Develop a Python function called `is_golden_ratio(a, b)` that determines whether the ratio between two numbers approximately matches the golden ratio.
+Both challenges helped me practise working with functions, conditions, string methods, mathematical calculations, and return values.
 
-The golden ratio used in this task is:
+---
+
+# Challenge 1: Golden Ratio
+
+## The Goal
+
+The goal of this challenge was to develop a Python function called:
+
+```python
+is_golden_ratio(a, b)
+```
+
+The function determines whether the ratio between two numbers approximately matches the golden ratio.
+
+The golden ratio used in this challenge is:
 
 ```python
 1.618
 ```
 
-Because the ratio does not need to be exactly `1.618`, the function allows a tolerance of:
+Because the calculated ratio does not need to equal `1.618` exactly, the function allows a tolerance of:
 
 ```python
 0.01
 ```
 
-The function receives:
+The function receives two numbers, `a` and `b`, and returns:
 
-* two numbers, `a` and `b`
-
-The function should return:
-
-* `True` if the ratio between the two numbers is within `0.01` of `1.618`
+* `True` if their ratio is within `0.01` of `1.618`
 * `False` if the ratio is outside the allowed tolerance
 
-The larger number is divided by the smaller number so that the ratio is always greater than or equal to `1`.
+The larger number must always be divided by the smaller number. This ensures that the ratio is greater than or equal to `1`, regardless of the order in which the arguments are provided.
 
 For example:
 
@@ -35,13 +46,13 @@ For example:
 is_golden_ratio(8, 13)
 ```
 
-The larger number is `13`, so the ratio is:
+Since `13` is larger than `8`, the ratio is:
 
 ```python
 13 / 8
 ```
 
-which equals:
+This equals:
 
 ```python
 1.625
@@ -61,7 +72,7 @@ True
 
 ## The Tests
 
-The function needs to pass the following tests:
+The function needed to pass the following tests:
 
 ```python
 is_golden_ratio(21, 34)
@@ -87,7 +98,7 @@ All six tests passed.
 
 ## My Approach
 
-### 1. Checked for Invalid Values
+### 1. Checking for Invalid Values
 
 First, I checked whether either number was less than or equal to zero.
 
@@ -96,21 +107,17 @@ if a <= 0 or b <= 0:
     return False
 ```
 
-A ratio requires division, so a value of zero could cause division by zero.
+A value of zero could cause division by zero.
 
-Negative numbers would also not be useful for this task because the golden ratio represents a positive relationship between two positive values.
+Negative values are also unsuitable for this challenge because the golden ratio represents a positive relationship between two positive values.
 
-If either number is invalid, the function immediately returns:
-
-```python
-False
-```
+If either value is invalid, the function immediately returns `False`.
 
 Using `return` ends the function, so the remaining calculations are only performed when both numbers are positive.
 
-### 2. Determined Which Number Was Larger
+### 2. Determining the Larger Number
 
-The ratio needs to be calculated by dividing the larger number by the smaller number.
+The ratio must be calculated by dividing the larger number by the smaller number.
 
 I first checked whether `a` was larger than `b`.
 
@@ -119,9 +126,7 @@ if a > b:
     ratio = a / b
 ```
 
-If `a` is larger, `a` is divided by `b`.
-
-Otherwise, `b` is divided by `a`.
+If `a` is not larger, `b` is divided by `a`.
 
 ```python
 else:
@@ -154,27 +159,9 @@ The ratio is therefore always calculated as:
 larger number / smaller number
 ```
 
-### 3. Calculated the Ratio
+### 3. Calculating the Absolute Difference
 
-After determining the larger number, I divided it by the smaller number.
-
-For example, with the numbers `21` and `34`:
-
-```python
-ratio = 34 / 21
-```
-
-This produces approximately:
-
-```python
-1.619
-```
-
-This value is close to the golden ratio of `1.618`.
-
-### 4. Calculated the Absolute Difference
-
-Next, I calculated the difference between the ratio and the golden ratio.
+After calculating the ratio, I measured its distance from the golden ratio.
 
 ```python
 tolerance = abs(ratio - 1.618)
@@ -182,7 +169,7 @@ tolerance = abs(ratio - 1.618)
 
 The `abs()` function returns the absolute value of a number.
 
-This is important because the calculated ratio may be either slightly larger or slightly smaller than `1.618`.
+This is important because the calculated ratio could be slightly higher or slightly lower than `1.618`.
 
 For example:
 
@@ -222,9 +209,9 @@ into:
 0.018
 ```
 
-The function therefore measures the distance from the golden ratio regardless of whether the calculated ratio is above or below `1.618`.
+The function therefore measures the distance from the golden ratio in both directions.
 
-### 5. Compared the Difference With the Allowed Tolerance
+### 4. Comparing the Difference With the Tolerance
 
 The allowed tolerance is `0.01`.
 
@@ -243,9 +230,9 @@ Otherwise, the function returns:
 False
 ```
 
-The use of `<=` means that a difference of exactly `0.01` is also accepted.
+The use of `<=` means that a difference of exactly `0.01` would also be accepted.
 
-## Example With 21 and 34
+## Example: 21 and 34
 
 The function receives:
 
@@ -273,27 +260,19 @@ The absolute difference from the golden ratio is:
 abs(1.619047619 - 1.618)
 ```
 
-which is approximately:
+This is approximately:
 
 ```python
 0.001047619
 ```
 
-This value is smaller than `0.01`.
-
-Therefore:
-
-```python
-is_golden_ratio(21, 34)
-```
-
-returns:
+Since this value is smaller than `0.01`, the function returns:
 
 ```python
 True
 ```
 
-## Example With 15 and 20
+## Example: 15 and 20
 
 The function receives:
 
@@ -301,13 +280,13 @@ The function receives:
 is_golden_ratio(15, 20)
 ```
 
-Since `20` is larger, the ratio is:
+Since `20` is larger than `15`, the ratio is:
 
 ```python
 20 / 15
 ```
 
-which is approximately:
+This equals approximately:
 
 ```python
 1.333
@@ -319,27 +298,19 @@ The absolute difference from the golden ratio is approximately:
 abs(1.333 - 1.618)
 ```
 
-which equals approximately:
+which equals:
 
 ```python
 0.285
 ```
 
-This is greater than the allowed tolerance of `0.01`.
-
-Therefore:
-
-```python
-is_golden_ratio(15, 20)
-```
-
-returns:
+Since this is greater than the allowed tolerance of `0.01`, the function returns:
 
 ```python
 False
 ```
 
-## Example With 8 and 13
+## Example: 8 and 13
 
 The function receives:
 
@@ -347,13 +318,13 @@ The function receives:
 is_golden_ratio(8, 13)
 ```
 
-Since `13` is larger, the ratio is:
+Since `13` is larger than `8`, the ratio is:
 
 ```python
 13 / 8
 ```
 
-which equals:
+This equals:
 
 ```python
 1.625
@@ -377,7 +348,7 @@ Since `0.007` is within the allowed tolerance, the function returns:
 True
 ```
 
-## Example With 10 and 16
+## Example: 10 and 16
 
 The ratio is:
 
@@ -433,11 +404,9 @@ def is_golden_ratio(a, b):
 
 The function first ensures that both numbers are positive.
 
-It then determines which number is larger and divides the larger number by the smaller number.
+It then determines which number is larger and divides the larger number by the smaller number. This makes the function independent of the order in which the arguments are provided.
 
-This makes the function independent of the order in which the numbers are provided.
-
-The function calculates the absolute difference between the resulting ratio and the golden ratio value of `1.618`.
+Next, it calculates the absolute difference between the resulting ratio and `1.618`.
 
 The general process is:
 
@@ -451,12 +420,14 @@ The general process is:
 
 Using the absolute value ensures that ratios slightly above and slightly below `1.618` are treated equally.
 
-For example, both of the following differences are measured correctly:
+For example:
 
 ```python
 abs(1.625 - 1.618)
 # 0.007
 ```
+
+and:
 
 ```python
 abs(1.610 - 1.618)
@@ -466,4 +437,376 @@ abs(1.610 - 1.618)
 Both values are within the allowed tolerance of `0.01`.
 
 The function therefore correctly determines whether the ratio between two positive numbers approximates the golden ratio.
+
+---
+
+# Challenge 2: Tally Counter
+
+## The Goal
+
+The goal of the second challenge was to develop a function called:
+
+```python
+get_tally_count(s)
+```
+
+The function receives a string containing tally marks and returns the total count represented by those marks.
+
+Each pipe character:
+
+```text
+|
+```
+
+represents one count.
+
+Every fifth mark is written as a forward slash:
+
+```text
+/
+```
+
+This completes a group of five tally marks:
+
+```text
+||||/
+```
+
+Groups are separated by spaces.
+
+For example:
+
+```text
+||||/ |||
+```
+
+contains one complete group of five followed by three additional marks.
+
+The total is therefore:
+
+```text
+5 + 3 = 8
+```
+
+## The Tests
+
+The function needed to pass the following tests:
+
+```python
+get_tally_count("||||")
+# 4
+
+get_tally_count("||||/")
+# 5
+
+get_tally_count("||||/ |||")
+# 8
+
+get_tally_count("||||/ ||||/ ||||/ ||")
+# 17
+
+get_tally_count("||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ |")
+# 41
+```
+
+All five tests passed.
+
+## Understanding the Tally Marks
+
+The most important part of the challenge was understanding what the forward slash represents.
+
+A complete group looks like this:
+
+```text
+||||/
+```
+
+It contains:
+
+* four pipe characters
+* one forward slash
+
+The forward slash does not represent five additional marks. It represents the fifth individual mark in the group.
+
+Therefore:
+
+```text
+||||/
+```
+
+has a total value of:
+
+```text
+4 + 1 = 5
+```
+
+Both `|` and `/` must therefore be counted as one mark each.
+
+Spaces only separate the groups and do not contribute to the total.
+
+## My First Idea
+
+My first approach was to count the pipes and forward slashes separately.
+
+I used the string method:
+
+```python
+.count()
+```
+
+to determine how many times each character appeared.
+
+At first, I considered multiplying the number of forward slashes by five.
+
+However, that would produce an incorrect result.
+
+For example, the group:
+
+```text
+||||/
+```
+
+contains four pipes and one slash.
+
+Multiplying the slash by five would calculate:
+
+```text
+4 + 5 = 9
+```
+
+The correct total is only:
+
+```text
+5
+```
+
+The slash represents the fifth mark, so it must be counted as one.
+
+## Counting the Pipe Characters
+
+I counted how many pipe characters appeared in the string.
+
+```python
+num_pipes = s.count("|")
+```
+
+For example:
+
+```text
+||||/ |||
+```
+
+contains seven pipe characters.
+
+## Counting the Forward Slashes
+
+I then counted how many forward slash characters appeared.
+
+```python
+num_slashes = s.count("/")
+```
+
+The same example contains one forward slash.
+
+## Calculating the Total
+
+Since every pipe and every forward slash represents one mark, the total can be calculated by adding both counts.
+
+```python
+return num_pipes + num_slashes
+```
+
+For the example:
+
+```text
+||||/ |||
+```
+
+the calculation is:
+
+```text
+7 pipes + 1 slash = 8
+```
+
+The spaces do not need to be removed manually because `.count()` searches only for the specified characters.
+
+## Example: Four Marks
+
+The function receives:
+
+```python
+get_tally_count("||||")
+```
+
+The string contains:
+
+* four pipes
+* no forward slashes
+
+The total is:
+
+```text
+4 + 0 = 4
+```
+
+The function returns:
+
+```python
+4
+```
+
+## Example: One Complete Group
+
+The function receives:
+
+```python
+get_tally_count("||||/")
+```
+
+The string contains:
+
+* four pipes
+* one forward slash
+
+The total is:
+
+```text
+4 + 1 = 5
+```
+
+The function returns:
+
+```python
+5
+```
+
+## Example: One Group and Three Additional Marks
+
+The function receives:
+
+```python
+get_tally_count("||||/ |||")
+```
+
+The string contains:
+
+* seven pipes
+* one forward slash
+
+The total is:
+
+```text
+7 + 1 = 8
+```
+
+The function returns:
+
+```python
+8
+```
+
+## Example: Three Groups and Two Additional Marks
+
+The function receives:
+
+```python
+get_tally_count("||||/ ||||/ ||||/ ||")
+```
+
+The string contains:
+
+* fourteen pipes
+* three forward slashes
+
+The total is:
+
+```text
+14 + 3 = 17
+```
+
+The function returns:
+
+```python
+17
+```
+
+## The Final Function
+
+```python
+def get_tally_count(s):
+    num_pipes = s.count("|")
+    num_slashes = s.count("/")
+
+    return num_pipes + num_slashes
+```
+
+## Why This Solution Works
+
+The function counts every pipe and every forward slash in the string.
+
+Both characters represent one tally mark, so their counts can be added together.
+
+Spaces do not need any special handling because they are not included in either `.count()` operation.
+
+The general process is:
+
+1. Count all pipe characters.
+2. Count all forward slash characters.
+3. Add both counts.
+4. Return the result.
+
+The solution is short, readable, and directly reflects the rules of the challenge.
+
+Although `.count()` scans the string once for each character, this is not a problem for the expected input sizes. The solution remains efficient and easy to understand.
+
+Its time complexity is:
+
+```text
+O(n)
+```
+
+Even though the string is scanned twice, the total amount of work still grows linearly with the length of the string.
+
+The function also uses only a constant amount of additional memory:
+
+```text
+O(1)
+```
+
+This makes the solution both simple and efficient.
+
+---
+
+# What I Practised
+
+These two challenges covered different areas of Python programming.
+
+The Golden Ratio challenge helped me practise:
+
+* validating function arguments
+* preventing division by zero
+* comparing numbers
+* calculating ratios
+* working with floating-point values
+* using `abs()`
+* applying a tolerance
+* returning Boolean values
+
+The Tally Counter challenge helped me practise:
+
+* working with strings
+* understanding character-based input
+* using `.count()`
+* distinguishing meaningful characters from separators
+* translating a visual counting system into a numerical result
+* analysing the efficiency of a solution
+
+Both challenges showed that understanding the problem correctly is just as important as writing the code.
+
+In the Tally Counter challenge, the key insight was recognising that `/` represents only the fifth individual mark rather than five additional marks.
+
+In the Golden Ratio challenge, the key insight was using the absolute difference so that ratios both above and below `1.618` could be compared correctly.
+
+Completing both challenges gave me more experience with breaking a problem into smaller steps and turning those steps into clear Python functions.
+
 
