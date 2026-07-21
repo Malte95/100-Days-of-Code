@@ -65,6 +65,7 @@ I am currently on **Day 78 / 100**
 
 * Python
 * Arduino
+* Java
 
 
 ---
