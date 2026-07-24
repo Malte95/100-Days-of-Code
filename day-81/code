@@ -59,3 +59,21 @@ public class Main {
     }
 
 }
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def get_loan_schedule(loan_amount, annual_rate, monthly_payment):
+
+    payments = [loan_amount]
+
+    while loan_amount > 0:
+        monthly_interest_rate = loan_amount * ((annual_rate/100) / 12)
+        new_loan_amount = loan_amount + monthly_interest_rate - monthly_payment
+        if new_loan_amount <= 0:
+            payments.append(0)
+            break
+        else:
+            payments.append(round(new_loan_amount))
+            loan_amount = new_loan_amount
+        
+    return payments
