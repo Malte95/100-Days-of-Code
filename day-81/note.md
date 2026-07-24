@@ -438,3 +438,83 @@ public class Main {
 Today, I improved my understanding of calculations and conditions in Java. I learned how Java performs arithmetic, how data types affect division and how conditions can control which parts of a program are executed.
 
 I also combined several concepts from previous lessons, including variables, user input, calculations, booleans and console output. My programs are becoming more interactive and can now make decisions based on the information entered by the user.
+
+
+## Coding challenge: Loan repayment schedule
+
+I also completed a coding challenge in Python that calculates the remaining balance of a loan after each monthly payment.
+
+The function receives:
+
+* The original loan amount
+* The annual interest rate as a percentage
+* The fixed monthly payment
+
+The returned list starts with the original loan amount. For each month, the program calculates the interest on the current remaining balance, subtracts the monthly payment and stores the new balance.
+
+The monthly interest rate is calculated with:
+
+```text
+(annual interest rate / 100) / 12
+```
+
+For example, an annual interest rate of `12%` produces a monthly interest rate of:
+
+```text
+(12 / 100) / 12 = 0.01
+```
+
+This means that the monthly interest rate is `1%`.
+
+For a loan balance of `$1,000`, the interest for the first month would be:
+
+```text
+1000 × 0.01 = 10
+```
+
+After subtracting a monthly payment of `$300`, the new balance would be:
+
+```text
+1000 + 10 - 300 = 710
+```
+
+The function continues this calculation until the loan has been completely paid off.
+
+My completed function looked like this:
+
+```python
+def get_loan_schedule(loan_amount, annual_rate, monthly_payment):
+
+    payments = [loan_amount]
+
+    while loan_amount > 0:
+        monthly_interest = loan_amount * ((annual_rate / 100) / 12)
+        new_loan_amount = loan_amount + monthly_interest - monthly_payment
+
+        if new_loan_amount <= 0:
+            payments.append(0)
+            break
+        else:
+            payments.append(round(new_loan_amount))
+            loan_amount = new_loan_amount
+
+    return payments
+```
+
+While solving this challenge, I learned that writing a calculation is not enough by itself. The result must also be assigned to a variable so that it can be used during the next loop iteration.
+
+I also learned that:
+
+* The interest must be recalculated every month.
+* The calculation must use the current remaining balance instead of the original loan amount.
+* A list can be used to store every balance.
+* The original loan amount must be the first value in the list.
+* A `while` loop can repeat the calculation until the balance reaches zero.
+* The final balance must be exactly `0` and not a negative number.
+* `round()` can be used to store each remaining balance as a whole dollar amount.
+* A `break` statement can stop a loop when the loan has been paid off.
+
+One important part of the challenge was checking the newly calculated balance instead of the previous balance. At the beginning of every loop iteration, the previous balance is still greater than zero because that is required for the loop to continue.
+
+This challenge helped me understand how calculations, variables, lists, conditions and loops work together. It also showed me how a program can repeatedly update a value and use the updated result in the next calculation.
+
