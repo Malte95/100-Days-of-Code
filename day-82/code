@@ -1,0 +1,36 @@
+def find_signal(grid):
+    found_towers = []
+
+    for r in range(len(grid)):
+        for c in range(len(grid[r])):
+            if grid[r][c] > 0:
+                distance = grid[r][c]
+                found_towers.append([r, c, distance])
+
+    all_possible_positions = []
+
+    for tower in found_towers:
+        t_r, t_c, d = tower
+        tower_positions = []
+
+        directions = [
+            [t_r, t_c - d], [t_r, t_c + d],
+            [t_r - d, t_c], [t_r + d, t_c],
+            [t_r - d, t_c - d], [t_r + d, t_c + d],
+            [t_r - d, t_c + d], [t_r + d, t_c - d]
+        ]
+
+        for pos_r, pos_c in directions:
+            if 0 <= pos_r < len(grid) and 0 <= pos_c < len(grid[0]):
+                tower_positions.append((pos_r, pos_c))
+        all_possible_positions.append(tower_positions)
+
+    set1 = set(all_possible_positions[0])
+    set2 = set(all_possible_positions[1])
+    set3 = set(all_possible_positions[2])
+
+    result_set = set1 & set2 & set3
+
+    result = result_set.pop()
+
+    return [result[0], result[1]]
