@@ -11,3 +11,16 @@ def letter_distance(str1, str2):
         distances += shortest_distance
 
     return distances
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+def blend_words(word1, word2):
+    middle1 = len(word1) // 2
+    middle2 = len(word2) // 2
+
+    first_half = word1[:middle1]
+    second_half = word2[middle2:]
+
+    combination = first_half + second_half
+
+    return combination
