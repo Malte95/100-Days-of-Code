@@ -1,0 +1,13 @@
+import string
+
+def letter_distance(str1, str2):
+    abc = list(string.ascii_lowercase)
+
+    distances = 0
+
+    for i in range(len(str1)):
+        distance = abs(abc.index(str1[i]) - abc.index(str2[i]))
+        shortest_distance = min(distance, 26 - distance)
+        distances += shortest_distance
+
+    return distances
