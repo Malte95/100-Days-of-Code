@@ -1136,3 +1136,1025 @@ The second loop checks whether one of these divisors and its successor produce t
 
 This challenge helped me improve my understanding of sets, divisor pairs, square roots, conditional statements, loops, integer division, the modulo operator, and the correct placement of `return` statements.
 
+# Java Lesson: Generating Random Values
+
+Today I completed a Java lesson about generating random values with the `Random` class.
+
+The lesson developed step by step from creating a random-number generator to building a simple coin-toss program.
+
+During the lesson, I worked with:
+
+```text
+- Imports
+- Classes and objects
+- Integer variables
+- Double variables
+- Boolean variables
+- Random numbers
+- Ranges
+- if statements
+- else statements
+- Console output
+```
+
+---
+
+# The Goal
+
+The goal was to learn how Java can generate different types of random values.
+
+Java provides the `Random` class for this purpose.
+
+The lesson covered how to generate:
+
+```text
+- Random integers
+- Random integers inside a range
+- Multiple random values
+- Random decimal values
+- Random Boolean values
+- A random heads-or-tails result
+```
+
+---
+
+# My Approach
+
+I began by importing the `Random` class and creating a `Random` object.
+
+I then used different methods of the object to generate random values:
+
+```java
+nextInt()
+nextInt(origin, bound)
+nextDouble()
+nextBoolean()
+```
+
+Finally, I used a random Boolean value together with an `if-else` statement to simulate a coin toss.
+
+---
+
+## 1. Imported the `Random` Class
+
+I started with:
+
+```java
+import java.util.Random;
+```
+
+The `Random` class belongs to the `java.util` package.
+
+The import statement makes the class available inside the program.
+
+Without the import, Java would not recognize:
+
+```java
+Random
+```
+
+---
+
+## 2. Created the Main Class
+
+The program uses a class called `Main`:
+
+```java
+public class Main {
+```
+
+The class contains the program's code.
+
+Because the class is public and called `Main`, the Java source file is normally named:
+
+```text
+Main.java
+```
+
+---
+
+## 3. Created the `main` Method
+
+Inside the class, I created the `main` method:
+
+```java
+public static void main(String[] args) {
+```
+
+The `main` method is the starting point of the program.
+
+When the program runs, Java begins executing the statements inside this method.
+
+---
+
+## 4. Created a `Random` Object
+
+I created an object of the `Random` class:
+
+```java
+Random random = new Random();
+```
+
+The first `Random` is the class name:
+
+```java
+Random
+```
+
+The word `random` is the variable name:
+
+```java
+random
+```
+
+The expression:
+
+```java
+new Random()
+```
+
+creates a new object.
+
+The complete statement stores the new object inside the variable called `random`.
+
+I can then use this object to call methods such as:
+
+```java
+random.nextInt();
+random.nextDouble();
+random.nextBoolean();
+```
+
+The initial program was:
+
+```java
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Random random = new Random();
+
+    }
+}
+```
+
+At this point, the random-number generator existed, but the program did not generate or print a value yet.
+
+---
+
+## 5. Generated a Random Integer
+
+I created an integer variable:
+
+```java
+int number;
+```
+
+The data type `int` stores whole numbers.
+
+I then generated a random integer:
+
+```java
+number = random.nextInt();
+```
+
+The method:
+
+```java
+nextInt()
+```
+
+returns a random integer.
+
+Because no range was provided, the result can be a positive or negative integer.
+
+It can also return zero.
+
+I printed the generated number with:
+
+```java
+System.out.println(number);
+```
+
+The complete program was:
+
+```java
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Random random = new Random();
+
+        int number;
+
+        number = random.nextInt();
+
+        System.out.println(number);
+
+    }
+}
+```
+
+Every time the program runs, it can display a different integer.
+
+An example result could be:
+
+```text
+174829361
+```
+
+Another execution could produce:
+
+```text
+-98214375
+```
+
+---
+
+## 6. Generated an Integer Inside a Range
+
+Next, I used:
+
+```java
+number = random.nextInt(1, 6);
+```
+
+This version of `nextInt()` receives two values:
+
+```java
+nextInt(origin, bound)
+```
+
+The first value is the inclusive starting point:
+
+```text
+origin = 1
+```
+
+The second value is the exclusive ending point:
+
+```text
+bound = 6
+```
+
+This means that:
+
+```java
+random.nextInt(1, 6)
+```
+
+can generate:
+
+```text
+1, 2, 3, 4 or 5
+```
+
+It cannot generate `6`, because the upper boundary is excluded.
+
+The complete program was:
+
+```java
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Random random = new Random();
+
+        int number;
+
+        number = random.nextInt(1, 6);
+
+        System.out.println(number);
+
+    }
+}
+```
+
+An example result could be:
+
+```text
+4
+```
+
+---
+
+## 7. Generated Three Dice Values
+
+I then created three integer variables:
+
+```java
+int number1;
+int number2;
+int number3;
+```
+
+Each variable stores one random value.
+
+I generated the values with:
+
+```java
+number1 = random.nextInt(1, 7);
+number2 = random.nextInt(1, 7);
+number3 = random.nextInt(1, 7);
+```
+
+The lower boundary is `1`, and the upper boundary is `7`.
+
+Because the upper boundary is excluded, every call can return:
+
+```text
+1, 2, 3, 4, 5 or 6
+```
+
+This matches the possible values of a standard six-sided die.
+
+The first call simulates the first die:
+
+```java
+number1 = random.nextInt(1, 7);
+```
+
+The second call simulates the second die:
+
+```java
+number2 = random.nextInt(1, 7);
+```
+
+The third call simulates the third die:
+
+```java
+number3 = random.nextInt(1, 7);
+```
+
+I printed each value separately:
+
+```java
+System.out.println(number1);
+System.out.println(number2);
+System.out.println(number3);
+```
+
+The complete program was:
+
+```java
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Random random = new Random();
+
+        int number1;
+        int number2;
+        int number3;
+
+        number1 = random.nextInt(1, 7);
+        number2 = random.nextInt(1, 7);
+        number3 = random.nextInt(1, 7);
+
+        System.out.println(number1);
+        System.out.println(number2);
+        System.out.println(number3);
+
+    }
+}
+```
+
+An example result could be:
+
+```text
+2
+6
+4
+```
+
+Because each method call generates a new random value, the three dice can have different results.
+
+They can also produce the same result.
+
+For example:
+
+```text
+5
+5
+5
+```
+
+is also possible.
+
+---
+
+## 8. Generated a Random Decimal Value
+
+Next, I created a variable with the data type `double`:
+
+```java
+double number;
+```
+
+A `double` stores numbers containing decimal places.
+
+I generated a random decimal value with:
+
+```java
+number = random.nextDouble();
+```
+
+The `nextDouble()` method generates a value beginning at `0.0` and ending before `1.0`.
+
+The possible range is:
+
+```text
+0.0 <= number < 1.0
+```
+
+This means that `0.0` is possible, but `1.0` is not included.
+
+Example results could be:
+
+```text
+0.348713241
+0.823491753
+0.014726382
+```
+
+The complete program was:
+
+```java
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Random random = new Random();
+
+        double number;
+
+        number = random.nextDouble();
+
+        System.out.println(number);
+
+    }
+}
+```
+
+The result can be different each time the program is executed.
+
+---
+
+## 9. Generated a Random Boolean Value
+
+I then created a Boolean variable:
+
+```java
+boolean isHeads;
+```
+
+A Boolean variable can store only one of two values:
+
+```text
+true
+false
+```
+
+I assigned a random Boolean value with:
+
+```java
+isHeads = random.nextBoolean();
+```
+
+The method:
+
+```java
+nextBoolean()
+```
+
+randomly returns either:
+
+```java
+true
+```
+
+or:
+
+```java
+false
+```
+
+I initially printed the Boolean value directly:
+
+```java
+System.out.println(isHeads);
+```
+
+The complete program was:
+
+```java
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Random random = new Random();
+
+        boolean isHeads;
+
+        isHeads = random.nextBoolean();
+
+        System.out.println(isHeads);
+
+    }
+}
+```
+
+An execution could display:
+
+```text
+true
+```
+
+Another execution could display:
+
+```text
+false
+```
+
+---
+
+## 10. Used the Boolean Value for a Coin Toss
+
+Finally, I used the random Boolean value to simulate tossing a coin.
+
+The variable was called:
+
+```java
+isHeads
+```
+
+The name describes the meaning of the Boolean value.
+
+When `isHeads` is `true`, the result represents heads.
+
+When `isHeads` is `false`, the result represents tails.
+
+I checked the value with an `if` statement:
+
+```java
+if (isHeads) {
+    System.out.println("HEADS");
+}
+```
+
+A Boolean variable does not need to be compared explicitly with `true`.
+
+Therefore:
+
+```java
+if (isHeads)
+```
+
+is equivalent to:
+
+```java
+if (isHeads == true)
+```
+
+The shorter version is normally preferred.
+
+If `isHeads` contains `true`, Java executes:
+
+```java
+System.out.println("HEADS");
+```
+
+If the condition is false, the `else` block runs:
+
+```java
+else {
+    System.out.println("TAILS");
+}
+```
+
+The complete program was:
+
+```java
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Random random = new Random();
+
+        boolean isHeads;
+
+        isHeads = random.nextBoolean();
+
+        if (isHeads) {
+            System.out.println("HEADS");
+        } else {
+            System.out.println("TAILS");
+        }
+
+    }
+}
+```
+
+The program displays one of two possible results:
+
+```text
+HEADS
+```
+
+or:
+
+```text
+TAILS
+```
+
+---
+
+# The Final Program
+
+The final version of the lesson simulates a coin toss:
+
+```java
+import java.util.Random;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Random random = new Random();
+
+        boolean isHeads;
+
+        isHeads = random.nextBoolean();
+
+        if (isHeads) {
+            System.out.println("HEADS");
+        } else {
+            System.out.println("TAILS");
+        }
+
+    }
+}
+```
+
+---
+
+# How the Final Program Works
+
+The program begins by importing the required class:
+
+```java
+import java.util.Random;
+```
+
+It then defines the `Main` class:
+
+```java
+public class Main {
+```
+
+Inside the class, the `main` method starts the program:
+
+```java
+public static void main(String[] args) {
+```
+
+A random-number generator is created:
+
+```java
+Random random = new Random();
+```
+
+A Boolean variable is declared:
+
+```java
+boolean isHeads;
+```
+
+The variable does not contain a value immediately after this declaration.
+
+A random Boolean value is then assigned:
+
+```java
+isHeads = random.nextBoolean();
+```
+
+At this point, `isHeads` contains either:
+
+```text
+true
+```
+
+or:
+
+```text
+false
+```
+
+The `if` statement checks the value:
+
+```java
+if (isHeads) {
+```
+
+If the value is `true`, the program prints:
+
+```text
+HEADS
+```
+
+If the value is `false`, the `else` block prints:
+
+```text
+TAILS
+```
+
+The result represents a random coin toss.
+
+---
+
+# Example Execution: Heads
+
+Suppose the method call:
+
+```java
+random.nextBoolean()
+```
+
+returns:
+
+```text
+true
+```
+
+The assignment becomes:
+
+```text
+isHeads = true
+```
+
+The condition:
+
+```java
+if (isHeads)
+```
+
+is therefore true.
+
+Java executes:
+
+```java
+System.out.println("HEADS");
+```
+
+The output is:
+
+```text
+HEADS
+```
+
+The `else` block is skipped.
+
+---
+
+# Example Execution: Tails
+
+Suppose the method call:
+
+```java
+random.nextBoolean()
+```
+
+returns:
+
+```text
+false
+```
+
+The assignment becomes:
+
+```text
+isHeads = false
+```
+
+The condition:
+
+```java
+if (isHeads)
+```
+
+is false.
+
+Java skips the code inside the `if` block and executes the `else` block:
+
+```java
+System.out.println("TAILS");
+```
+
+The output is:
+
+```text
+TAILS
+```
+
+---
+
+# The Random Methods Used
+
+## `nextInt()`
+
+```java
+random.nextInt();
+```
+
+Generates a random integer.
+
+The value can be positive, negative or zero.
+
+---
+
+## `nextInt(origin, bound)`
+
+```java
+random.nextInt(1, 7);
+```
+
+Generates a random integer inside a specified range.
+
+The starting value is included.
+
+The ending value is excluded.
+
+Therefore:
+
+```java
+random.nextInt(1, 7)
+```
+
+can return:
+
+```text
+1, 2, 3, 4, 5 or 6
+```
+
+---
+
+## `nextDouble()`
+
+```java
+random.nextDouble();
+```
+
+Generates a random decimal value.
+
+The default range begins at `0.0` and ends before `1.0`.
+
+---
+
+## `nextBoolean()`
+
+```java
+random.nextBoolean();
+```
+
+Generates one of two Boolean values:
+
+```text
+true
+false
+```
+
+This is useful when a program needs to make a random decision between two possibilities.
+
+---
+
+# Why the Upper Boundary Is Excluded
+
+When using:
+
+```java
+random.nextInt(1, 7);
+```
+
+the first number is included, but the second number is excluded.
+
+The possible results are therefore:
+
+```text
+1 through 6
+```
+
+This can be written mathematically as:
+
+```text
+1 <= number < 7
+```
+
+This behavior is useful for simulating a six-sided die.
+
+To generate numbers from `1` through `5`, the method call is:
+
+```java
+random.nextInt(1, 6);
+```
+
+To generate numbers from `1` through `6`, the method call is:
+
+```java
+random.nextInt(1, 7);
+```
+
+The exclusive upper boundary must therefore be one greater than the highest desired result.
+
+---
+
+# Why This Program Works
+
+The `Random` object provides methods that create different types of random values.
+
+The general process is:
+
+1. Import the `Random` class.
+2. Create a `Random` object.
+3. Declare a variable with the required data type.
+4. Call the appropriate random method.
+5. Store the returned value in the variable.
+6. Print or process the result.
+
+For random integers, the program uses:
+
+```java
+nextInt()
+```
+
+For ranged integers, it uses:
+
+```java
+nextInt(origin, bound)
+```
+
+For decimal values, it uses:
+
+```java
+nextDouble()
+```
+
+For two possible outcomes, it uses:
+
+```java
+nextBoolean()
+```
+
+The final coin-toss program combines `nextBoolean()` with an `if-else` statement.
+
+A value of `true` prints `HEADS`, while a value of `false` prints `TAILS`.
+
+---
+
+# Conclusion
+
+This Java lesson introduced the `Random` class and several methods for generating random values.
+
+I learned how to create a random-number generator with:
+
+```java
+Random random = new Random();
+```
+
+I then used it to generate different data types:
+
+```text
+- int
+- double
+- boolean
+```
+
+The lesson demonstrated the following methods:
+
+```java
+nextInt()
+nextInt(origin, bound)
+nextDouble()
+nextBoolean()
+```
+
+I also learned that the upper boundary of `nextInt(origin, bound)` is excluded.
+
+For example:
+
+```java
+random.nextInt(1, 7);
+```
+
+generates values from `1` through `6`.
+
+Finally, I combined a random Boolean value with an `if-else` statement to simulate a coin toss.
+
+This lesson helped me improve my understanding of Java imports, objects, variables, data types, method calls, random values, ranges, conditional statements and console output.
+
+
