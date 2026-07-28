@@ -1,0 +1,18 @@
+def get_contrast_rating(ratio, is_large_text):
+
+    new_ratio = float(ratio)
+
+    if is_large_text:
+        if new_ratio >= 4.5:
+            return "AAA"
+        elif new_ratio >= 3.0:
+            return "AA"
+        else:
+            return "Fail"
+    else:
+        if new_ratio >= 7.0:
+            return "AAA"
+        elif new_ratio >= 4.5:
+            return "AA"
+        else:
+            return "Fail"
