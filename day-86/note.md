@@ -1,14 +1,761 @@
-# Today I Completed the Following Python Programming Task
+# Today I Continued My Java Course and Completed a Python Coding Challenge
+
+Today, I continued learning Java and practised using the `Math` class, user input with `Scanner`, mathematical formulas, and formatted output with `printf`.
+
+I also completed a Python coding challenge about calculating WCAG contrast ratings.
+
+---
+
+# Java Course
+
+## Creating the Basic Java Program Structure
+
+I started with the basic structure of a Java program:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+
+
+    }
+}
+```
+
+The `Main` class contains the program.
+
+```java
+public class Main
+```
+
+The `main` method is the starting point of the program:
+
+```java
+public static void main(String[] args)
+```
+
+When the program is executed, Java begins running the instructions inside this method.
+
+---
+
+## Using the Java Math Class
+
+Java provides a built-in class called `Math`.
+
+The `Math` class contains mathematical constants and methods that can be used without creating a `Math` object.
+
+For example:
+
+```java
+System.out.println(Math.PI);
+System.out.println(Math.E);
+```
+
+`Math.PI` contains an approximation of the mathematical constant π:
+
+```text
+3.141592653589793
+```
+
+`Math.E` contains an approximation of Euler’s number:
+
+```text
+2.718281828459045
+```
+
+These constants can be used in mathematical formulas.
+
+---
+
+## Calculating Powers With `Math.pow()`
+
+I used the `Math.pow()` method to calculate a power:
+
+```java
+double result;
+
+result = Math.pow(2, 3);
+
+System.out.println(result);
+```
+
+The first argument is the base and the second argument is the exponent.
+
+```java
+Math.pow(2, 3)
+```
+
+This represents:
+
+```text
+2³
+```
+
+The calculation is:
+
+```text
+2 × 2 × 2 = 8
+```
+
+The result is returned as a `double`:
+
+```text
+8.0
+```
+
+---
+
+## Calculating Absolute Values With `Math.abs()`
+
+I then used `Math.abs()`:
+
+```java
+result = Math.abs(-5);
+```
+
+An absolute value represents the distance of a number from zero.
+
+The absolute value is therefore never negative.
+
+```text
+|-5| = 5
+```
+
+The value stored in `result` becomes:
+
+```text
+5.0
+```
+
+Because each new value is assigned to the same variable, it replaces the value that was previously stored in `result`.
+
+---
+
+## Calculating Square Roots With `Math.sqrt()`
+
+I used `Math.sqrt()` to calculate a square root:
+
+```java
+result = Math.sqrt(9);
+```
+
+The square root of `9` is `3` because:
+
+```text
+3 × 3 = 9
+```
+
+The method returns:
+
+```text
+3.0
+```
+
+---
+
+## Rounding Numbers
+
+Java provides several methods for rounding decimal numbers.
+
+### `Math.round()`
+
+```java
+result = Math.round(3.14);
+```
+
+`Math.round()` rounds a value to the nearest whole number.
+
+Because `3.14` is closer to `3` than to `4`, the result is:
+
+```text
+3
+```
+
+### `Math.ceil()`
+
+```java
+result = Math.ceil(3.14);
+```
+
+`Math.ceil()` always rounds upward to the next whole number.
+
+The result is:
+
+```text
+4.0
+```
+
+### `Math.floor()`
+
+```java
+result = Math.floor(3.99);
+```
+
+`Math.floor()` always rounds downward.
+
+The result is:
+
+```text
+3.0
+```
+
+The difference between these methods is:
+
+```text
+Math.round(3.14) = 3
+Math.ceil(3.14)  = 4.0
+Math.floor(3.99) = 3.0
+```
+
+---
+
+## Finding Maximum and Minimum Values
+
+I also used `Math.max()` and `Math.min()`.
+
+### `Math.max()`
+
+```java
+result = Math.max(10, 20);
+```
+
+`Math.max()` compares two values and returns the larger one.
+
+```text
+20
+```
+
+### `Math.min()`
+
+```java
+result = Math.min(10, 20);
+```
+
+`Math.min()` returns the smaller value.
+
+```text
+10
+```
+
+---
+
+## Complete Math Class Example
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        // System.out.println(Math.PI);
+        // System.out.println(Math.E);
+
+        double result;
+
+        result = Math.pow(2, 3);
+        result = Math.abs(-5);
+        result = Math.sqrt(9);
+        result = Math.round(3.14);
+        result = Math.ceil(3.14);
+        result = Math.floor(3.99);
+        result = Math.max(10, 20);
+        result = Math.min(10, 20);
+
+        System.out.println(result);
+    }
+}
+```
+
+Every assignment replaces the previous value of `result`.
+
+Therefore, only the result of the final calculation is printed:
+
+```java
+result = Math.min(10, 20);
+```
+
+The output is:
+
+```text
+10.0
+```
+
+---
+
+# Hypotenuse Calculator
+
+I then created a program that calculates the hypotenuse of a right triangle.
+
+The program asks the user to enter the lengths of sides `a` and `b`.
+
+It then calculates side `c` using the Pythagorean theorem.
+
+The formula is:
+
+```text
+c = √(a² + b²)
+```
+
+## Importing Scanner
+
+To receive input from the user, I imported the `Scanner` class:
+
+```java
+import java.util.Scanner;
+```
+
+I then created a `Scanner` object:
+
+```java
+Scanner scanner = new Scanner(System.in);
+```
+
+`System.in` tells the scanner to read input entered through the console.
+
+---
+
+## Declaring the Variables
+
+I declared three variables:
+
+```java
+double a;
+double b;
+double c;
+```
+
+`a` and `b` contain the lengths entered by the user.
+
+`c` stores the calculated hypotenuse.
+
+I used `double` because side lengths can contain decimal values.
+
+---
+
+## Reading the User Input
+
+The program asks for side `a`:
+
+```java
+System.out.print("Enter the length of side A: ");
+a = scanner.nextDouble();
+```
+
+It then asks for side `b`:
+
+```java
+System.out.print("Enter the length of side B: ");
+b = scanner.nextDouble();
+```
+
+`scanner.nextDouble()` reads a decimal number from the console.
+
+---
+
+## Calculating the Hypotenuse
+
+The calculation is:
+
+```java
+c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+```
+
+First, both side lengths are squared:
+
+```java
+Math.pow(a, 2)
+Math.pow(b, 2)
+```
+
+The squared values are added together:
+
+```text
+a² + b²
+```
+
+Finally, `Math.sqrt()` calculates the square root:
+
+```text
+√(a² + b²)
+```
+
+For example, when:
+
+```text
+a = 3
+b = 4
+```
+
+the calculation is:
+
+```text
+c = √(3² + 4²)
+```
+
+This becomes:
+
+```text
+c = √(9 + 16)
+c = √25
+c = 5
+```
+
+---
+
+## Printing the Result
+
+The result is displayed with:
+
+```java
+System.out.println(
+    "The hypotenuse (side c) is the following: " + c + "cm"
+);
+```
+
+For sides `3` and `4`, the output is:
+
+```text
+The hypotenuse (side c) is the following: 5.0cm
+```
+
+---
+
+## Closing the Scanner
+
+At the end of the program, I closed the scanner:
+
+```java
+scanner.close();
+```
+
+Closing the scanner releases the resource after it is no longer needed.
+
+---
+
+## Final Hypotenuse Program
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // HYPOTENUSE c = Math.sqrt(a^2 + b^2)
+
+        Scanner scanner = new Scanner(System.in);
+
+        double a;
+        double b;
+        double c;
+
+        System.out.print("Enter the length of side A: ");
+        a = scanner.nextDouble();
+
+        System.out.print("Enter the length of side B: ");
+        b = scanner.nextDouble();
+
+        c = Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
+
+        System.out.println(
+            "The hypotenuse (side c) is the following: " + c + "cm"
+        );
+
+        scanner.close();
+    }
+}
+```
+
+---
+
+# Circle and Sphere Calculator
+
+I also created a program that receives a radius and calculates:
+
+* The circumference of a circle
+* The area of a circle
+* The volume of a sphere
+
+The program uses `Math.PI` and `Math.pow()`.
+
+---
+
+## The Formulas
+
+The circumference of a circle is calculated with:
+
+```text
+circumference = 2 × π × radius
+```
+
+The area of a circle is:
+
+```text
+area = π × radius²
+```
+
+The volume of a sphere is:
+
+```text
+volume = 4/3 × π × radius³
+```
+
+In Java, the formulas are:
+
+```java
+circumference = 2 * Math.PI * radius;
+area = Math.PI * Math.pow(radius, 2);
+volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+```
+
+---
+
+## Reading the Radius
+
+The user is asked to enter a radius:
+
+```java
+System.out.print("Enter the radius: ");
+radius = scanner.nextDouble();
+```
+
+The entered number is stored in the `radius` variable.
+
+---
+
+## Calculating the Circumference
+
+The circumference is calculated with:
+
+```java
+circumference = 2 * Math.PI * radius;
+```
+
+For example, when the radius is `5`:
+
+```text
+circumference = 2 × π × 5
+```
+
+The result is approximately:
+
+```text
+31.4159
+```
+
+---
+
+## Calculating the Area
+
+The area is calculated with:
+
+```java
+area = Math.PI * Math.pow(radius, 2);
+```
+
+For a radius of `5`:
+
+```text
+area = π × 5²
+area = π × 25
+```
+
+The result is approximately:
+
+```text
+78.5398
+```
+
+The unit for an area is squared:
+
+```text
+cm²
+```
+
+---
+
+## Calculating the Volume
+
+The volume is calculated with:
+
+```java
+volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+```
+
+I used:
+
+```java
+4.0 / 3.0
+```
+
+instead of:
+
+```java
+4 / 3
+```
+
+When both numbers are integers, Java performs integer division.
+
+```text
+4 / 3 = 1
+```
+
+The decimal part would be removed.
+
+Using decimal values performs floating-point division:
+
+```text
+4.0 / 3.0 = 1.3333...
+```
+
+For a radius of `5`, the volume is approximately:
+
+```text
+523.5988
+```
+
+The unit for a volume is cubed:
+
+```text
+cm³
+```
+
+---
+
+## Printing the Values With `println`
+
+My first version printed the complete decimal values:
+
+```java
+System.out.println("The circumference is: " + circumference + "cm");
+System.out.println("The area is: " + area + "cm²");
+System.out.println("The volume is: " + volume + "cm³");
+```
+
+This works, but the results can contain many digits after the decimal point.
+
+---
+
+## Formatting the Output With `printf`
+
+I improved the output by using `System.out.printf()`:
+
+```java
+System.out.printf("The circumference is: %.1fcm\n", circumference);
+System.out.printf("The area is: %.1fcm²\n", area);
+System.out.printf("The volume is: %.1fcm³\n", volume);
+```
+
+The format specifier:
+
+```text
+%.1f
+```
+
+means:
+
+```text
+Display a floating-point value with one digit after the decimal point.
+```
+
+For example:
+
+```text
+31.4159
+```
+
+is displayed as:
+
+```text
+31.4
+```
+
+The newline character:
+
+```text
+\n
+```
+
+moves the cursor to the next line after the value is printed.
+
+---
+
+## Final Circle and Sphere Program
+
+```java
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // circumference = 2 * Math.PI * radius;
+        // area = Math.PI * Math.pow(radius, 2);
+        // volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+
+        Scanner scanner = new Scanner(System.in);
+
+        double radius;
+        double circumference;
+        double area;
+        double volume;
+
+        System.out.print("Enter the radius: ");
+        radius = scanner.nextDouble();
+
+        circumference = 2 * Math.PI * radius;
+        area = Math.PI * Math.pow(radius, 2);
+        volume = (4.0 / 3.0) * Math.PI * Math.pow(radius, 3);
+
+        System.out.printf(
+            "The circumference is: %.1fcm\n",
+            circumference
+        );
+
+        System.out.printf(
+            "The area is: %.1fcm²\n",
+            area
+        );
+
+        System.out.printf(
+            "The volume is: %.1fcm³\n",
+            volume
+        );
+
+        scanner.close();
+    }
+}
+```
+
+For a radius of `5`, the formatted output is:
+
+```text
+The circumference is: 31.4cm
+The area is: 78.5cm²
+The volume is: 523.6cm³
+```
+
+---
+
+# Python Coding Challenge
 
 ## Contrast Rating 2
 
+I also completed a Python coding challenge about calculating WCAG contrast ratings.
+
 ## The Goal
 
-Develop a Python function called `get_contrast_rating(l1, l2, is_large_text)` that receives two relative luminance values and a Boolean value indicating whether the text is large.
+The goal was to create a function called:
 
-The function should calculate the contrast ratio between the two luminance values and return the corresponding WCAG contrast rating.
+```python
+get_contrast_rating(l1, l2, is_large_text)
+```
 
-The possible ratings are:
+The function receives:
+
+* The relative luminance of the lighter color
+* The relative luminance of the darker color
+* A Boolean indicating whether the text is large
+
+The lighter luminance value is always the first argument.
+
+The function must calculate the contrast ratio and return:
 
 ```text
 AAA
@@ -16,25 +763,42 @@ AA
 Fail
 ```
 
-The first luminance value, `l1`, always represents the lighter color.
+---
 
-The second luminance value, `l2`, represents the darker color.
+## Calculating the Contrast Ratio
 
-To calculate the contrast ratio, `0.05` must first be added to both luminance values.
+The contrast ratio is calculated by adding `0.05` to both luminance values.
 
-The general calculation is:
+The adjusted lighter value is then divided by the adjusted darker value:
 
 ```text
-contrast ratio = (lighter luminance + 0.05) ÷ (darker luminance + 0.05)
+contrast ratio = (l1 + 0.05) ÷ (l2 + 0.05)
 ```
 
-In Python, this calculation can be written as:
+In Python:
 
 ```python
-contrast_ratio = (l1 + 0.05) / (l2 + 0.05)
+quotient = (l1 + 0.05) / (l2 + 0.05)
 ```
 
-The rating depends on both the calculated contrast ratio and the text size.
+In my solution, I first updated the variables:
+
+```python
+l1 += 0.05
+l2 += 0.05
+```
+
+I then performed the division:
+
+```python
+quotient = l1 / l2
+```
+
+---
+
+## Contrast Rating Requirements
+
+The rating depends on the contrast ratio and the text size.
 
 | Rating   | Normal Text | Large Text |
 | -------- | ----------: | ---------: |
@@ -42,767 +806,64 @@ The rating depends on both the calculated contrast ratio and the text size.
 | `"AA"`   |        4.5+ |       3.0+ |
 | `"Fail"` |   Below 4.5 |  Below 3.0 |
 
-For normal text:
-
-```text
-AAA: contrast ratio of at least 7.0
-AA: contrast ratio of at least 4.5
-Fail: contrast ratio below 4.5
-```
-
 For large text:
 
 ```text
-AAA: contrast ratio of at least 4.5
-AA: contrast ratio of at least 3.0
-Fail: contrast ratio below 3.0
+AAA: 4.5 or higher
+AA: 3.0 or higher
+Fail: below 3.0
 ```
 
-Large text has lower contrast requirements because larger characters are generally easier to read.
+For normal text:
 
-## The Tests
-
-The first test uses the maximum possible luminance difference:
-
-```python
-get_contrast_rating(1.0, 0.0, False)
-# "AAA"
-```
-
-The calculation is:
-
-```text
-(1.0 + 0.05) ÷ (0.0 + 0.05)
-```
-
-After adding `0.05`:
-
-```text
-1.05 ÷ 0.05
-```
-
-The result is:
-
-```text
-21.0
-```
-
-Because the text is normal text, the function uses the normal-text thresholds.
-
-A contrast ratio of `21.0` is greater than `7.0`, so the result is:
-
-```text
-AAA
-```
-
-Another normal-text example is:
-
-```python
-get_contrast_rating(0.9015, 0.1364, False)
-# "AA"
-```
-
-The calculation is:
-
-```text
-(0.9015 + 0.05) ÷ (0.1364 + 0.05)
-```
-
-This becomes:
-
-```text
-0.9515 ÷ 0.1864
-```
-
-The contrast ratio is approximately:
-
-```text
-5.1046
-```
-
-The value is below `7.0`, so it does not receive an `"AAA"` rating.
-
-However, it is greater than `4.5`, so the result is:
-
-```text
-AA
-```
-
-The next normal-text example is:
-
-```python
-get_contrast_rating(0.8965, 0.1628, False)
-# "Fail"
-```
-
-The calculation is:
-
-```text
-(0.8965 + 0.05) ÷ (0.1628 + 0.05)
-```
-
-This becomes:
-
-```text
-0.9465 ÷ 0.2128
-```
-
-The result is approximately:
-
-```text
-4.4478
-```
-
-This value is slightly below the minimum normal-text requirement of `4.5`.
-
-Therefore, the result is:
-
-```text
-Fail
-```
-
-The function must also process large text.
-
-For example:
-
-```python
-get_contrast_rating(0.7469, 0.0957, True)
-# "AAA"
-```
-
-The calculation is:
-
-```text
-(0.7469 + 0.05) ÷ (0.0957 + 0.05)
-```
-
-This becomes:
-
-```text
-0.7969 ÷ 0.1457
-```
-
-The result is approximately:
-
-```text
-5.4695
-```
-
-For large text, an `"AAA"` rating requires a contrast ratio of at least `4.5`.
-
-Because `5.4695` is greater than `4.5`, the function returns:
-
-```text
-AAA
-```
-
-Another large-text example is:
-
-```python
-get_contrast_rating(0.7489, 0.2018, True)
-# "AA"
-```
-
-The calculation is:
-
-```text
-(0.7489 + 0.05) ÷ (0.2018 + 0.05)
-```
-
-This becomes:
-
-```text
-0.7989 ÷ 0.2518
-```
-
-The result is approximately:
-
-```text
-3.1728
-```
-
-This value is below the large-text `"AAA"` threshold of `4.5`.
-
-However, it is greater than the `"AA"` threshold of `3.0`.
-
-Therefore, the result is:
-
-```text
-AA
-```
-
-The final test is:
-
-```python
-get_contrast_rating(0.6571, 0.1974, True)
-# "Fail"
-```
-
-The calculation is:
-
-```text
-(0.6571 + 0.05) ÷ (0.1974 + 0.05)
-```
-
-This becomes:
-
-```text
-0.7071 ÷ 0.2474
-```
-
-The result is approximately:
-
-```text
-2.8581
-```
-
-For large text, the minimum passing contrast ratio is `3.0`.
-
-Because `2.8581` is below `3.0`, the function returns:
-
-```text
-Fail
-```
-
-## My Approach
-
-### 1. Added `0.05` to the First Luminance Value
-
-The contrast ratio formula requires adding `0.05` to both luminance values.
-
-I first added `0.05` to `l1`:
-
-```python
-l1 += 0.05
-```
-
-The `+=` operator adds a value to an existing variable and stores the result in the same variable.
-
-This statement is equivalent to:
-
-```python
-l1 = l1 + 0.05
-```
-
-For example, when:
-
-```text
-l1 = 1.0
-```
-
-the operation becomes:
-
-```text
-1.0 + 0.05 = 1.05
-```
-
-The new value of `l1` is:
-
-```text
-1.05
-```
-
-Another example is:
-
-```text
-l1 = 0.9015
-```
-
-After adding `0.05`:
-
-```text
-0.9015 + 0.05 = 0.9515
-```
-
-Therefore, `l1` becomes:
-
-```text
-0.9515
-```
-
-### 2. Added `0.05` to the Second Luminance Value
-
-I performed the same operation on `l2`:
-
-```python
-l2 += 0.05
-```
-
-This is equivalent to:
-
-```python
-l2 = l2 + 0.05
-```
-
-For example, when:
-
-```text
-l2 = 0.0
-```
-
-the updated value is:
-
-```text
-0.0 + 0.05 = 0.05
-```
-
-When:
-
-```text
-l2 = 0.1364
-```
-
-the updated value is:
-
-```text
-0.1364 + 0.05 = 0.1864
-```
-
-Adding `0.05` also prevents the function from dividing by zero when the darker luminance value is `0.0`.
-
-Without the addition, this calculation would be invalid:
-
-```text
-1.0 ÷ 0.0
-```
-
-Python would raise a `ZeroDivisionError`.
-
-After adding `0.05`, the calculation becomes:
-
-```text
-1.05 ÷ 0.05
-```
-
-This produces the valid contrast ratio:
-
-```text
-21.0
-```
-
-### 3. Calculated the Contrast Ratio
-
-After updating both luminance values, I divided the lighter value by the darker value:
-
-```python
-quotient = l1 / l2
-```
-
-The task states that the lighter luminance value will always be the first argument.
-
-Therefore, `l1` can be used as the numerator and `l2` as the denominator.
-
-It is not necessary to determine which value is larger by using `max()` or `min()`.
-
-For example:
-
-```python
-get_contrast_rating(1.0, 0.0, False)
-```
-
-After adding `0.05`, the values are:
-
-```text
-l1 = 1.05
-l2 = 0.05
-```
-
-The division is:
-
-```text
-1.05 ÷ 0.05 = 21.0
-```
-
-Therefore:
-
-```text
-quotient = 21.0
-```
-
-For another example:
-
-```python
-get_contrast_rating(0.7489, 0.2018, True)
-```
-
-The updated values are:
-
-```text
-l1 = 0.7989
-l2 = 0.2518
-```
-
-The calculation is:
-
-```text
-0.7989 ÷ 0.2518 ≈ 3.1728
-```
-
-Therefore:
-
-```text
-quotient ≈ 3.1728
-```
-
-The variable name `quotient` describes the result of a division.
-
-It contains the contrast ratio that will be compared with the rating thresholds.
-
-### 4. Checked Whether the Text Is Large
-
-The third argument is called `is_large_text`.
-
-It contains a Boolean value:
-
-```text
-True
-```
-
-or:
-
-```text
-False
-```
-
-When `is_large_text` is `True`, the function must use the thresholds for large text.
-
-When it is `False`, the function must use the thresholds for normal text.
-
-I checked the value with:
-
-```python
-if is_large_text:
-```
-
-This condition is entered when `is_large_text` is `True`.
-
-For example:
-
-```python
-get_contrast_rating(0.7469, 0.0957, True)
-```
-
-The third argument is:
-
-```text
-True
-```
-
-Therefore, the function enters the following block:
-
-```python
-if is_large_text:
-```
-
-However, in this call:
-
-```python
-get_contrast_rating(1.0, 0.0, False)
-```
-
-the third argument is:
-
-```text
-False
-```
-
-The `if` block is skipped, and the function continues to the `else` block for normal text.
-
-### 5. Checked the `"AAA"` Requirement for Large Text
-
-Inside the large-text block, I first checked whether the contrast ratio is at least `4.5`:
-
-```python
-if quotient >= 4.5:
-```
-
-The `>=` operator means:
-
-```text
-greater than or equal to
-```
-
-This is important because a contrast ratio of exactly `4.5` should also receive an `"AAA"` rating for large text.
-
-For example:
-
-```text
-5.4695 >= 4.5
-```
-
-is:
-
-```text
-True
-```
-
-Therefore, the function returns:
-
-```python
-return "AAA"
-```
-
-The `return` statement immediately ends the function and sends the result back to the caller.
-
-For example:
-
-```python
-rating = get_contrast_rating(0.7469, 0.0957, True)
-```
-
-The value stored in `rating` is:
-
-```text
-AAA
-```
-
-### 6. Checked the `"AA"` Requirement for Large Text
-
-If the contrast ratio is below `4.5`, the first large-text condition is `False`.
-
-The function then checks whether the ratio is at least `3.0`:
-
-```python
-elif quotient >= 3.0:
-```
-
-The word `elif` means:
-
-```text
-else if
-```
-
-This condition is only checked when the previous condition was `False`.
-
-For example, consider this contrast ratio:
-
-```text
-3.1728
-```
-
-The first condition is:
-
-```text
-3.1728 >= 4.5
-```
-
-This is:
-
-```text
-False
-```
-
-The next condition is:
-
-```text
-3.1728 >= 3.0
-```
-
-This is:
-
-```text
-True
-```
-
-Therefore, the function returns:
-
-```python
-return "AA"
-```
-
-### 7. Returned `"Fail"` for Large Text Below `3.0`
-
-When the contrast ratio is below both `4.5` and `3.0`, neither passing condition is satisfied.
-
-The function reaches:
-
-```python
-else:
-    return "Fail"
-```
-
-For example:
-
-```text
-quotient = 2.8581
-```
-
-The first comparison is:
-
-```text
-2.8581 >= 4.5
-```
-
-This is:
-
-```text
-False
-```
-
-The second comparison is:
-
-```text
-2.8581 >= 3.0
-```
-
-This is also:
-
-```text
-False
-```
-
-Therefore, the function returns:
-
-```text
-Fail
-```
-
-### 8. Used the Normal-Text Thresholds Otherwise
-
-When `is_large_text` is `False`, the function enters the outer `else` block:
-
-```python
-else:
-```
-
-This block contains the requirements for normal text.
-
-Normal text has stricter contrast requirements than large text.
-
-The thresholds are:
-
 ```text
-AAA: 7.0
-AA: 4.5
+AAA: 7.0 or higher
+AA: 4.5 or higher
 Fail: below 4.5
 ```
 
-### 9. Checked the `"AAA"` Requirement for Normal Text
+---
 
-For normal text, I first checked whether the contrast ratio is at least `7.0`:
+## Checking Whether the Text Is Large
 
-```python
-if quotient >= 7.0:
-```
-
-For example:
-
-```text
-quotient = 21.0
-```
-
-The comparison becomes:
-
-```text
-21.0 >= 7.0
-```
-
-This is:
-
-```text
-True
-```
-
-Therefore, the function returns:
+The Boolean parameter is called:
 
 ```python
-return "AAA"
+is_large_text
 ```
 
-A contrast ratio of exactly `7.0` would also pass because the comparison uses `>=` instead of only `>`.
-
-### 10. Checked the `"AA"` Requirement for Normal Text
-
-If the normal-text contrast ratio is below `7.0`, the function checks whether it is at least `4.5`:
+When it is `True`, the function uses the large-text thresholds:
 
 ```python
-elif quotient >= 4.5:
+if is_large_text:
 ```
 
-For example:
-
-```text
-quotient = 5.1046
-```
-
-The `"AAA"` comparison is:
-
-```text
-5.1046 >= 7.0
-```
-
-This is:
-
-```text
-False
-```
-
-The `"AA"` comparison is:
-
-```text
-5.1046 >= 4.5
-```
-
-This is:
-
-```text
-True
-```
-
-Therefore, the function returns:
-
-```text
-AA
-```
-
-### 11. Returned `"Fail"` for Normal Text Below `4.5`
-
-When the normal-text contrast ratio is below `4.5`, it does not meet either passing threshold.
-
-The function reaches:
+When it is `False`, the function uses the normal-text thresholds:
 
 ```python
 else:
-    return "Fail"
 ```
 
-For example:
+---
+
+## Checking the Highest Rating First
+
+The function checks the `"AAA"` requirement before checking the `"AA"` requirement.
+
+For example, a large-text contrast ratio of `5.0` satisfies both of these comparisons:
 
 ```text
-quotient = 4.4478
+5.0 >= 4.5
+5.0 >= 3.0
 ```
 
-The first comparison is:
+However, the correct rating is `"AAA"`.
 
-```text
-4.4478 >= 7.0
-```
+Checking the highest threshold first ensures that the function returns the highest valid rating.
 
-This is:
+---
 
-```text
-False
-```
-
-The second comparison is:
-
-```text
-4.4478 >= 4.5
-```
-
-This is also:
-
-```text
-False
-```
-
-Therefore, the result is:
-
-```text
-Fail
-```
-
-## The Final Function
+## My Final Python Function
 
 ```python
 def get_contrast_rating(l1, l2, is_large_text):
@@ -828,355 +889,11 @@ def get_contrast_rating(l1, l2, is_large_text):
             return "Fail"
 ```
 
-## How the Function Processes Normal Text With an `"AAA"` Rating
+---
 
-The function is called with:
+## The Tests
 
-```python
-get_contrast_rating(1.0, 0.0, False)
-```
-
-The arguments are assigned to the parameters:
-
-```text
-l1 = 1.0
-l2 = 0.0
-is_large_text = False
-```
-
-The function adds `0.05` to `l1`:
-
-```text
-1.0 + 0.05 = 1.05
-```
-
-It then adds `0.05` to `l2`:
-
-```text
-0.0 + 0.05 = 0.05
-```
-
-The updated values are:
-
-```text
-l1 = 1.05
-l2 = 0.05
-```
-
-The function calculates the quotient:
-
-```text
-1.05 ÷ 0.05 = 21.0
-```
-
-Therefore:
-
-```text
-quotient = 21.0
-```
-
-The next condition is:
-
-```python
-if is_large_text:
-```
-
-Because `is_large_text` is `False`, the function skips the large-text block.
-
-It enters the normal-text `else` block.
-
-The first normal-text condition checks:
-
-```python
-if quotient >= 7.0:
-```
-
-This becomes:
-
-```text
-21.0 >= 7.0
-```
-
-The condition is:
-
-```text
-True
-```
-
-The function returns:
-
-```python
-"AAA"
-```
-
-## How the Function Processes Normal Text With an `"AA"` Rating
-
-The function is called with:
-
-```python
-get_contrast_rating(0.9015, 0.1364, False)
-```
-
-The arguments are:
-
-```text
-l1 = 0.9015
-l2 = 0.1364
-is_large_text = False
-```
-
-After adding `0.05`, the values become:
-
-```text
-l1 = 0.9515
-l2 = 0.1864
-```
-
-The quotient is:
-
-```text
-0.9515 ÷ 0.1864 ≈ 5.1046
-```
-
-Because `is_large_text` is `False`, the function uses the normal-text conditions.
-
-The first comparison is:
-
-```text
-5.1046 >= 7.0
-```
-
-This is:
-
-```text
-False
-```
-
-The second comparison is:
-
-```text
-5.1046 >= 4.5
-```
-
-This is:
-
-```text
-True
-```
-
-The function returns:
-
-```python
-"AA"
-```
-
-## How the Function Processes Normal Text That Fails
-
-The function is called with:
-
-```python
-get_contrast_rating(0.8965, 0.1628, False)
-```
-
-After adding `0.05`, the values are:
-
-```text
-l1 = 0.9465
-l2 = 0.2128
-```
-
-The quotient is approximately:
-
-```text
-4.4478
-```
-
-The function uses the normal-text thresholds.
-
-The first condition checks:
-
-```text
-4.4478 >= 7.0
-```
-
-This is:
-
-```text
-False
-```
-
-The second condition checks:
-
-```text
-4.4478 >= 4.5
-```
-
-This is also:
-
-```text
-False
-```
-
-The function reaches the final `else` block and returns:
-
-```python
-"Fail"
-```
-
-## How the Function Processes Large Text With an `"AAA"` Rating
-
-The function is called with:
-
-```python
-get_contrast_rating(0.7469, 0.0957, True)
-```
-
-The arguments are:
-
-```text
-l1 = 0.7469
-l2 = 0.0957
-is_large_text = True
-```
-
-After adding `0.05`, the values become:
-
-```text
-l1 = 0.7969
-l2 = 0.1457
-```
-
-The quotient is approximately:
-
-```text
-5.4695
-```
-
-Because `is_large_text` is `True`, the function enters the large-text block.
-
-The first large-text comparison is:
-
-```text
-5.4695 >= 4.5
-```
-
-This is:
-
-```text
-True
-```
-
-The function immediately returns:
-
-```python
-"AAA"
-```
-
-## How the Function Processes Large Text With an `"AA"` Rating
-
-The function is called with:
-
-```python
-get_contrast_rating(0.7489, 0.2018, True)
-```
-
-After adding `0.05`, the values are:
-
-```text
-l1 = 0.7989
-l2 = 0.2518
-```
-
-The contrast ratio is approximately:
-
-```text
-3.1728
-```
-
-The function first checks:
-
-```text
-3.1728 >= 4.5
-```
-
-This is:
-
-```text
-False
-```
-
-It then checks:
-
-```text
-3.1728 >= 3.0
-```
-
-This is:
-
-```text
-True
-```
-
-Therefore, the function returns:
-
-```python
-"AA"
-```
-
-## How the Function Processes Large Text That Fails
-
-The function is called with:
-
-```python
-get_contrast_rating(0.6571, 0.1974, True)
-```
-
-After adding `0.05`, the values become:
-
-```text
-l1 = 0.7071
-l2 = 0.2474
-```
-
-The contrast ratio is approximately:
-
-```text
-2.8581
-```
-
-The first large-text comparison is:
-
-```text
-2.8581 >= 4.5
-```
-
-This is:
-
-```text
-False
-```
-
-The second comparison is:
-
-```text
-2.8581 >= 3.0
-```
-
-This is also:
-
-```text
-False
-```
-
-The function reaches the `else` block and returns:
-
-```python
-"Fail"
-```
-
-## Additional Tests
-
-The function can be tested using `assert` statements:
+The function passed all six tests:
 
 ```python
 assert get_contrast_rating(1.0, 0.0, False) == "AAA"
@@ -1188,204 +905,92 @@ assert get_contrast_rating(0.7489, 0.2018, True) == "AA"
 assert get_contrast_rating(0.6571, 0.1974, True) == "Fail"
 ```
 
-The exact threshold values can also be tested.
+---
 
-For normal text, a contrast ratio of exactly `7.0` should return `"AAA"`.
+## Example Calculation
 
-Because the function adds `0.05` before dividing, suitable luminance values can be selected to produce that ratio.
-
-For example:
+For the following function call:
 
 ```python
-assert get_contrast_rating(0.65, 0.05, False) == "AAA"
+get_contrast_rating(1.0, 0.0, False)
 ```
 
 The calculation is:
 
 ```text
-(0.65 + 0.05) ÷ (0.05 + 0.05)
+(1.0 + 0.05) ÷ (0.0 + 0.05)
 ```
 
 This becomes:
 
 ```text
-0.70 ÷ 0.10 = 7.0
+1.05 ÷ 0.05 = 21.0
 ```
 
-Therefore, the result is:
+The text is normal text.
+
+A contrast ratio of `21.0` is greater than the `"AAA"` threshold of `7.0`.
+
+Therefore, the function returns:
 
 ```text
 AAA
 ```
 
-A normal-text ratio of exactly `4.5` should return `"AA"`:
+---
 
-```python
-assert get_contrast_rating(0.40, 0.05, False) == "AA"
+# What I Learned Today
+
+Today’s Java exercises helped me understand how to use the built-in `Math` class.
+
+I practised working with:
+
+```java
+Math.PI
+Math.E
+Math.pow()
+Math.abs()
+Math.sqrt()
+Math.round()
+Math.ceil()
+Math.floor()
+Math.max()
+Math.min()
 ```
 
-The calculation is:
+I also learned how several assignments to the same variable replace its previous value.
+
+The hypotenuse calculator helped me combine user input, mathematical methods, and the Pythagorean theorem in one program.
+
+The circle and sphere calculator helped me translate mathematical formulas into Java expressions.
+
+It also showed me why decimal numbers are important when performing division.
+
+Using:
+
+```java
+4.0 / 3.0
+```
+
+prevents Java from performing integer division.
+
+I also practised using `System.out.printf()` and format specifiers such as:
 
 ```text
-(0.40 + 0.05) ÷ (0.05 + 0.05)
+%.1f
 ```
 
-This becomes:
+This makes numerical output shorter and easier to read.
 
-```text
-0.45 ÷ 0.10 = 4.5
-```
+The Python coding challenge helped me practise:
 
-For large text, the same contrast ratio of `4.5` should return `"AAA"`:
+* Translating a mathematical formula into code
+* Working with Boolean values
+* Using nested `if`, `elif`, and `else` statements
+* Comparing values with `>=`
+* Applying different thresholds
+* Checking the highest matching condition first
 
-```python
-assert get_contrast_rating(0.40, 0.05, True) == "AAA"
-```
+Overall, I practised combining mathematical formulas with programming logic in both Java and Python.
 
-A large-text ratio of exactly `3.0` should return `"AA"`:
-
-```python
-assert get_contrast_rating(0.25, 0.05, True) == "AA"
-```
-
-The calculation is:
-
-```text
-(0.25 + 0.05) ÷ (0.05 + 0.05)
-```
-
-This becomes:
-
-```text
-0.30 ÷ 0.10 = 3.0
-```
-
-These tests confirm that the `>=` comparisons correctly include the boundary values.
-
-## A More Compact Alternative
-
-The function can also be written by assigning the thresholds before performing the comparisons:
-
-```python
-def get_contrast_rating(l1, l2, is_large_text):
-    contrast_ratio = (l1 + 0.05) / (l2 + 0.05)
-
-    aaa_threshold = 4.5 if is_large_text else 7.0
-    aa_threshold = 3.0 if is_large_text else 4.5
-
-    if contrast_ratio >= aaa_threshold:
-        return "AAA"
-
-    if contrast_ratio >= aa_threshold:
-        return "AA"
-
-    return "Fail"
-```
-
-This version avoids writing two separate groups of rating conditions.
-
-The expression:
-
-```python
-4.5 if is_large_text else 7.0
-```
-
-is a conditional expression.
-
-It means:
-
-```text
-Use 4.5 when is_large_text is True.
-Otherwise, use 7.0.
-```
-
-Similarly:
-
-```python
-3.0 if is_large_text else 4.5
-```
-
-means:
-
-```text
-Use 3.0 when is_large_text is True.
-Otherwise, use 4.5.
-```
-
-However, the original solution is also correct.
-
-Its separate branches make it easy to see which thresholds belong to large text and which thresholds belong to normal text.
-
-## Why This Solution Works
-
-The function first adds `0.05` to both relative luminance values.
-
-It then divides the adjusted lighter luminance value by the adjusted darker luminance value.
-
-Because the task guarantees that the lighter value is always the first argument, the function can directly calculate:
-
-```python
-l1 / l2
-```
-
-after updating both variables.
-
-The Boolean argument `is_large_text` determines which set of WCAG thresholds must be used.
-
-When `is_large_text` is `True`, the function uses:
-
-```text
-AAA: 4.5 or higher
-AA: 3.0 or higher
-Fail: below 3.0
-```
-
-When `is_large_text` is `False`, the function uses:
-
-```text
-AAA: 7.0 or higher
-AA: 4.5 or higher
-Fail: below 4.5
-```
-
-Within each branch, the function checks the highest rating first.
-
-This order is important.
-
-For example, a large-text contrast ratio of `5.0` satisfies both of these conditions:
-
-```text
-5.0 >= 4.5
-5.0 >= 3.0
-```
-
-However, the correct rating is `"AAA"`, not `"AA"`.
-
-By checking the `"AAA"` condition first, the function immediately returns the highest rating that applies.
-
-The general process is:
-
-1. Receive the two relative luminance values.
-2. Receive the Boolean value indicating the text size.
-3. Add `0.05` to the lighter luminance value.
-4. Add `0.05` to the darker luminance value.
-5. Divide the adjusted lighter value by the adjusted darker value.
-6. Check whether the text is large.
-7. Apply the large-text thresholds when the value is `True`.
-8. Apply the normal-text thresholds when the value is `False`.
-9. Return `"AAA"`, `"AA"`, or `"Fail"`.
-
-This challenge helped me practise mathematical calculations in Python and understand how a formula can be translated into several programming steps.
-
-It also helped me practise working with Boolean values and nested conditional statements.
-
-I learned that the order of conditions matters when several threshold ranges overlap.
-
-The function must check the highest rating first because every `"AAA"` contrast ratio also satisfies the lower `"AA"` requirement.
-
-I also practised using `>=` to include exact boundary values such as `7.0`, `4.5`, and `3.0`.
-
-By separating the large-text and normal-text conditions, the function clearly applies the correct accessibility requirements to each type of text.
-
-All six provided tests passed, confirming that the contrast calculation and rating conditions work correctly.
 
