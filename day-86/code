@@ -1,0 +1,21 @@
+def get_contrast_rating(l1, l2, is_large_text):
+    l1 += 0.05
+    l2 += 0.05
+
+    quotient = l1 / l2
+
+    if is_large_text:
+        if quotient >= 4.5:
+            return "AAA"
+        elif quotient >= 3.0:
+            return "AA"
+        else:
+            return "Fail"
+    
+    else:
+        if quotient >= 7.0:
+            return "AAA"
+        elif quotient >= 4.5:
+            return "AA"
+        else:
+            return "Fail"
