@@ -1,0 +1,18 @@
+def fibonacci_sequence(start_sequence, length):
+    if length == 0:
+        return []
+    elif length == 1:
+        return [start_sequence[0]]
+
+
+    sequence = [start_sequence[0], start_sequence[1]]
+    i = 1
+    while i <= length - len(start_sequence):
+        prev_num = sequence[-2]
+        next_num = sequence[-1]
+        number = prev_num + next_num
+        sequence.append(number)
+        i += 1 
+
+
+    return sequence
