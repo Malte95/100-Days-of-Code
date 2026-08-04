@@ -1,0 +1,18 @@
+def play_game(p1, p2):
+    player1 = 0
+    player2 = 0
+
+    for i in range(0, len(p1)):
+        if p1[i] == "C" and p2[i] == "C":
+            player1 += 3
+            player2 += 3
+        elif p1[i] == "D" and p2[i] == "D":
+            player1 += 1
+            player2 += 1
+        elif p1[i] == "C" and p2[i] == "D":
+            player2 += 5
+        elif p1[i] == "D" and p2[i] == "C":
+            player1 += 5
+    scores = [player1, player2]
+
+    return scores
