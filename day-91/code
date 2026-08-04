@@ -1,1 +1,14 @@
+def piggy_bank(coins):
+    coin_values = {
+        "pennies": 0.01,
+        "nickels": 0.05,
+        "dimes": 0.10,
+        "quarters": 0.25
+    }
 
+    total_value = 0
+
+    for coin, amount in coins.items():
+        total_value += coin_values[coin] * amount
+
+    return f"${total_value:.2f}"
