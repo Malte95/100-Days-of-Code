@@ -27,7 +27,7 @@ This repository documents my daily progress, projects, and what I learn along th
 
 ## 🔥 Progress
 
-I am currently on **Day 90 / 100**
+I am currently on **Day 92 / 100**
 
 ![](https://img.shields.io/badge/01-done-blue) ![](https://img.shields.io/badge/02-done-blue) ![](https://img.shields.io/badge/03-done-blue) ![](https://img.shields.io/badge/04-done-blue) ![](https://img.shields.io/badge/05-done-blue) ![](https://img.shields.io/badge/06-done-blue) ![](https://img.shields.io/badge/07-done-blue) ![](https://img.shields.io/badge/08-done-blue) ![](https://img.shields.io/badge/09-done-blue) ![](https://img.shields.io/badge/10-done-blue)
 
@@ -47,7 +47,7 @@ I am currently on **Day 90 / 100**
 
 ![](https://img.shields.io/badge/81-done-blue) ![](https://img.shields.io/badge/82-done-blue) ![](https://img.shields.io/badge/83-done-blue) ![](https://img.shields.io/badge/84-done-blue) ![](https://img.shields.io/badge/85-done-blue) ![](https://img.shields.io/badge/86-done-blue) ![](https://img.shields.io/badge/87-done-blue) ![](https://img.shields.io/badge/88-done-blue) ![](https://img.shields.io/badge/89-done-blue) ![](https://img.shields.io/badge/90-done-blue)
 
-![](https://img.shields.io/badge/91-pending-lightgrey) ![](https://img.shields.io/badge/92-pending-lightgrey) ![](https://img.shields.io/badge/93-pending-lightgrey) ![](https://img.shields.io/badge/94-pending-lightgrey) ![](https://img.shields.io/badge/95-pending-lightgrey) ![](https://img.shields.io/badge/96-pending-lightgrey) ![](https://img.shields.io/badge/97-pending-lightgrey) ![](https://img.shields.io/badge/98-pending-lightgrey) ![](https://img.shields.io/badge/99-pending-lightgrey) ![](https://img.shields.io/badge/100-pending-lightgrey)
+![](https://img.shields.io/badge/91-done-blue) ![](https://img.shields.io/badge/92-done-blue) ![](https://img.shields.io/badge/93-pending-lightgrey) ![](https://img.shields.io/badge/94-pending-lightgrey) ![](https://img.shields.io/badge/95-pending-lightgrey) ![](https://img.shields.io/badge/96-pending-lightgrey) ![](https://img.shields.io/badge/97-pending-lightgrey) ![](https://img.shields.io/badge/98-pending-lightgrey) ![](https://img.shields.io/badge/99-pending-lightgrey) ![](https://img.shields.io/badge/100-pending-lightgrey)
 
 *(I will update this as I progress)*
 
