@@ -1,0 +1,50 @@
+def solve_magic_square(grid):
+    grid = [row[:] for row in grid]
+
+    zero_row = None
+    zero_column = None
+
+    for row_index, row in enumerate(grid):
+        for column_index, cell in enumerate(row):
+            if cell == 0:
+                zero_row = row_index
+                zero_column = column_index
+
+    target_sum = None
+
+    for row_index, row in enumerate(grid):
+        if row_index != zero_row:
+            target_sum = sum(row)
+            break
+
+    missing_number = target_sum - sum(grid[zero_row])
+    grid[zero_row][zero_column] = missing_number
+
+    row_sums = []
+
+    for row in grid:
+        row_sums.append(sum(row))
+
+    column_sums = []
+
+    for column_index in range(3):
+        column_sum = 0
+
+        for row_index in range(3):
+            column_sum += grid[row_index][column_index]
+
+        column_sums.append(column_sum)
+
+    diagonal_1 = 0
+    diagonal_2 = 0
+
+    for index in range(3):
+        diagonal_1 += grid[index][index]
+        diagonal_2 += grid[index][2 - index]
+
+    all_sums = row_sums + column_sums + [diagonal_1, diagonal_2]
+
+    if all(current_sum == all_sums[0] for current_sum in all_sums):
+        return missing_number
+
+    return "impossible"
