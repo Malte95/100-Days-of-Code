@@ -1,0 +1,22 @@
+def get_food_chain(pairs):
+    food_map = {}
+    prey_set = set()
+    apex_predator = ""
+
+    for predator, prey in pairs:
+        food_map[predator] = prey 
+        prey_set.add(prey)
+    for candidate in food_map:
+        if candidate not in prey_set:
+            apex_predator = candidate
+            break
+
+    food_chain = [apex_predator]
+    current_predator = apex_predator
+
+    while current_predator in food_map:
+        current_prey = food_map[current_predator]
+        food_chain.append(current_prey)
+        current_predator = current_prey
+
+    return food_chain
