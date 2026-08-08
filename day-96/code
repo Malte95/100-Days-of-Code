@@ -1,0 +1,21 @@
+def get_emoji_phrase(s):
+
+    emojis = {
+        "👶": "baby",
+        "🐱": "cat",
+        "🐕": "dog",
+        "🐟": "fish",
+        "🥵": "hot",
+        "🧊": "ice",
+        "🪨": "rock",
+        "🦈": "shark",
+        "🍲": "soup",
+        "⭐": "star"
+    }
+
+    words = []
+
+    for emoji in s:
+        words.append(emojis[emoji])
+
+    return " ".join(words)
