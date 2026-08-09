@@ -1,0 +1,17 @@
+def calculate_handicap(scores, pars):
+
+    if len(scores) != len(pars):
+        raise ValueError("scores and pars must have the same length")
+
+    if not scores or not pars:
+        raise ValueError("scores and pars cannot be empty")
+    
+    differentials = []
+
+    for score in range(len(scores)):
+        differential = scores[score] - pars[score]
+        differentials.append(differential)
+
+    handicap = round(sum(differentials)/ len(differentials), 1)
+
+    return handicap
