@@ -1,78 +1,98 @@
 # Daily Coding Challenge: Golf Handicap Calculator
 
-Today, I completed a Python coding challenge about calculating a golfer's handicap index based on multiple golf scores and their corresponding par values.
+Today, I completed a Python coding challenge about calculating a golfer's handicap index from a list of scores and corresponding course par values.
 
 ## The Challenge
 
 The function receives two arrays:
 
-* one array containing the golfer's scores
-* one array containing the corresponding par values for each round
+* one containing the golfer's scores
+* one containing the corresponding par values
 
-For every round, the function must calculate the **differential** by subtracting the par value from the golfer's score.
+For each round, the differential is calculated by subtracting the par from the score.
 
 For example:
 
 ```text
-Score: 78
-Par:   72
+Score: 42
+Par:   36
 ```
 
 The differential is:
 
 ```text
-78 - 72 = 6
+42 - 36 = 6
 ```
 
-This calculation needs to be performed for every round.
+This calculation must be performed for every round.
 
-After calculating all differentials, the function must calculate their average and round the result to one decimal place.
+After all differentials have been calculated, the function returns their average rounded to one decimal place.
 
-For example, if the differentials are:
+For example:
 
 ```python
-[6, 4, 8]
+scores = [42, 45, 46, 44]
+pars = [36, 36, 36, 36]
 ```
 
-their average is:
+The differentials are:
 
 ```text
-(6 + 4 + 8) / 3 = 6.0
+42 - 36 = 6
+45 - 36 = 9
+46 - 36 = 10
+44 - 36 = 8
 ```
 
-The function should therefore return:
+So the list of differentials is:
+
+```python
+[6, 9, 10, 8]
+```
+
+Their average is:
 
 ```text
-6.0
+(6 + 9 + 10 + 8) / 4
+= 33 / 4
+= 8.25
+```
+
+Rounded to one decimal place, the expected result is:
+
+```text
+8.3
 ```
 
 ## My Approach
 
-First, I added two checks to make sure the provided data can be used correctly.
+First, I added input validation.
 
-The first check verifies that `scores` and `pars` contain the same number of elements:
+The first check makes sure that `scores` and `pars` contain the same number of elements:
 
 ```python
 if len(scores) != len(pars):
     raise ValueError("scores and pars must have the same length")
 ```
 
-This is important because every golf score needs a corresponding par value.
+This is important because every score needs a corresponding par value.
 
-For example, if there are three scores but only two par values, the program would not know which par belongs to the third score.
+For example, if there were four scores but only three par values, the final score could not be matched with a par value.
 
-I used `raise ValueError()` to stop the function when the provided values are not suitable for the calculation.
+I used `raise ValueError()` to stop the function when the provided input cannot be used correctly.
 
-Next, I checked whether either of the lists is empty:
+Next, I checked whether either list is empty:
 
 ```python
 if not scores or not pars:
     raise ValueError("scores and pars cannot be empty")
 ```
 
-This prevents the function from trying to calculate an average when there are no rounds available.
+This is necessary because calculating an average requires at least one value.
 
-An empty list would also cause a problem later because calculating the average would require dividing by the number of differentials. If there are no differentials, that number would be zero.
+If there were no differentials, dividing by the number of differentials would mean dividing by zero.
+
+## Calculating the Differentials
 
 After validating the input, I created an empty list called `differentials`:
 
@@ -80,7 +100,7 @@ After validating the input, I created an empty list called `differentials`:
 differentials = []
 ```
 
-This list is used to store the calculated differential for every golf round.
+This list stores the differential from every round.
 
 Next, I used a `for` loop together with `range()` and `len()`:
 
@@ -88,82 +108,149 @@ Next, I used a `for` loop together with `range()` and `len()`:
 for score in range(len(scores)):
 ```
 
-`len(scores)` returns the number of elements inside the `scores` list.
+`len(scores)` returns the number of elements in the `scores` list.
 
-`range(len(scores))` then creates the indexes needed to access each element.
+`range(len(scores))` then creates the indexes needed to access each score.
 
-For example, if there are three scores, the indexes are:
+For example, if there are four scores, the indexes are:
 
 ```text
 0
 1
 2
+3
 ```
 
-During each loop iteration, I use the current index to access both the score and its corresponding par value.
+During every loop iteration, I use the same index for both lists:
 
-The differential is calculated by subtracting the par from the score:
+```python
+scores[score]
+pars[score]
+```
+
+This ensures that the correct score is matched with the correct par value.
+
+The differential is then calculated with:
 
 ```python
 differential = scores[score] - pars[score]
 ```
 
-Because both lists use the same index, the correct score and par value are matched together.
-
-For example:
-
-```python
-scores = [78, 75, 80]
-pars   = [72, 72, 72]
-```
-
-The loop calculates:
-
-```text
-78 - 72 = 6
-75 - 72 = 3
-80 - 72 = 8
-```
-
-Each differential is then added to the `differentials` list using `.append()`:
+Each differential is added to the list using `.append()`:
 
 ```python
 differentials.append(differential)
 ```
 
-After the loop finishes, the list would look like this:
+After the loop, the list might look like this:
 
 ```python
-[6, 3, 8]
+[6, 9, 10, 8]
 ```
 
-Next, I calculated the average of all differentials.
+## Calculating the Average
 
-I used `sum()` to add all values inside the list:
+Next, I calculate the average of all differentials.
+
+`sum()` adds all values:
 
 ```python
 sum(differentials)
 ```
 
-Then I used `len()` to determine how many differentials there are:
+and `len()` gives the number of differentials:
 
 ```python
 len(differentials)
 ```
 
-Dividing the sum by the number of values gives the average.
+The average is therefore calculated by dividing the total by the number of values.
 
-Finally, I used `round()` with `1` as the second argument to round the result to one decimal place:
+Initially, I used Python's built-in `round()` function.
 
-```python
-round(sum(differentials) / len(differentials), 1)
+However, I discovered an important detail about Python's rounding behavior.
+
+For example:
+
+```text
+8.25
 ```
 
-The result is stored in the variable `handicap` and returned by the function.
+rounded to one decimal place with Python's normal `round()` can become:
+
+```text
+8.2
+```
+
+instead of:
+
+```text
+8.3
+```
+
+This happens because Python uses a rounding method commonly known as **banker's rounding**, or **round half to even**.
+
+The challenge, however, expects traditional rounding where:
+
+```text
+8.25 → 8.3
+```
+
+Because of this, I used Python's `decimal` module.
+
+## Using Decimal and ROUND_HALF_UP
+
+First, I imported:
+
+```python
+from decimal import Decimal, ROUND_HALF_UP
+```
+
+`Decimal` allows decimal numbers to be handled more precisely than normal floating-point numbers in situations where exact decimal rounding matters.
+
+I calculated the average using `Decimal` values:
+
+```python
+average = Decimal(sum(differentials)) / Decimal(len(differentials))
+```
+
+An important detail is that I convert the values to `Decimal` **before performing the division**.
+
+This avoids first creating a normal floating-point result and only converting it afterwards.
+
+Next, I used the `.quantize()` method:
+
+```python
+handicap = average.quantize(
+    Decimal("0.1"),
+    rounding=ROUND_HALF_UP
+)
+```
+
+`Decimal("0.1")` tells Python that the result should have one decimal place.
+
+`ROUND_HALF_UP` defines the rounding rule.
+
+With this rounding mode:
+
+```text
+8.24 → 8.2
+8.25 → 8.3
+8.26 → 8.3
+```
+
+Finally, I converted the result back into a normal floating-point number:
+
+```python
+return float(handicap)
+```
 
 ## My Solution
 
 ```python
+from decimal import Decimal, ROUND_HALF_UP
+
+
 def calculate_handicap(scores, pars):
 
     if len(scores) != len(pars):
@@ -178,9 +265,14 @@ def calculate_handicap(scores, pars):
         differential = scores[score] - pars[score]
         differentials.append(differential)
 
-    handicap = round(sum(differentials) / len(differentials), 1)
+    average = Decimal(sum(differentials)) / Decimal(len(differentials))
 
-    return handicap
+    handicap = average.quantize(
+        Decimal("0.1"),
+        rounding=ROUND_HALF_UP
+    )
+
+    return float(handicap)
 ```
 
 ## What I Learned
@@ -192,20 +284,25 @@ During this challenge, I practiced working with:
 * `range()`
 * `len()`
 * list indexes
-* accessing corresponding elements from multiple lists
-* the `.append()` method
-* the `sum()` function
+* accessing corresponding values from two lists
+* `.append()`
+* `sum()`
 * calculating averages
-* the `round()` function
+* input validation
 * `if` statements
 * the `or` operator
 * `raise`
 * `ValueError`
-* input validation
+* Python's rounding behavior
+* the `decimal` module
+* `Decimal`
+* `.quantize()`
+* `ROUND_HALF_UP`
+* converting values with `float()`
 
 One important thing I learned was how to work with two related lists at the same time.
 
-Because `scores` and `pars` contain corresponding values, I can use the same index to access elements from both lists.
+Because `scores` and `pars` contain corresponding values, I can use the same index to access matching elements from both lists.
 
 For example:
 
@@ -214,73 +311,68 @@ scores[score]
 pars[score]
 ```
 
-Both expressions access values at the same position in their respective lists.
+Both expressions access the element at the same position.
 
-I also learned more about how `range()` and `len()` can work together.
+I also learned how `range()` and `len()` can work together.
 
-Instead of iterating directly over the values in a list, I can use:
+Using:
 
 ```python
 range(len(scores))
 ```
 
-to iterate over the indexes of the list.
+allows me to iterate over the indexes of the list instead of directly over its values.
 
-This is useful when I need the same index to access values from multiple lists.
+This is useful when the same index is needed for more than one list.
 
 Another important concept was calculating an average.
 
-First, I use:
+The general idea is:
 
-```python
-sum(differentials)
+```text
+sum of all values / number of values
 ```
 
-to calculate the total of all differentials.
+In this challenge, that means adding all differentials and dividing the result by the number of rounds.
 
-Then:
+I also learned more about input validation.
 
-```python
-len(differentials)
+By checking whether the two lists have different lengths, I can prevent mismatched data from being processed.
+
+By checking whether a list is empty, I can prevent a division-by-zero error later in the function.
+
+One of the most interesting things I learned was that Python's built-in `round()` does not always behave the way I initially expected.
+
+The value:
+
+```text
+8.25
 ```
 
-gives me the number of values.
+can become:
 
-Dividing these two values gives the average differential.
-
-I also practiced using `round()`:
-
-```python
-round(value, 1)
+```text
+8.2
 ```
 
-The second argument tells Python how many decimal places the result should have. In this challenge, the handicap needs to be rounded to one decimal place.
+when rounded to one decimal place with `round()`.
 
-Another new concept was validating the input before performing the actual calculation.
+The challenge expected:
 
-By checking:
-
-```python
-len(scores) != len(pars)
+```text
+8.3
 ```
 
-I can detect when the two lists do not contain the same number of elements.
+so I learned how to use `Decimal`, `.quantize()`, and `ROUND_HALF_UP` to explicitly control the rounding rule.
 
-I also learned that:
+I also learned why it is better to convert values to `Decimal` before performing the division rather than converting the already calculated floating-point result afterwards.
 
-```python
-not scores
-```
+Finally, I learned again how important indentation is in Python.
 
-can be used to check whether a list is empty.
+The calculation of the final handicap and the `return` statement must be outside the `for` loop.
 
-Using `raise ValueError()` allows the function to stop immediately when invalid data is provided instead of continuing with a calculation that would fail or produce an incorrect result.
+If `return` were inside the loop, the function would stop after calculating only the first differential.
 
-I also learned something important about indentation and `return`.
+Overall, this challenge helped me improve my understanding of lists, indexes, loops, averages, validation, exceptions, decimal arithmetic, and rounding behavior in Python.
 
-The handicap calculation and `return` statement need to be outside the `for` loop.
-
-If `return` were inside the loop, the function would stop after processing only the first golf round. By placing it after the loop, Python first calculates every differential before calculating and returning the final handicap.
-
-Overall, this challenge helped me improve my understanding of lists, indexes, loops, averages, rounding, input validation, exceptions, and the importance of correctly structuring a Python function.
 
