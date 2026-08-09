@@ -1,3 +1,5 @@
+from decimal import Decimal, ROUND_HALF_UP
+
 def calculate_handicap(scores, pars):
 
     if len(scores) != len(pars):
@@ -12,6 +14,11 @@ def calculate_handicap(scores, pars):
         differential = scores[score] - pars[score]
         differentials.append(differential)
 
-    handicap = round(sum(differentials)/ len(differentials), 1)
+    average = Decimal(sum(differentials))/ Decimal(len(differentials))
 
-    return handicap
+    handicap = average.quantize(
+        Decimal("0.1"),
+        rounding = ROUND_HALF_UP
+    )
+
+    return float(handicap)
