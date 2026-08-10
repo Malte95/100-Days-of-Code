@@ -1,0 +1,33 @@
+def get_spoken_duration(seconds):
+
+    time = []
+
+    hours = seconds // 3600
+    if hours > 0:
+        if hours > 1:
+            time.append(f"{hours} hours")
+        else:
+            time.append(f"{hours} hour")
+    rest = seconds % 3600
+
+    minutes = rest // 60
+    if minutes > 0:
+        if minutes > 1:
+            time.append(f"{minutes} minutes")
+        else:
+            time.append(f"{minutes} minute")
+    seconds = rest % 60
+    if seconds > 0:
+        if seconds > 1:
+            time.append(f"{seconds} seconds")
+        else:
+            time.append(f"{seconds} second")
+    
+    if len(time) == 0:
+        return ""
+    elif len(time) == 1:
+        return time[0]
+    elif len(time) == 2:
+        return time[0] + " and " + time[1]
+    else:
+        return time[0] + ", " + time[1] + " and " + time[2]
