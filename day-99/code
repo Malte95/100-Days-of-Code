@@ -1,0 +1,35 @@
+import math
+
+def get_spoken_time(hour_angle, minute_angle):
+
+    minutes = math.floor(minute_angle / 6)
+    hours = math.floor(hour_angle / 30)
+
+    if minutes == 60:
+        minutes = 0
+        hours += 1
+
+    if hours == 0:
+        hours += 12
+
+    if hours > 12:
+        hours -= 12
+
+    z = hours + 1
+
+    if z > 12:
+        z -= 12
+
+    if minutes == 0:
+        return f"{hours} o'clock"
+    elif minutes == 15:
+        return f"quarter past {hours}"
+    elif minutes <= 29:
+        return f"{minutes} minutes past {hours}"
+    elif minutes == 30:
+        return f"half past {hours}"
+    elif minutes == 45:
+        return f"quarter to {z}"
+    else:
+        remainder = 60 - minutes
+        return f"{remainder} minutes to {z}"
