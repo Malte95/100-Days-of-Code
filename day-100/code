@@ -1,0 +1,48 @@
+using System;
+
+namespace ResourceConsoleGame
+{
+    public class Class1
+    {
+        static void Main(string[] args)
+        {
+            int wood = 0;
+            bool beenden = false;
+            while (!beenden)
+            {
+                Console.WriteLine("Choose a task: 1 = 'Collect wood', 2 = 'Build a house', 3 = 'Quit game'");
+                int userInput = int.Parse(Console.ReadLine());
+                if(userInput == 1)
+                {
+                    wood += 1;
+                    Console.WriteLine("Wood collected");
+                    Console.WriteLine("Wood: " + wood);
+                }
+                else if(userInput == 2)
+                {
+                    if (wood >= 3)
+                {
+                        wood -= 3;
+                        Console.WriteLine("House was build");
+                        Console.WriteLine("Wood: " + wood);
+                }
+                else
+                    {
+                        Console.WriteLine("You have not enough wood");
+                        Console.WriteLine("Wood: " + wood);
+                    }
+                }
+                else if (userInput == 3)
+                {
+                    beenden = true;
+                }
+                else
+                {
+                    Console.WriteLine("Use a valid number");
+                }
+            }
+    
+
+        }
+    }
+}
